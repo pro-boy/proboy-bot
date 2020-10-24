@@ -20,9 +20,9 @@ async def _(event):
 
         return
 
-    animation_interval = 0.8
+    animation_interval = 1
 
-    animation_ttl = range(0, 15)
+    animation_ttl = range(0.1, 15)
 
     #input_str = event.pattern_match.group(1)
 
@@ -46,7 +46,7 @@ async def _(event):
             "⬜⬜⬜⬜⬜⬜⬜\n⬜⬛⬛⬛⬛⬛⬜\n⬜⬛⬜⬜⬜⬛⬜\n⬜⬛⬜⬛⬜⬛⬜\n⬜⬛⬜⬜⬜⬛⬜\n⬜⬛⬛⬛⬛⬛⬜\n⬜⬜⬜⬜⬜⬜⬜",
             "⬛⬛⬛⬛⬛\n⬛⬜⬜⬜⬛\n⬛⬜⬛⬜⬛\n⬛⬜⬜⬜⬛\n⬛⬛⬛⬛⬛",
             "⬜⬜⬜\n⬜⬛⬜\n⬜⬜⬜",
-            "[👉🔴👈](https://t.me/Gujju_Bot_Support)"
+            "[👉🔴👈](https://t.me/danish_00)"
 
  ]
 
