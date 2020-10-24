@@ -26,6 +26,7 @@ NEW_UP_DATE_FOUND = (
     "**New update found for** {branch_name}\n"
     "Updating And Restarting..."
 )
+REPO = "https://github.com/1Danish-00/DanishBot"
 REPO_REMOTE_NAME = "temponame"
 IFFUCI_ACTIVE_BRANCH_NAME = "main"
 DIFF_MARKER = "HEAD..{remote_name}/{branch_name}"
