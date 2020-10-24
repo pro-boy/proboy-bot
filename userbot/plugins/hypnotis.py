@@ -20,15 +20,17 @@ async def _(event):
 
         return
 
-    animation_interval = 1
+    animation_interval = 0.8
 
-    animation_ttl = range(0.1, 15)
+    animation_ttl = range(0, 15)
 
     #input_str = event.pattern_match.group(1)
 
     #if input_str == "hypno":
-
-    await event.edit(input_str)
+    
+    #await event.edit(input_str)
+   
+    await event.edit("hypnotysing...")
 
     animation_chars = [
         
