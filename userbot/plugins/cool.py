@@ -2,7 +2,7 @@
 from telethon import events
 import asyncio
 
-@borg.on(admin_cmd(pattern=r"cool"))
+#@borg.on(admin_cmd(pattern=r"cool"))
 
 @borg.on(events.NewMessage(pattern=r"cool(.*)", outgoing=True))
 async def _(event):
