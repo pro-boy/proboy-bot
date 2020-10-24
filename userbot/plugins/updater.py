@@ -26,8 +26,9 @@ NEW_UP_DATE_FOUND = (
     "**New update found for** {branch_name}\n"
     "Updating And Restarting..."
 )
+REPO = "https://github.com/1Danish-00/DanishBot"
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "master"
+IFFUCI_ACTIVE_BRANCH_NAME = "main"
 DIFF_MARKER = "HEAD..{remote_name}/{branch_name}"
 NO_HEROKU_APP_CFGD = "no heroku application found, but a key given? 😕 "
 HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/master"
@@ -45,7 +46,7 @@ async def updater(message):
         origin = repo.create_remote(REPO_REMOTE_NAME, OFFICIAL_UPSTREAM_REPO)
         origin.fetch()
         repo.create_head(IFFUCI_ACTIVE_BRANCH_NAME, origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.heads.master.checkout(False)
 
     active_branch_name = repo.active_branch.name
     if active_branch_name != IFFUCI_ACTIVE_BRANCH_NAME:
