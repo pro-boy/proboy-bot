@@ -22,9 +22,9 @@ async def _(event):
 
     animation_ttl = range(0, 30)
 
-    input_str = event.pattern_match.group(1)
+    #input_str = event.pattern_match.group(1)
 
-    if input_str == "chu"
+    #if input_str == "chu"
 
     await event.edit("Nice...")
 
