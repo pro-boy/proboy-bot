@@ -9,7 +9,7 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
 from asyncio import sleep
 
-@borg.on(admin_cmd("notes"))
+@borg.on(admin_cmd("(.*)"))
 #@register(outgoing=True, pattern="^\.notes$")
 async def notes_active(svd):
     """ For .notes command, list all of the notes saved in a chat. """
@@ -28,7 +28,7 @@ async def notes_active(svd):
             message += "`#{}`\n".format(note.keyword)
     await svd.edit(message)
 
-@borg.on(admin_cmd("clear"))
+@borg.on(admin_cmd("(.*)"))
 #@register(outgoing=True, pattern=r"^\.clear (\w*)")
 async def remove_notes(clr):
     """ For .clear command, clear note with the given name."""
@@ -44,7 +44,7 @@ async def remove_notes(clr):
         return await clr.edit(
             "`Successfully deleted note:` **{}**".format(notename))
 
-@borg.on(admin_cmd("save"))
+@borg.on(admin_cmd("(.*)"))
 #@register(outgoing=True, pattern=r"^\.save (\w*)")
 async def add_note(fltr):
     """ For .save command, saves notes in a chat. """
