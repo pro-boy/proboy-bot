@@ -9,12 +9,12 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
 from asyncio import sleep
 
-
-@register(outgoing=True, pattern="^\.notes$")
+@borg.on(admin_cmd("notes"))
+#@register(outgoing=True, pattern="^\.notes$")
 async def notes_active(svd):
     """ For .notes command, list all of the notes saved in a chat. """
     try:
-        from userbot.modules.sql_helper.notes_sql import get_notes
+        from userbot.plugins.sql_helper.notes_sql import get_notes
     except AttributeError:
         await svd.edit("`Running on Non-SQL mode!`")
         return
@@ -28,12 +28,12 @@ async def notes_active(svd):
             message += "`#{}`\n".format(note.keyword)
     await svd.edit(message)
 
-
-@register(outgoing=True, pattern=r"^\.clear (\w*)")
+@borg.on(admin_cmd("clear"))
+#@register(outgoing=True, pattern=r"^\.clear (\w*)")
 async def remove_notes(clr):
     """ For .clear command, clear note with the given name."""
     try:
-        from userbot.modules.sql_helper.notes_sql import rm_note
+        from userbot.plugins.sql_helper.notes_sql import rm_note
     except AttributeError:
         await clr.edit("`Running on Non-SQL mode!`")
         return
@@ -44,8 +44,8 @@ async def remove_notes(clr):
         return await clr.edit(
             "`Successfully deleted note:` **{}**".format(notename))
 
-
-@register(outgoing=True, pattern=r"^\.save (\w*)")
+@borg.on(admin_cmd("save"))
+#@register(outgoing=True, pattern=r"^\.save (\w*)")
 async def add_note(fltr):
     """ For .save command, saves notes in a chat. """
     try:
@@ -84,14 +84,14 @@ async def add_note(fltr):
     else:
         return await fltr.edit(success.format('added', keyword))
 
-
-@register(pattern=r"#\w*", disable_edited=True)
+@borg.on(admin_cmd("(.*)"))
+#@register(pattern=r"#\w*", disable_edited=True)
 async def incom_note(getnt):
     """ Notes logic. """
     try:
         if not (await getnt.get_sender()).bot:
             try:
-                from userbot.modules.sql_helper.notes_sql import get_note
+                from userbot.plugins.sql_helper.notes_sql import get_note
             except AttributeError:
                 return
             notename = getnt.text[1:]
