@@ -85,7 +85,7 @@ async def add_note(fltr):
         return await fltr.edit(success.format('added', keyword))
 
 
-@register(pattern=r"#\w*", disable_edited=True, disable_errors=True)
+@register(pattern=r"#\w*", disable_edited=True)
 async def incom_note(getnt):
     """ Notes logic. """
     try:
