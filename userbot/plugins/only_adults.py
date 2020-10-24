@@ -9,7 +9,7 @@ from userbot.utils import admin_cmd
 
 
 
-@borg.on(admin_cmd(pattern=r"chod"))
+@borg.on(admin_cmd(pattern=r"(.*)"))
 
 async def _(event):
 
@@ -48,7 +48,7 @@ async def _(event):
 
             await event.edit(animation_chars[i % 10])
 
-@borg.on(admin_cmd(pattern=r"sqh"))
+@borg.on(admin_cmd(pattern=r"(.*)"))
 
 async def _(event):
 
@@ -56,7 +56,7 @@ async def _(event):
 
         return
 
-    animation_interval = 3
+    animation_interval = 0.1
 
     animation_ttl = range(0, 11)
 
@@ -88,7 +88,7 @@ async def _(event):
             await event.edit(animation_chars[i % 10])
 
 
-@borg.on(admin_cmd(pattern=r"vquickheal"))
+@borg.on(admin_cmd(pattern=r"(.*)"))
 
 async def _(event):
 
