@@ -46,7 +46,7 @@ async def updater(message):
         origin = repo.create_remote(REPO_REMOTE_NAME, OFFICIAL_UPSTREAM_REPO)
         origin.fetch()
         repo.create_head(IFFUCI_ACTIVE_BRANCH_NAME, origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.heads.master.checkout(False)
 
     active_branch_name = repo.active_branch.name
     if active_branch_name != IFFUCI_ACTIVE_BRANCH_NAME:
