@@ -2,8 +2,9 @@
 from telethon import events
 import asyncio
 
+@borg.on(admin_cmd(pattern=r"cool"))
 
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(events.NewMessage(pattern=r"cool(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -16,9 +17,9 @@ async def _(event):
             "CooL",
             "🤩🤩",
             "cOOl",
-            "🤩🤩"
-            "🆒"
-            "#coO0l"
+            "🤩🤩",
+            "🆒",
+            "#coO0l",
         ]
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
