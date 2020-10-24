@@ -1,4 +1,4 @@
-"""COMMAND : .chu"""
+"""COMMAND : .box"""
 
 from telethon import events
 
@@ -10,7 +10,7 @@ from userbot.utils import admin_cmd
 
 
 
-@borg.on(admin_cmd(pattern="hu"))
+@borg.on(admin_cmd(pattern="box"))
 
 async def _(event):
 
@@ -22,9 +22,9 @@ async def _(event):
 
     animation_ttl = range(0, 30)
 
-   # input_str = event.pattern_match.group(1)
+    input_str = event.pattern_match.group(1)
 
-   # if input_str == "chu":
+    if input_str == "box":
 
     await event.edit("Nice...")
 
