@@ -49,7 +49,7 @@ async def remove_notes(clr):
 async def add_note(fltr):
     """ For .save command, saves notes in a chat. """
     try:
-        from userbot.modules.sql_helper.notes_sql import add_note
+        from userbot.plugins.sql_helper.notes_sql import add_note
     except AttributeError:
         await fltr.edit("`Running on Non-SQL mode!`")
         return
