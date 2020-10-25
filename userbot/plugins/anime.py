@@ -8,8 +8,6 @@ import requests
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
 from telegram.ext import run_async, CallbackContext
 
-from userbot import dispatcher
-from userbot.plugins.disable import DisableAbleCommandHandler
 
 info_btn = "More Information"
 kaizoku_btn = "Kaizoku ☠️"
