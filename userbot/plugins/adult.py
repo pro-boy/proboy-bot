@@ -1,34 +1,34 @@
+#credits: @r4v4n4
 import datetime
-import asyncio
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot.utils import admin_cmd
-from userbot import bot
 
-borg.on(admin_cmd(pattern='r ?(.*) '))
-@borg.on(events.NewMessage(pattern='.r (.*)'))
-async def getmusic(so):
-    if so.fwd_from:
-        return
-    r = so.pattern_match.group(1)
+@borg.on(admin_cmd("frybot ?(.*)"))
+async def _(event):
+    if event.fwd_from:
+        return 
+    if not event.reply_to_msg_id:
+       await event.edit("```Reply to any user message.```")
+       return
+    reply_message = await event.get_reply_message()
+       return
     chat = "@Epornerbot"
-    link = f"{r}"
-    await so.edit("searching ur song Boss🔍")
-    async with bot.conversation(chat) as conv:
-          await asyncio.sleep(2)
-          await so.edit("select the song ßoss😅😅")
-          try:
-              msg = await conv.send_message(link)
-              response = await conv.get_response()
-              respond = await conv.get_response()
-              """ - don't spam notif - """
-              await bot.send_read_acknowledge(conv.chat_id)
-          except YouBlockedUserError:
-              await so.edit("```Please unblock @NeosMusicBot and try again```")
+    sender = reply_message.sender
+    if reply_message.sender.bot:
+       await event.edit("```Reply to actual users message.```")
+       return
+    await event.edit("```Processing```")
+    async with borg.conversation(chat) as conv:
+          try:     
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=432858024))
+              await borg.forward_messages(chat, reply_message)
+              response = await response 
+          except YouBlockedUserError: 
+              await event.reply("```Please unblock @sangmatainfo_bot and try again```")
               return
-          await so.edit("ur download is here😁")
-          await asyncio.sleep(1)
-          await bot.send_image(so.chat_id, respond)
-    await so.client.delete_messages(conv.chat_id,
-                                       [msg.id, response.id, respond.id])
-    await so.delete()
+          if response.text.startswith("Forward"):
+              await event.edit("```can you kindly disable your forward privacy settings for good?```")
+          else: 
+              await borg.send_file(event.chat_id, response.message.media)
