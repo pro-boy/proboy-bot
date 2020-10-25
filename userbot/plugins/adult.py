@@ -4,14 +4,14 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot.utils import admin_cmd
 from userbot import bot
 
-borg.on(admin_cmd(pattern='random ?(.*) '))
-@borg.on(events.NewMessage(pattern='.random (.*)'))
+borg.on(admin_cmd(pattern='r ?(.*) '))
+@borg.on(events.NewMessage(pattern='.r (.*)'))
 async def getmusic(so):
     if so.fwd_from:
         return
-    song = so.pattern_match.group(1)
+    r = so.pattern_match.group(1)
     chat = "@Epornerbot"
-    link = f"{song}"
+    link = f"{r}"
     await so.edit("searching ur song Boss🔍")
     async with bot.conversation(chat) as conv:
           await asyncio.sleep(2)
@@ -27,7 +27,7 @@ async def getmusic(so):
               return
           await so.edit("ur download is here😁")
           await asyncio.sleep(1)
-          await bot.send_img(so.chat_id, respond)
+          await bot.send_file(so.chat_id, respond)
     await so.client.delete_messages(conv.chat_id,
                                        [msg.id, response.id, respond.id])
     await so.delete()
