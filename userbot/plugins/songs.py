@@ -27,10 +27,10 @@ async def getmusic(so):
     song = so.pattern_match.group(1)
     chat = "@NeosMusicBot"
     link = f"{song}"
-    await so.edit("search ur song Boss🔍")
+    await so.edit("searching ur song Boss🔍")
     async with bot.conversation(chat) as conv:
           await asyncio.sleep(2)
-          await so.edit("got it , just a sec😅😅")
+          await so.edit("select the song ßoss😅😅")
           try:
               msg = await conv.send_message(link)
               response = await conv.get_response()
@@ -40,7 +40,7 @@ async def getmusic(so):
           except YouBlockedUserError:
               await so.edit("```Please unblock @NeosMusicBot and try again```")
               return
-          await so.edit("select ur song boss😁")
+          await so.edit("ur download is here😁")
           await asyncio.sleep(1)
           await bot.send_file(so.chat_id, respond)
     await so.client.delete_messages(conv.chat_id,
