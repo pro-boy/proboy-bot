@@ -1,7 +1,6 @@
 import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot.utils import admin_cmd
 from userbot import bot
 
@@ -12,7 +11,7 @@ async def getmusic(so):
         return
     song = so.pattern_match.group(1)
     chat = "@Epornerbot"
-    link = "/random"
+    link = f"{song}"
     await so.edit("searching ur song Boss🔍")
     async with bot.conversation(chat) as conv:
           await asyncio.sleep(2)
