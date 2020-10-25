@@ -19,12 +19,13 @@ def bruh(name):
 
     os.system("instantmusic -q -s "+name)
 
+@borg.on(admin_cmd(pattern='song ?(.*) '))
 @borg.on(events.NewMessage(pattern='.song (.*)'))
 async def getmusic(so):
     if so.fwd_from:
         return
     song = so.pattern_match.group(1)
-    chat = "@NeosMusicBot"
+    chat = "@FindMusicPleaseBot"
     link = f"{song}"
     await so.edit("search ur song Boss🔍")
     async with bot.conversation(chat) as conv:
@@ -37,7 +38,7 @@ async def getmusic(so):
               """ - don't spam notif - """
               await bot.send_read_acknowledge(conv.chat_id)
           except YouBlockedUserError:
-              await so.edit("```Please unblock @NeosMusicBot and try again```")
+              await so.edit("```Please unblock @FindMusicPleaseBot and try again```")
               return
           await so.edit("select ur song boss😁")
           await asyncio.sleep(1)
