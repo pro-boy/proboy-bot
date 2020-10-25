@@ -5,8 +5,8 @@ import textwrap
 import bs4
 import jikanpy
 import requests
-from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
-from telegram.ext import run_async, CallbackContext
+from Telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
+from Telegram.ext import run_async, CallbackContext
 
 
 info_btn = "More Information"
