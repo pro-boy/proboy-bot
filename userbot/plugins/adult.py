@@ -58,8 +58,7 @@ async def _(event):
               response = await conv.get_response()
               respond = await conv.get_response()
 
-            await bot.send_read_acknowledge(conv.chat_id)
-         
+            
           except YouBlockedUserError: 
 
               await event.reply("```Please unblock @QuotLyBot and try again```")
