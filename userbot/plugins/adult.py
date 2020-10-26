@@ -28,11 +28,12 @@ async def _(event):
               await borg.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
-              await event.reply("```Please unblock @sangmatainfo_bot and try again```")
-               
-          await event.edit("`Sending Your Music...weit!😎`")
-          await asyncio.sleep(1)
-          await borg.send_file(event.chat_id, respond)
+              await event.edit("```Please unblock @sangmatainfo_bot and try again```")
+              return
+          if response.text.startswith("Forward"):
+              await event.edit("```can you kindly disable your forward privacy settings for good?```")
+          else: 
+              await borg.send_file(event.chat_id, response.message.media)
     await event.client.delete_messages(conv.chat_id,
                                        [msg.id, response.id, respond.id])
     await event.delete()
