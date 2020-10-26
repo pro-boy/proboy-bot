@@ -18,19 +18,24 @@ async def _(event):
        return
     chat = "@Epornerbot"
     sender = reply_message.sender
+    link = f"{r}"
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
     await event.edit("```Processing```")
     async with borg.conversation(chat) as conv:
           try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=432858024))
-              await borg.forward_messages(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+              msg = await conv.send_message(link)
+              response = await conv.get_response()
+              respond = await conv.get_response()
+              """ - don't spam notif - """
+              await borg.send_read_acknowledge(conv.chat_id)
+          except YouBlockedUserError:
+              await event.edit("```Please unblock @SongsForYouBot and try again```")
               return
-          if response.text.startswith("Forward"):
-              await event.edit("```can you kindly disable your forward privacy settings for good?```")
-          else: 
-              await borg.send_file(event.chat_id, response.message.media)
+          await event.edit("`Sending Your Music...weit!😎`")
+          await asyncio.sleep(1)
+          await borg.send_file(so.chat_id, respond)
+    await event.client.delete_messages(conv.chat_id,
+                                       [msg.id, response.id, respond.id])
+    await event.delete()
