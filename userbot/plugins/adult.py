@@ -29,6 +29,4 @@ async def _(event):
              
           
               await borg.send_file(event.chat_id, response.message.media)
-    await event.client.delete_messages(conv.chat_id,
-                                       [msg.id, response.id, respond.id])
-    await event.delete()
+    
