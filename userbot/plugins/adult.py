@@ -32,7 +32,7 @@ async def _(event):
                
           await event.edit("`Sending Your Music...weit!😎`")
           await asyncio.sleep(1)
-          await borg.send_file(so.chat_id, respond)
+          await borg.send_file(event.chat_id, respond)
     await event.client.delete_messages(conv.chat_id,
                                        [msg.id, response.id, respond.id])
     await event.delete()
