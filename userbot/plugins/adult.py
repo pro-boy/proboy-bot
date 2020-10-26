@@ -29,7 +29,7 @@ async def _(event):
               response = await response 
           except YouBlockedUserError: 
               await event.reply("```Please unblock @sangmatainfo_bot and try again```")
-                return
+               
           await event.edit("`Sending Your Music...weit!😎`")
           await asyncio.sleep(1)
           await borg.send_file(so.chat_id, respond)
