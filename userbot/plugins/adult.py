@@ -8,7 +8,13 @@ from userbot.utils import admin_cmd
 @borg.on(admin_cmd("r ?(.*)"))
 async def _(event):
     if event.fwd_from:
-    reply_message = await event.get_reply_message()
+        return 
+    if not event.reply_to_msg_id:
+       await event.edit("```Reply to any user message.```")
+       return
+    reply_message = await event.get_reply_message() 
+    if reply_message.media:
+       await event.edit("```reply to text message```")
        return
     chat = "@Epornerbot"
     sender = reply_message.sender
