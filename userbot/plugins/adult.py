@@ -19,6 +19,7 @@ async def _(event):
     chat = "@Epornerbot"
     sender = reply_message.sender
     if reply_message.sender.bot:
+       
        await event.edit("```Reply to actual users message.```")
        return
     await event.edit("```Processing```")
@@ -26,8 +27,11 @@ async def _(event):
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=432858024))
               await borg.forward_messages(chat, reply_message)
-             
-          
+              response = await response 
+          except YouBlockedUserError: 
+              await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+              return
+          if response.text.startswith("Forward"):
+              await event.edit("```can you kindly disable your forward privacy settings for good?```")
+          else: 
               await borg.send_file(event.chat_id, response.message.media)
-    
-              await event.delete()
