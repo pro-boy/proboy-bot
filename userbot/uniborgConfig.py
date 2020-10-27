@@ -14,6 +14,8 @@ if ENV:
         PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("PRIVATE_GROUP_BOT_API_ID", -100123456789))
         # Send .get_id in any channel to fill this value. ReQuired for @Manuel15 inspiration to work!
         PRIVATE_CHANNEL_BOT_API_ID = int(os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", -100123456789))
+        # Send .get_id in any group to fill this value.
+        SUDO_COMMAND_HAND_LER = os.environ.get("SUDO_COMMAND_HAND_LER", None)      
         # This is required for the plugins involving the file system.
         TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
         # This is required for the speech to text module. Get your USERNAME from https://console.bluemix.net/docs/services/speech-to-text/getting-started.html
@@ -22,19 +24,23 @@ if ENV:
         # This is required for the hash to torrent file functionality to work.
         HASH_TO_TORRENT_API = os.environ.get("HASH_TO_TORRENT_API", "https://example.com/torrent/{}");
         # This is required for the @telegraph functionality.
-        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "X-Tra-Telegram")
+        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "IndianBot")
         # Get a Free API Key from OCR.Space
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
         # Send .get_id in any group with all your administration bots (added)
-        G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -100123456789))
+        G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001198699233))
         # TG API limit. An album can have atmost 10 media!
         GOOGLE_SEARCH_COUNT_LIMIT = int(os.environ.get("GOOGLE_SEARCH_COUNT_LIMIT", 9))
         TG_GLOBAL_ALBUM_LIMIT = int(os.environ.get("TG_GLOBAL_ALBUM_LIMIT", 9))
         # Telegram BOT Token from @BotFather
         TG_BOT_TOKEN_BF_HER = os.environ.get("TG_BOT_TOKEN_BF_HER", None)
         TG_BOT_USER_NAME_BF_HER = os.environ.get("TG_BOT_USER_NAME_BF_HER", None)
-        #
-        #
+        #spootifie
+        SPOTIFY_USERNAME = os.environ.get("SPOTIFY_USERNAME", None)
+        SPOTIFY_PASS = os.environ.get("SPOTIFY_PASS", None)
+        SPOTIFY_BIO_PREFIX = os.environ.get("SPOTIFY_BIO_PREFIX", None)
+        #log
+        DUAL_LOG = os.environ.get("DUAL_LOG", None)
         # DO NOT EDIT BELOW THIS LINE IF YOU DO NOT KNOW WHAT YOU ARE DOING
         # TG API limit. A message can have maximum 4096 characters!
         MAX_MESSAGE_SIZE_LIMIT = 4095
@@ -58,13 +64,22 @@ if ENV:
         SLAP_USERNAME = os.environ.get("SLAP_USERNAME", None)
         GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
         GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
-        NO_P_M_SPAM = bool(os.environ.get("NO_P_M_SPAM", False))
+        NO_P_M_SPAM = bool(os.environ.get("NO_P_M_SPAM", True))
         # define "spam" in PMs
         NO_SONGS = bool(os.environ.get("NO_SONGS", False))
         MAX_FLOOD_IN_P_M_s = int(os.environ.get("MAX_FLOOD_IN_P_M_s", 3))
+        #pm log
+        PM_LOG_GRP_ID = os.environ.get("PM_LOG_GRP_ID", None)
         # set to True if you want to log PMs to your PM_LOGGR_BOT_API_ID
-        NC_LOG_P_M_S = bool(os.environ.get("NC_LOG_P_M_S", False))
+        NC_LOG_P_M_S = bool(os.environ.get("NC_LOG_P_M_S", True))
+        #heroku 
+        HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+        HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
         # send .get_id in any channel to forward all your NEW PMs to this group
+        PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
+        if PRIVATE_GROUP_BOT_API_ID:
+            PRIVATE_GROUP_BOT_API_ID = int(PRIVATE_GROUP_BOT_API_ID)
+        # send .get_id in your private channel to forward all your Private messages
         PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
         if PM_LOGGR_BOT_API_ID:
             PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
@@ -73,7 +88,14 @@ if ENV:
         # DataBase would not work
         DB_URI = os.environ.get("DATABASE_URL", None)
         # number of rows of buttons to be displayed in .helpme command
-        NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 5))
+        NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 7))
+        #open load
+        OPEN_LOAD_LOGIN = os.environ.get("OPEN_LOAD_LOGIN", None)
+        OPEN_LOAD_KEY = os.environ.get("OPEN_LOAD_KEY", None)
+        # number of colums of buttons to be displayed in .help command
+        NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD", 3))
+        # emoji to be displayed  in help .help
+        EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", "🔰")
         # specify command handler that should be used for the plugins
         # this should be a valid "regex" pattern
         COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", "\.")
@@ -104,9 +126,17 @@ if ENV:
         GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
         #MongoDB
         MONGO_URI = os.environ.get("MONGO_URI", None)
+        #alive
+        ALIVE_PHOTTO = os.environ.get("ALIVE_PHOTTO", None)
+        ALIVE_MSG = os.environ.get("ALIVE_MSG", None)
+        #auto bio
+        BIO_MSG = os.environ.get("ALIVE_MSG", None)
         #Lydia API
         LYDIA_API = os.environ.get("LYDIA_API",None)
+        PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
+        PM_DATA = os.environ.get("PM_DATA", "ENABLE")
+        
 else:
     class Config(object):
         DB_URI = None
-        # Add your UniBorg Vars Here
+       
