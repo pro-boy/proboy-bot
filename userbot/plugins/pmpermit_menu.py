@@ -26,9 +26,9 @@ PM = ("`Hello. You are accessing the availabe menu of my peru master,`"
 
                "`3`. To enquire something\n"
                "`4`. To request something\n")
-         ONE = ("__Okay. Your request has been registered. Do not spam my master's inbox.You can expect a reply within 24 light years. He is a busy guy, unlike you probably.__\n\n"
-                "**⚠️ You will be blocked and reported if you spam  ⚠️**\n\n"
-                "__Use__ `/start` __to go back to the main menu.__")
+         ONE = ("Okay. Your request has been registered. Do not spam my master's inbox.You can expect a reply within 24 light years. He is a busy guy, unlike you probably.
+                **⚠️ You will be blocked and reported if you spam  ⚠️**
+                __Use__ `/start` __to go back to the main menu.__")
          TWO = (" `███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ `\n\n**So uncool, this is not your home. Go bother someone else. You have been blocked and reported until further notice.**")
          FOUR = ("__Okay. My master has not seen your message yet.He usually responds to people,though idk about retarted ones.__\n __He'll respond when he comes back, if he wants to.There's already a lot of pending messages😶__\n **Please do not spam unless you wish to be blocked and reported.**")
          FIVE = ("`Okay. please have the basic manners as to not bother my master too much. If he wishes to help you, he will respond to you soon.`\n**Do not ask repeatdly else you will be blocked and reported.**")
