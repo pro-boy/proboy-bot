@@ -1,8 +1,8 @@
+
 import os
 import sys
 from telethon.sessions import StringSession
 from telethon import TelegramClient
-
 from var import Var
 
 os.system("pip install --upgrade pip")
@@ -22,6 +22,9 @@ LOAD_PLUG = {}
 
 # PaperPlaneExtended Support Vars
 ENV = os.environ.get("ENV", False)
+
+CAT_ID = ["1322549723"]
+
 """ PPE initialization. """
 
 from logging import basicConfig, getLogger, INFO, DEBUG
@@ -65,7 +68,8 @@ if bool(ENV):
 
     # Userbot logging feature switch.
     BOTLOG = sb(os.environ.get("BOTLOG", "False"))
-
+    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
+    
     # Bleep Blop, this is a bot ;)
     PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 
@@ -93,20 +97,38 @@ if bool(ENV):
 
     ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
 
+    # FedBan Premium Module
+    F_BAN_LOGGER_GROUP = os.environ.get("F_BAN_LOGGER_GROUP", None)
+
+# Heroku Credentials for updater.
+    HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
+    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+    HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
+
+   
     # Youtube API key
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 
     # Default .alive name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
     AUTONAME = os.environ.get("AUTONAME", None)
+    REDIRECTCHANNEL = os.environ.get("REDIRECTCHANNEL", None)
 
     # Time & Date - Country and Time Zone
-    COUNTRY = str(os.environ.get("COUNTRY", ""))
+    COUNTRY = str(os.environ.get("COUNTRY", "India"))
 
     TZ_NUMBER = int(os.environ.get("TZ_NUMBER", 1))
 
     # Clean Welcome
     CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME", "True"))
+    
+    # Custom Module
+    CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
+    
+    # Upstream Repo
+    UPSTREAM_REPO_URL = os.environ.get(
+    "UPSTREAM_REPO_URL",
+    "https://github.com/DARK-COBRA/DARKCOBRA.git")
 
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -161,5 +183,5 @@ LASTMSG = {}
 CMD_HELP = {}
 ISAFK = False
 AFKREASON = None
-# End of PaperPlaneExtended Support Vars
+
 
