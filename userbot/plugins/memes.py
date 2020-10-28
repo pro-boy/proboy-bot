@@ -780,7 +780,7 @@ async def fun(e):
             t = t[:-1] + "_;"
             await e.edit(t)
 
-@register(outgoing=True, pattern="^.cry$")
+@register(outgoing=True, pattern="^.cryy$")
 async def cry(e):
     """ y u du dis, i cry everytime !! """
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -804,7 +804,7 @@ async def copypasta(cp_e):
         elif textx:
             message = textx.text
         else:
-            await cp_e.edit("`😂🅱️IvE👐sOME👅text👅for✌️Me👌tO👐MAkE👀iT💞funNy!💦`")
+            await cp_e.edit("`😂🅱️eIvE👐sOME👅text👅for✌️Me👌tO👐MAkE👀iT💞funNy!/n Reply to any text💦`")
             return
 
         reply_text = random.choice(EMOJIS)
@@ -857,7 +857,7 @@ async def vapor(vpr):
 @register(outgoing=True, pattern="^.repo$")
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("Click [here](https://github.com/TechnoAyanOfficial/TechnoAyanBoT) to open this cool userbot repo.")
+        await e.edit("Click [here](https://github.com/1Danish-00/DanishBot) to open this cool userbot repo.")
 			  
 			  
 @register(outgoing=True, pattern="^.str(?: |$)(.*)")
@@ -924,7 +924,7 @@ async def zal(zgfy):
         await zgfy.edit("".join(reply_text))
 
 
-@register(outgoing=True, pattern="^.hi$")
+@register(outgoing=True, pattern="^.hoi$")
 async def hoi(hello):
     """ Greet everyone! """
     if not hello.text[0].isalpha() and hello.text[0] not in ("/", "#", "@", "!"):
@@ -946,8 +946,8 @@ async def bluetext(bte):
     if not bte.text[0].isalpha() and bte.text[0] not in ("/", "#", "@", "!"):
         if await bte.get_reply_message():
             await bte.edit(
-                "`BLUETEXT MUST CLICK.`\n"
-                "`Are you a stupid animal which is attracted to colours?`"
+                "`BLUETEXT /MUST /CLICK.`\n"
+                "`Are /you a /stupid /animal /which is /attracted to /colours?`"
             )
 			  
 @register(outgoing=True, pattern="^.rape$")
@@ -966,7 +966,7 @@ async def proo (pros):
         reply_text = PRO_STRINGS[index]
         await pros.edit(reply_text)
 
-@register(outgoing=True, pattern="^.fuk$")
+@register(outgoing=True, pattern="^.fck$")
 async def chutiya (fuks):
     """ String for fhu only -_-"""
     if not fuks.text[0].isalpha() and fuks.text[0] not in ("/", "#", "@", "!"):
@@ -982,13 +982,13 @@ async def chutiya (chus):
         reply_text = CHU_STRINGS[index]
         await chus.edit(reply_text)
 			  			  
-@register(outgoing=True, pattern="^.thanos$")
-async def thanos (thanos):
-    """ String for thanos only -_-"""
-    if not thanos.text[0].isalpha() and thanos.text[0] not in ("/", "#", "@", "!"):
+@register(outgoing=True, pattern="^.shayari$")
+async def shayari (shayari):
+    """ String for shayari only -_-"""
+    if not thanos.text[0].isalpha() and shayari.text[0] not in ("/", "#", "@", "!"):
         index = random.randint(0, len(THANOS_STRINGS) - 1)
         reply_text = THANOS_STRINGS[index]
-        await thanos.edit(reply_text)	
+        await shayari.edit(reply_text)	
 			  
 @register(outgoing=True, pattern="^.hardabuse$")
 async def fuckedd (abusehard):
@@ -1063,11 +1063,11 @@ async def metoo(hahayes):
     if not hahayes.text[0].isalpha() and hahayes.text[0] not in ("/", "#", "@", "!"):
         await hahayes.edit(random.choice(NOOBSTR))
 			  
-@register(outgoing=True, pattern="^.rendi$")
-async def metoo(hahayes):
+@register(outgoing=True, pattern="^.rand$")
+async def metoo(randi):
     """ Haha yes """
-    if not hahayes.text[0].isalpha() and hahayes.text[0] not in ("/", "#", "@", "!"):
-        await hahayes.edit(random.choice(RENDISTR))
+    if not randi.text[0].isalpha() and randi.text[0] not in ("/", "#", "@", "!"):
+        await randi.edit(random.choice(RENDISTR))
 			 			  
 @register(outgoing=True, pattern="^.oof$")
 async def Oof(e):
@@ -1153,7 +1153,7 @@ async def smrk(smk):
 
 
 
-@register(outgoing=True, pattern="^.lfy (.*)",)
+@register(outgoing=True, pattern="^.htg (.*)",)
 async def let_me_google_that_for_you(lmgtfy_q):
     if not lmgtfy_q.text[0].isalpha() and lmgtfy_q.text[0] not in ("/", "#", "@", "!"):
         textx = await lmgtfy_q.get_reply_message()
@@ -1251,8 +1251,12 @@ CMD_HELP.update({
 \nUsage: Incase, the person infront of you is....\
 \n\n.fuk\
 \nUsage: The onlu word that can be used fucking everywhere.\
-\n\n.thanos\
-\nUsage: Try and then Snap.\
+\n\n.rand\
+\nUsage: hindi gaali.\
+\n\n.shayari\
+\nUsage: shayari.\
+\n\n.htg\
+\nUsage: to teach someone google use htg <text>.\
 \n\n.noob\
 \nUsage: Whadya want to know? Are you a NOOB?\
 \n\n.pro\
