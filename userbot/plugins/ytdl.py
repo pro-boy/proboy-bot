@@ -1,214 +1,90 @@
-# Thanks to @AvinashReddy3108 for this plugin
+#!/usr/bin/env python3
+# This Source Code Form is subject to the terms of the GNU
+# General Public License, v.3.0. If a copy of the GPL was not distributed with this
+# file, You can obtain one at https://www.gnu.org/licenses/gpl-3.0.en.html
+"""YoutubeDL
+Click on any of the Buttons"""
 
-"""
-Audio and video downloader using Youtube-dl
-.yta To Download in mp3 format
-.ytv To Download in mp4 format
-"""
-
-import os
-import time
-import math
 import asyncio
-from youtube_dl import YoutubeDL
-from youtube_dl.utils import (DownloadError, ContentTooShortError,
-                              ExtractorError, GeoRestrictedError,
-                              MaxDownloadsReached, PostProcessingError,
-                              UnavailableVideoError, XAttrMetadataError)
-from asyncio import sleep
-from telethon.tl.types import DocumentAttributeAudio
-from uniborg.util import admin_cmd
+import json
+import os
+import re
+import time
+from datetime import datetime
+from telethon import custom, events
 
-async def progress(current, total, event, start, type_of_ps, file_name=None):
-    """Generic progress_callback for uploads and downloads."""
-    now = time.time()
-    diff = now - start
-    if round(diff % 10.00) == 0 or current == total:
-        percentage = current * 100 / total
-        speed = current / diff
-        elapsed_time = round(diff) * 1000
-        time_to_completion = round((total - current) / speed) * 1000
-        estimated_total_time = elapsed_time + time_to_completion
-        progress_str = "{0}{1} {2}%\n".format(
-            ''.join(["▰" for i in range(math.floor(percentage / 10))]),
-            ''.join(["▱" for i in range(10 - math.floor(percentage / 10))]),
-            round(percentage, 2))
-        tmp = progress_str + \
-            "{0} of {1}\nETA: {2}".format(
-                humanbytes(current),
-                humanbytes(total),
-                time_formatter(estimated_total_time)
+
+# pylint:disable=E0602
+if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
+    @tgbot.on(events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+        data=re.compile(b"ytdl|(.*)|(.*)|(.*)")
+    ))
+    async def on_plug_in_callback_query_handler(event):
+        if event.query.user_id == borg.uid:  # pylint:disable=E0602
+            ctc, tg_send_type, ytdl_format_code, ytdl_extension = event.query.data.decode("UTF-8").split("|")
+            try:
+                with open(Config.TMP_DOWNLOAD_DIRECTORY + "/" + "YouTubeDL.json", "r", encoding="utf8") as f:
+                    response_json = json.load(f)
+            except FileNotFoundError as e:
+                await event.edit("Something Bad Happened")
+                return False
+            custom_file_name = str(response_json.get("title")) + \
+                "_" + ytdl_format_code + "." + ytdl_extension
+            youtube_dl_url = response_json["webpage_url"]
+            download_directory = Config.TMP_DOWNLOAD_DIRECTORY + "/" + custom_file_name
+            command_to_exec = []
+            if tg_send_type == "audio":
+                command_to_exec = [
+                    "youtube-dl",
+                    "-c",
+                    "--prefer-ffmpeg",
+                    "--extract-audio",
+                    "--audio-format", ytdl_extension,
+                    "--audio-quality", ytdl_format_code,
+                    youtube_dl_url,
+                    "-o", download_directory
+                ]
+            else:
+                minus_f_format = ytdl_format_code
+                if "youtu" in youtube_dl_url:
+                    minus_f_format = ytdl_format_code + "+bestaudio"
+                command_to_exec = [
+                    "youtube-dl",
+                    "-c",
+                    "--embed-subs",
+                    "-f", minus_f_format,
+                    "--hls-prefer-ffmpeg",
+                    youtube_dl_url,
+                    "-o", download_directory
+                ]
+            command_to_exec.append("--no-warnings")
+            logger.info(command_to_exec)
+            start = datetime.now()
+            process = await asyncio.create_subprocess_exec(
+                *command_to_exec,
+                # stdout must a pipe to be accessible as process.stdout
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
             )
-        if file_name:
-            await event.edit("{}\nFile Name: `{}`\n{}".format(
-                type_of_ps, file_name, tmp))
+            # Wait for the subprocess to finish
+            stdout, stderr = await process.communicate()
+            e_response = stderr.decode().strip()
+            t_response = stdout.decode().strip()
+            # logger.info(e_response)
+            # logger.info(t_response)
+            ad_string_to_replace = "please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output."
+            if e_response and ad_string_to_replace in e_response:
+                error_message = e_response.replace(ad_string_to_replace, "")
+                await event.edit(error_message)
+                return False
+            if t_response:
+                # logger.info(t_response)
+                os.remove(Config.TMP_DOWNLOAD_DIRECTORY + "/" + "YouTubeDL.json")
+                end_one = datetime.now()
+                time_taken_for_download = (end_one -start).seconds
+                await event.edit(f"Downloaded to `{download_directory}` in {time_taken_for_download} seconds")
+            else:
+                await event.delete()
         else:
-            await event.edit("{}\n{}".format(type_of_ps, tmp))
-
-
-def humanbytes(size):
-    """Input size in bytes,
-    outputs in a human readable format"""
-    # https://stackoverflow.com/a/49361727/4723940
-    if not size:
-        return ""
-    # 2 ** 10 = 1024
-    power = 2**10
-    raised_to_pow = 0
-    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
-    while size > power:
-        size /= power
-        raised_to_pow += 1
-    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
-
-
-def time_formatter(milliseconds: int) -> str:
-    """Inputs time in milliseconds, to get beautified time,
-    as string"""
-    seconds, milliseconds = divmod(int(milliseconds), 1000)
-    minutes, seconds = divmod(seconds, 60)
-    hours, minutes = divmod(minutes, 60)
-    days, hours = divmod(hours, 24)
-    tmp = ((str(days) + " day(s), ") if days else "") + \
-        ((str(hours) + " hour(s), ") if hours else "") + \
-        ((str(minutes) + " minute(s), ") if minutes else "") + \
-        ((str(seconds) + " second(s), ") if seconds else "") + \
-        ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
-    return tmp[:-2]
-
-@borg.on(admin_cmd(pattern="yt(a|v) (.*)"))
-async def download_video(v_url):
-    """ For .ytdl command, download media from YouTube and many other sites. """
-    url = v_url.pattern_match.group(2)
-    type = v_url.pattern_match.group(1).lower()
-
-    await v_url.edit("`Preparing to download...`")
-
-    if type == "a":
-        opts = {
-            'format':
-            'bestaudio',
-            'addmetadata':
-            True,
-            'key':
-            'FFmpegMetadata',
-            'writethumbnail':
-            True,
-            'prefer_ffmpeg':
-            True,
-            'geo_bypass':
-            True,
-            'nocheckcertificate':
-            True,
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '320',
-            }],
-            'outtmpl':
-            '%(id)s.mp3',
-            'quiet':
-            True,
-            'logtostderr':
-            False
-        }
-        video = False
-        song = True
-
-    elif type == "v":
-        opts = {
-            'format':
-            'best',
-            'addmetadata':
-            True,
-            'key':
-            'FFmpegMetadata',
-            'prefer_ffmpeg':
-            True,
-            'geo_bypass':
-            True,
-            'nocheckcertificate':
-            True,
-            'postprocessors': [{
-                'key': 'FFmpegVideoConvertor',
-                'preferedformat': 'mp4'
-            }],
-            'outtmpl':
-            '%(id)s.mp4',
-            'logtostderr':
-            False,
-            'quiet':
-            True
-        }
-        song = False
-        video = True
-
-    try:
-        await v_url.edit("`Fetching data, please wait..`")
-        with YoutubeDL(opts) as ytdl:
-            ytdl_data = ytdl.extract_info(url)
-    except DownloadError as DE:
-        await v_url.edit(f"`{str(DE)}`")
-        return
-    except ContentTooShortError:
-        await v_url.edit("`The download content was too short.`")
-        return
-    except GeoRestrictedError:
-        await v_url.edit(
-            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
-        )
-        return
-    except MaxDownloadsReached:
-        await v_url.edit("`Max-downloads limit has been reached.`")
-        return
-    except PostProcessingError:
-        await v_url.edit("`There was an error during post processing.`")
-        return
-    except UnavailableVideoError:
-        await v_url.edit("`Media is not available in the requested format.`")
-        return
-    except XAttrMetadataError as XAME:
-        await v_url.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
-        return
-    except ExtractorError:
-        await v_url.edit("`There was an error during info extraction.`")
-        return
-    except Exception as e:
-        await v_url.edit(f"{str(type(e)): {str(e)}}")
-        return
-    c_time = time.time()
-    if song:
-        await v_url.edit(f"`Preparing to upload song:`\
-        \n**{ytdl_data['title']}**\
-        \nby *{ytdl_data['uploader']}*")
-        await v_url.client.send_file(
-            v_url.chat_id,
-            f"{ytdl_data['id']}.mp3",
-            supports_streaming=True,
-            attributes=[
-                DocumentAttributeAudio(duration=int(ytdl_data['duration']),
-                                       title=str(ytdl_data['title']),
-                                       performer=str(ytdl_data['uploader']))
-            ],
-            progress_callback=lambda d, t: asyncio.get_event_loop(
-            ).create_task(
-                progress(d, t, v_url, c_time, "Uploading..",
-                         f"{ytdl_data['title']}.mp3")))
-        os.remove(f"{ytdl_data['id']}.mp3")
-        await v_url.delete()
-    elif video:
-        await v_url.edit(f"`Preparing to upload video:`\
-        \n**{ytdl_data['title']}**\
-        \nby *{ytdl_data['uploader']}*")
-        await v_url.client.send_file(
-            v_url.chat_id,
-            f"{ytdl_data['id']}.mp4",
-            supports_streaming=True,
-            caption=ytdl_data['title'],
-            progress_callback=lambda d, t: asyncio.get_event_loop(
-            ).create_task(
-                progress(d, t, v_url, c_time, "Uploading..",
-                         f"{ytdl_data['title']}.mp4")))
-        os.remove(f"{ytdl_data['id']}.mp4")
-        await v_url.delete()
-        
+            reply_pop_up_alert = "Please get your own @UniBorg, and don't waste my data! "
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
