@@ -1,7 +1,7 @@
 from telethon import events
 import asyncio
 
-from userbot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from userbot.utils import admin_cmd, edit_or_reply
 from var import Var
 
 @borg.on(admin_cmd(pattern="xogame$"))
