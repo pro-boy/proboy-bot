@@ -81,7 +81,7 @@ async def drawText(image_path, text):
 
     if os.name == "nt":
 
-        fnt = "arial.ttf"
+        fnt = "italic.ttf"
 
     else:
 
