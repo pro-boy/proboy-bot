@@ -45,9 +45,9 @@ async def remove_notes(clr):
             "`Successfully deleted note:` **{}**".format(notename))
 
 
-@register(outgoing=True, pattern=r"^\.save (\w*)")
+@register(outgoing=True, pattern=r"^\.set (\w*)")
 async def add_note(fltr):
-    """ For .save command, saves notes in a chat. """
+    """ For .set command, saves notes in a chat. """
     try:
         from userbot.plugins.sql_helper.notes_sql import add_note
     except AttributeError:
