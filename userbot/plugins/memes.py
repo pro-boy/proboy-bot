@@ -780,7 +780,7 @@ async def fun(e):
             t = t[:-1] + "_;"
             await e.edit(t)
 
-@register(outgoing=True, pattern="^.cryy$")
+@register(outgoing=True, pattern="^.crry$")
 async def cry(e):
     """ y u du dis, i cry everytime !! """
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -931,7 +931,7 @@ async def hoi(hello):
         await hello.edit(random.choice(HELLOSTR))
 			  
 @register(outgoing=True, pattern="^.pkill$")
-async def killing (killed):
+async def kil (killed):
     """ Dont Kill Too much -_-"""
     if not killed.text[0].isalpha() and killed.text[0] not in ("/", "#", "@", "!"):
         if await killed.get_reply_message():
@@ -985,7 +985,7 @@ async def chutiya (chus):
 @register(outgoing=True, pattern="^.shayari$")
 async def shayari (shayari):
     """ String for shayari only -_-"""
-    if not thanos.text[0].isalpha() and shayari.text[0] not in ("/", "#", "@", "!"):
+    if not shayari.text[0].isalpha() and shayari.text[0] not in ("/", "#", "@", "!"):
         index = random.randint(0, len(THANOS_STRINGS) - 1)
         reply_text = THANOS_STRINGS[index]
         await shayari.edit(reply_text)	
@@ -1194,7 +1194,7 @@ CMD_HELP.update({
 \n\n;_;\
 \nUsage: Like `-_-` but crying.\
 \n\n.cp\
-\nUsage: Copypasta the famous meme\
+\nUsage: reply to anytext it will make it look good.\
 \n\n.vapor\
 \nUsage: Vaporize everything!\
 \n\n.str\
@@ -1241,7 +1241,7 @@ CMD_HELP.update({
 \nUsage: A shit module for ツ , who cares.\
 \n\n.type\
 \nUsage: Just a small command to make your keyboard become a typewriter!\
-\n\n.lfy <query>\
+\n\n.htg <query>\
 \nUsage: Let me Google that for you real quick !!\
 \n\n.decide\
 \nUsage: Make a quick decision.\
@@ -1255,10 +1255,12 @@ CMD_HELP.update({
 \nUsage: hindi gaali.\
 \n\n.shayari\
 \nUsage: shayari.\
-\n\n.htg\
-\nUsage: to teach someone google use htg <text>.\
+\n\n.hoi\
+\nUsage: wish u <text>.\
 \n\n.noob\
 \nUsage: Whadya want to know? Are you a NOOB?\
+\n\n.pkill\
+\nUsage: kill ig.\
 \n\n.pro\
 \nUsage: If you think you're pro, try this.\
 \n\n.abuse\
