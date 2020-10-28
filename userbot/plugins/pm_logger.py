@@ -29,7 +29,7 @@ BOTLOG = True
 BOTLOG_CHATID = Config.PM_LOGGR_BOT_API_ID
 
 
-@register(outgoing=True, pattern=r"^.sav(?: |$)([\s\S]*)")
+@register(outgoing=True, pattern=r"^.save(?: |$)([\s\S]*)")
 async def log(log_text):
     """ For .log command, forwards a message or the command argument to the bot logs group """
     if BOTLOG:
