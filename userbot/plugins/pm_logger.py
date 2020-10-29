@@ -53,11 +53,11 @@ async def log(log_text):
 @borg.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
 async def monito_p_m_s(event):
     sender = await event.get_sender()
-    if Config.No_LOG_P_M_S and not sender.bot:
+    if Config.NC_LOG_P_M_S and not sender.bot:
         chat = await event.get_chat()
         if chat.id not in NO_PM_LOG_USERS and chat.id != borg.uid:
             try:
-                e = await borg.get_entity(int(BOTLOG_CHATID))          
+                e = await borg.get_entity(int(Config.PM_LOGGR_BOT_API_ID))             
                 fwd_message = await borg.forward_messages(
                     e,
                     event.message,
@@ -72,7 +72,7 @@ async def monito_p_m_s(event):
 
 @borg.on(admin_cmd(pattern="elog ?(.*)"))
 async def set_no_log_p_m(event):
-    if BOTLOG_CHATID is not None:
+    if Config.PM_LOGGR_BOT_API_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
@@ -85,7 +85,7 @@ async def set_no_log_p_m(event):
                 
 @borg.on(admin_cmd(pattern="nlog ?(.*)"))
 async def set_no_log_p_m(event):
-    if BOTLOG_CHATID is not None:
+    if Config.PM_LOGGR_BOT_API_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
