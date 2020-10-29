@@ -1,12 +1,7 @@
-
-
-# Ported here with admin_cmd to DC By @hellboi_atul
-# Kangers keep credits else gey
-# Thanks to userge && Priyam Kalra
-
-# Parts of the code below is taken from other sources, the links to the sources is commented above the taken code
-
-
+"""Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
+forked by: @kraken_the_badass
+created by: @A_Dark_Princ3
+"""
 
 from PIL import Image, ImageFont, ImageDraw
 
@@ -35,13 +30,13 @@ async def handler(event):
 
     if not reply_message.media:
 
-        await event.reply("`Reply to a image/sticker.`")
+        await event.reply("Reply to a image/sticker")
 
         return
 
     file = await borg.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
 
-    a = await event.reply("```Memifying this image..```")
+    a = await event.reply("Hahaha...Memifying this image....")
 
     text = str(event.pattern_match.group(1)).strip()
 
@@ -61,13 +56,6 @@ async def handler(event):
 
 
 
-# Taken from https://github.com/UsergeTeam/Userge-Plugins/blob/master/plugins/memify.py#L64
-
-# Maybe edited to suit the needs of this module
-
-
-
-
 
 async def drawText(image_path, text):
 
@@ -79,9 +67,15 @@ async def drawText(image_path, text):
 
     i_width, i_height = img.size
 
-    fnt = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    if os.name == "nt":
 
-    m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
+        fnt = "bold.ttf"
+
+    else:
+
+        fnt = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+
+    m_font = ImageFont.truetype(fnt, int((80 / 640) * i_width))
 
     if ";" in text:
 
