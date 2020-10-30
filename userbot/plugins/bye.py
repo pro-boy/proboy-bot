@@ -4,9 +4,10 @@
 # Kangers stay away
 from userbot.utils import admin_cmd, edit_or_reply
 import asyncio
+from telethon import events
 
 
-@borg.on(admin_cmd(pattern="by (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="bye (.*)", outgoing=True))
 async def _(event):
     name = event.pattern_match.group(1)
     HEll = await edit_or_reply(event, "Hey")
