@@ -55,25 +55,25 @@ async def _(event):
     )
 
 
-@borg.on(admin_cmd(pattern="king$"))
+@borg.on(admin_cmd(pattern="ping$"))
 async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    event = await edit_or_reply(event, "__**(★ Kong!__**")
+    event = await edit_or_reply(event, "__**(★ pong!__**")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(
-        f"__**✦҈͜͡➳ Kong!__**\n★ {ms}\n★ __**My**__ __**Master**__ [{DEFAULTUSER}]"
+        f"__**✦҈͜͡➳ pong!__**\n★ {ms}\n★ __**My**__ __**Master**__ [{DEFAULTUSER}]"
     )
 
 
 CMD_HELP.update(
     {
-        "ping": "__**PLUGIN NAME :** King__\
+        "ping": "__**PLUGIN NAME :** ping__\
     \n\n📌** CMD ★** `.pingy`\
     \n**USAGE   ★  **A kind ofping with extra animation\
-    \n\n📌** CMD ★** `.king`\
+    \n\n📌** CMD ★** `.ping`\
     \n**USAGE   ★  **Shows you the ping speed of server"
     }
 )
