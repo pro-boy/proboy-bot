@@ -87,21 +87,7 @@ async def tiny_pic_spam(e):
 
   sender = await e.get_sender() ; me = await e.client.get_me()
 
-  if  sender.id == me.id and  FULL_SUDO:
-
-       return await e.reply("`Sorry sudo users cant access this command..`")
-
-  try:
-
-       await e.delete()
-
-  except:
-
-    	pass
-    
-  try:
-
-    counter = int(e.pattern_match.group(1).split(' ', 1)[0])
+  counter = int(e.pattern_match.group(1).split(' ', 1)[0])
 
     reply_message = await e.get_reply_message() 
 
