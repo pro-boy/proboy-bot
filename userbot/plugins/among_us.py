@@ -31,7 +31,7 @@ async def _(event):
     await stcr1.delete()
     await text2.delete()
     stcr2 = await event.client.send_file(
-        event.chat_id)
+        event.chat_id
     )
     text3 = await event.reply(
         f"**[{DEFAULTUSER}]({USERNAME}) :** We have to eject the imposter or will lose😥 "
@@ -40,7 +40,7 @@ async def _(event):
     await stcr2.delete()
     await text3.delete()
     stcr3 = await event.client.send_file(
-        event.chat_id)
+        event.chat_id
     )
     text4 = await event.reply(f"**Others :** Where???🤨 ")
     await asyncio.sleep(2)
@@ -55,7 +55,7 @@ async def _(event):
     await stcr3.delete()
     await text4.delete()
     stcr4 = await event.client.send_file(
-        event.chat_id)
+        event.chat_id
     )
     hellevent = await event.reply(f"{name} is ejected.......🤐")
     await asyncio.sleep(2)
