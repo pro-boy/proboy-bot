@@ -82,36 +82,3 @@ async def spammer(e):
             LOGGER_GROUP, "#DelaySPAM\n"
             "DelaySpam was executed successfully")
         
-            
-#@register(outgoing=True, pattern="^.mspam (.*)")
-   @borg.on(admin_cmd(pattern=r"mspam (?: |$)(.*)") 
-    async def _(event):
-
-  
-  counter = int(event.pattern_match.group(1).split(' ', 1)[0])
-
-
-    if event.fwd_from:
-
-        return 
-if not event.reply_to_msg_id:
-
-       await event.edit("```Reply to any user message.```")
-
-       return
-
-    reply_message = await event.get_reply_message() 
-
-    if not reply_message or not event.reply_to_msg_id or not reply_message.media or not reply_message.media:
-
-       return await event.edit("```Reply to a pic/sticker/gif/video message```")
-
-    message = reply_message.media
-
-    for i in range(1, counter):
-
-        await event.client.send_file(e.chat_id, message)
-
-  except:      
-
-        return await event.reply(f"**Error**\nUsage `!mspam <count> reply to a sticker/gif/photo/video`")
