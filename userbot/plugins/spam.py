@@ -84,7 +84,7 @@ async def spammer(e):
         
             
 #@register(outgoing=True, pattern="^.mspam (.*)")
-   @borg.on(admin_cmd(pattern=r"mspam (.*)") 
+   @borg.on(admin_cmd(pattern=r"mspam (?: |$)(.*)") 
     async def _(event):
 
   
