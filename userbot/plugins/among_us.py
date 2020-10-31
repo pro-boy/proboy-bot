@@ -18,7 +18,7 @@ async def _(event):
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
     
-    text1 = await event.edit("Hmm... Looks like Something is wrong here🤔🧐!!")
+    text1 = await event.reply("Hmm... Looks like Something is wrong here🤔🧐!!")
     await asyncio.sleep(2)
     await text1.delete()
     stcr1 = await event.client.send_file(
@@ -100,7 +100,7 @@ async def _(event):
 async def _(event):
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
-    hellevent = await edit_or_reply(event, f"{name} is ejected.......")
+    hellevent = await event.reply(f"{name} is ejected.......")
     await asyncio.sleep(2)
     await hellevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
     await asyncio.sleep(0.8)
