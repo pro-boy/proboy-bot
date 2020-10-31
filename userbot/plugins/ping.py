@@ -60,11 +60,11 @@ async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    event = await edit_or_reply(event, "__**(★ Kong!__**")
+    await event.edit(__**(★ Kong!__**")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(
-        f"__**✦҈͜͡➳ Kong!__**\n★ {ms}\n★ __**My**__ __**Master**__ [{DEFAULTUSER}]"
+        f"__**✦҈͜͡➳ PONG!__**\n★ {ms}\n★ __**My**__ __**Master**__ [{DEFAULTUSER}]"
     )
 
 
@@ -73,7 +73,7 @@ CMD_HELP.update(
         "ping": "__**PLUGIN NAME :** King__\
     \n\n📌** CMD ★** `.pingy`\
     \n**USAGE   ★  **A kind ofping with extra animation\
-    \n\n📌** CMD ★** `.king`\
+    \n\n📌** CMD ★** `.ping`\
     \n**USAGE   ★  **Shows you the ping speed of server"
     }
 )
