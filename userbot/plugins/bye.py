@@ -10,15 +10,15 @@ from telethon import events
 @borg.on(admin_cmd(pattern="bye (.*)", outgoing=True))
 async def _(event):
     name = event.pattern_match.group(1)
-    HEll = await edit_or_reply(event, "Hey")
+    await event.edit("Hey!")
     await asyncio.sleep(1)
-    await HEll.edit("B")
+    await event.edit("B")
     await asyncio.sleep(1)
-    await HEll.edit("Y")
+    await event.edit("Y")
     await asyncio.sleep(1)
-    await HEll.edit("BYE...")
+    await event.edit("BYE...")
     msg = f"BYE {name}"
     if name is None:
-        await HEll.client.send_message(event.chat_id, "Bye", file="https://telegra.ph/file/8f1cbeef021f22eb96915.jpg")
+        await event.client.send_message(event.chat_id, "Bye", file="https://telegra.ph/file/8f1cbeef021f22eb96915.jpg")
     elif name is not None:
-        await HEll.client.send_message(event.chat_id, msg, file="https://telegra.ph/file/8f1cbeef021f22eb96915.jpg")
+        await event.client.send_message(event.chat_id, msg, file="https://telegra.ph/file/8f1cbeef021f22eb96915.jpg")
