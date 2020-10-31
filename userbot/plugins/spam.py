@@ -83,8 +83,8 @@ async def spammer(e):
             "DelaySpam was executed successfully")
         
             
-@register(outgoing=True, pattern="^.mspam (.*)")
-    
+#@register(outgoing=True, pattern="^.mspam (.*)")
+   @borg.on(admin_cmd(pattern=r"mspam (.*)") 
     async def _(event):
 
   
