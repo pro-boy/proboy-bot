@@ -20,7 +20,7 @@ CMD_LIST = {}
 CMD_HELP = {}
 INT_PLUG = ""
 LOAD_PLUG = {}
-
+SUDO_LIST = {}
 # PaperPlaneExtended Support Vars
 ENV = os.environ.get("ENV", False)
 
@@ -182,7 +182,7 @@ USERS = {}
 COUNT_PM = {}
 LASTMSG = {}
 CMD_HELP = {}
-SUDO_LIST = {}
+
 ISAFK = False
 AFKREASON = None
 
