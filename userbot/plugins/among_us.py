@@ -14,13 +14,12 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
 @bot.on(admin_cmd(pattern="imp(|n) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="imp(|n) (.*)", allow_sudo=True))
 async def _(event):
     hmm = bot.uid
     USERNAME = f"tg://user?id={hmm}"
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
-    text1 = await edit_or_reply(event, "Uhmm... Something is wrong here!!")
+    text1 = await event.reply("Uhmm... Something is wrong here!!")
     await asyncio.sleep(2)
     await text1.delete()
     stcr1 = await event.client.send_file(
@@ -99,11 +98,10 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="timp(|n) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="timp(|n) (.*)", allow_sudo=True))
 async def _(event):
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
-    catevent = await edit_or_reply(event, f"{name} is ejected.......")
+    catevent = await event.reply(f"{name} is ejected.......")
     await asyncio.sleep(2)
     await catevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
     await asyncio.sleep(0.8)
