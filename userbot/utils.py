@@ -29,9 +29,9 @@ from typing import List
 ENV = bool(os.environ.get("ENV", False))
 
 if ENV:
-    from .Config import Config
+    from .uniborgConfig import Config
 else:
-    if os.path.exists("config.py"):
+    if os.path.exists("uniborgConfig.py"):
         from config import Development as Config
 
 
