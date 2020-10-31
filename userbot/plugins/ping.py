@@ -1,5 +1,10 @@
 import asyncio
+
+from telethon import events
 from datetime import datetime
+
+
+
 
 from .. import ALIVE_NAME, CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
@@ -55,12 +60,16 @@ async def _(event):
     )
 
 
-@borg.on(admin_cmd(pattern="king$"))
+from telethon import events
+from datetime import datetime
+
+
+@command(pattern="^.ping")
 async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    await event.edit(__**(★ Kong!__**")
+    await event.edit("🤩Pong!!🕸️🕸️🙏!")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(
