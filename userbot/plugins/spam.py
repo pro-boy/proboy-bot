@@ -95,13 +95,13 @@ async def spammer(e):
     if e.fwd_from:
 
         return 
-if not event.reply_to_msg_id:
+if not e.reply_to_msg_id:
 
-       await event.edit("```Reply to any user message.```")
+       await e.edit("```Reply to any user message.```")
 
        return
 
-    reply_message = await event.get_reply_message() 
+    reply_message = await e.get_reply_message() 
 
     if not reply_message or not e.reply_to_msg_id or not reply_message.media or not reply_message.media:
 
