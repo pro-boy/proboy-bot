@@ -85,7 +85,7 @@ async def spammer(e):
             
 @register(outgoing=True, pattern="^.mspam (.*)")
     
-    async def picspam(e):
+    async def spammer(e):
 
   sender = await e.get_sender() ; me = await e.client.get_me()
 
