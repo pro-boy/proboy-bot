@@ -183,7 +183,7 @@ def sudo_cmd(pattern=None, **args):
                 SUDO_LIST.update({file_test: [cmd]})
         else:
             if len(Config.SUDO_COMMAND_HAND_LER) == 2:
-                catreg = "^" + Config.SUDO_COMMAND_HAND_LER
+                catre = "^" + Config.SUDO_COMMAND_HAND_LER
                 reg = Config.SUDO_COMMAND_HAND_LER[1]
             elif len(Config.SUDO_COMMAND_HAND_LER) == 1:
                 catreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
