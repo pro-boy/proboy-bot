@@ -17,7 +17,8 @@ async def _(event):
     USERNAME = f"tg://user?id={kraken}"
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
-    text1 = await edit_or_reply(event, "Hmm... Looks like Something is wrong here🤔🧐!!")
+    
+    text1 = await edit.edit("Hmm... Looks like Something is wrong here🤔🧐!!")
     await asyncio.sleep(2)
     await text1.delete()
     stcr1 = await event.client.send_file(
