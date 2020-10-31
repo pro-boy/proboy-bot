@@ -93,9 +93,9 @@ async def on_afk(event):
         msg = None# Originally by @NOOB_GUY_OP
 # I think its first for DARKCOBRA
         message_to_reply = (
-            f"__My Master is currently offline since__ `{total_afk_time}`\nWhere He Is: Ik but... Why u want to know 🧐🧐"
+            f"__My Master is currently offline since__ `{total_afk_time}`\nWhere He Is: I don't know buddy..he is a busy person"
             + f"\n\n__I can't guarantee you that when he will come.. but he will definitely come one day till then Leave your Name,Reason and 999999999999999k$ and hopefully you'll get a reply within 100 light years.⭕️__\n**Ohh!!He left a REASON** __BTW__🧐: {reason}"
-            if reason
+  if reason
             else f"**Heyy!**\n__I am currently unavailable because I am busy right now . Since when, you ask? For {total_afk_time} I guess.__\n\nWhen will I be back? Soon __Whenever I feel like coming back__**(o(^â–½^)o)**  "
         )
         msg = await event.reply(message_to_reply, file=pic)
