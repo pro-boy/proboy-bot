@@ -6,8 +6,10 @@
 
 import asyncio
 from asyncio import wait
-
-
+import datetime
+from telethon import events
+from userbot import bot, CMD_HELP
+from userbot.utils import admin_cmd
 from userbot.events import register
 
 @register(outgoing=True, pattern="^.tspam")
@@ -82,14 +84,24 @@ async def spammer(e):
         
             
 @register(outgoing=True, pattern="^.mspam (.*)")
-
-async def tiny_pic_spam(e):
+    
+    async def tiny_pic_spam(e):
 
   sender = await e.get_sender() ; me = await e.client.get_me()
 
   counter = int(e.pattern_match.group(1).split(' ', 1)[0])
 
-    reply_message = await e.get_reply_message() 
+
+    if e.fwd_from:
+
+        return 
+if not event.reply_to_msg_id:
+
+       await event.edit("```Reply to any user message.```")
+
+       return
+
+    reply_message = await event.get_reply_message() 
 
     if not reply_message or not e.reply_to_msg_id or not reply_message.media or not reply_message.media:
 
