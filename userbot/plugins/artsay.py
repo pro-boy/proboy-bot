@@ -1,10 +1,12 @@
-#Created by @jisan7509 & @Sur_vivor
+#Created by @Sur_vivor
+#Recreated by @danish_00
 
 import asyncio
 from telethon import events
 from userbot.utils import admin_cmd
 from platform import uname
 from userbot import ALIVE_NAME
+from userbot import CMD_HELP
 
 n = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 
@@ -281,3 +283,27 @@ async def survivor(saxy):
 @borg.on(admin_cmd(pattern=r"pornhub"))
 async def survivor(pornhub):
     await pornhub.edit(D)
+
+CMD_HELP.update({
+    "artsay": ".pikachu\
+\nUsage: pikachu art.\
+\n\n.shit\
+\nUsage: shity man art\
+\n\n.saxy\
+\nUsage: Check yourself ;)\
+\n\n.pornhub\
+\nUsage: porn logo\
+\n\n.chinasay (.*)\
+\nUsage: ..\
+\n\n.trumpsay (.*)\
+\nUsage: ..\
+\n\n.putinsay (.*)\
+\nUsage: ..\
+\n\n.frogsay (.*)\
+\nUsage: ..\
+\n\n.deadfrog (.*)\
+\nUsage: ..\
+\n\n.xdick (.*)\
+\nUsage: ..\
+\n\n.athink (.*)\
+\nUsage: .."})
