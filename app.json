@@ -1,7 +1,7 @@
 {
-  "name": "𝔻𝔸ℝ𝕂 ℂ𝕆𝔹ℝ𝔸",
-  "description": "The best and most awaited userbot made by hellboi_atul and modified by Jarvis userbot's owner(@Sppidy) Made with ❤ For Support Join @Dark_cobra_support ",
-  "logo": "https://telegra.ph/file/00f47c54ceda3944dc47c.jpg ",
+  "name": "DanishBot",
+  "description": "Testing nd just for me userbot made by @danish_00 and modified by DARK COBRA userbot's owner(@hellboy_atul) and @TechnoAyanBot",
+  "logo": "https://telegra.ph/file/c40c645eb602e192ec442.jpg",
     "keywords": [
     "telegram",
     "userbot",
@@ -9,9 +9,9 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/hellboi-atul/hellboi-atul/",
-  "website": "https://github.com/hellboi-atul/hellboi-atul/",
-  "success_url": "https://t.me/Dark_cobra_support",
+  "repository": "https://github.com/1Danish-00/DanishBot/",
+  "website": "https://github.com/1Danish-00/DanishBot/",
+  "success_url": "https://t.me/danish_00",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -28,7 +28,7 @@
       "required": false
     },
     "ALIVE_NAME": {
-      "description": "Fill your Full name or Username like @hellboi_atul.",
+      "description": "Fill your Full name or Username like @danish_00.",
       "value": "",
       "required": false
     },
@@ -39,7 +39,7 @@
     },
     "ALIVE_PHOTTO": {
       "description": "Let it be what it is(skip)..or you can change the link according to your convince..this link is useful for `.awake` command.",
-      "value": "https://telegra.ph/file/0d0fafe17acca1c51b42d.jpg",
+      "value": "",
       "required": true
     },
     "BIO_MSG": {
@@ -107,7 +107,7 @@
        "value": ""
     }, 
     "STRING_SESSION": {
-      "description": "Get this value by running https://darkcobra.crazycreatorr.repl.run/ ",
+      "description": "Get this value by running by sar https://darkcobra.crazycreatorr.repl.run/ ",
       "value": ""
     },
     "GITHUB_ACCESS_TOKEN": {
@@ -116,7 +116,7 @@
       "required": false
     },
     "GIT_REPO_NAME": {
-      "description": "Your repo name Example: hellboi-atul/hellboi-atul, but GITHUB_ACCESS_TOKEN must be setup first.",
+      "description": "Your repo name Example: 1Danish-00/DanishBot, but GITHUB_ACCESS_TOKEN must be setup first.",
       "value": "",
       "required": false
     },
