@@ -88,10 +88,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         try:
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
             
-        else:
-            reply_pop_up_alert = "Hey don't touch buttons!! Who tf give u permission 🧐??"
-            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
+        
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
     number_of_cols = Config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD
