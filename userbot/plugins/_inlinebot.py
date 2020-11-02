@@ -161,11 +161,11 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "⏮️", data="{}_prev({})".format(prefix, modulo_page)
+                    "🔺", data="{}_prev({})".format(prefix, modulo_page)
                 ),
                 custom.Button.inline("❎", data="close"),
                 custom.Button.inline(
-                    "⏮️", data="{}_next({})".format(prefix, modulo_page)
+                    "🔻", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]
