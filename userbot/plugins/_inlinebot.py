@@ -11,7 +11,7 @@ NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get(
 )
 EMOJI_TO_DISPLAY_IN_HELP = os.environ.get("EMOJI_TO_DISPLAY_IN_HELP", None)
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else @danish_00"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@danish_00"
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
