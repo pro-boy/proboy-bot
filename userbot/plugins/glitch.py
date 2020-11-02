@@ -5,7 +5,7 @@ ported to telethon by @mrconfused and @sandy1709
 
 import os
 
-from glitch_this import ImageGlitcher
+import ImageGlitcher
 from PIL import Image
 from telethon import functions, types
 
