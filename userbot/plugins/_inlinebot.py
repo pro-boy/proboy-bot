@@ -23,7 +23,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "©JARVIS Userbot Help",
+                "©DanishBot Help",
                 text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
@@ -31,15 +31,15 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         if event.query.user_id == bot.uid and query == "stats":
             result = builder.article(
                 title="Stats",
-                text=f"**Showing Stats For {DEFAULTUSER}'s Jarvis** \nNote --> Only Owner Can Check This \n(C) @JarvisOT",
+                text=f"**Showing Stats For {DEFAULTUSER}'s userbot** \nNote --> Only Owner Can Check This \n(C) @danish_00",
                 buttons=[
                     [custom.Button.inline("Show Stats 🚶", data="terminator")],
                     [
                         Button.url(
-                            "Repo 🛡️", "https://github.com/Jarvis-Works/JarvisUserbot"
+                            "Repo 🛡️", "https://github.com/1Danish-00/DanishBot"
                         )
                     ],
-                    [Button.url("Join Channel 📃", "t.me/JarvisOT")],
+                    [Button.url("Join Channel 📃", "t.me/danish_00")],
                 ],
             )
         await event.answer([result] if result else None)
@@ -56,7 +56,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_popp_up_alert = "Please get your own Userbot, and don't use mine!"
+            reply_popp_up_alert = "Hey don't touch buttons!!Its only for my ßoss🙂!"
             await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -73,13 +73,13 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
+            reply_pop_up_alert = "Hey don't touch buttons!!! Who tf give you permission 🧐??"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
-            await event.edit("menu closed")
+            await event.edit("♒menu closed by ßoss♒")
 
     @tgbot.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
@@ -101,7 +101,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
-                © JARVIS Userbot".format(
+                © DanishBot".format(
                 plugin_name
             )
             try:
@@ -110,7 +110,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 halps = "Do .help {} to get the list of commands.".format(plugin_name)
                 await event.answer(halps, cache_time=0, alert=True)
         else:
-            reply_pop_up_alert = "Please get your own JARVIS BOT, and don't use mine!"
+            reply_pop_up_alert = "Hey don't touch buttons!! Who tf give u permission 🧐??"
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"terminator")))
     async def rip(event):
@@ -160,11 +161,11 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "⌫", data="{}_prev({})".format(prefix, modulo_page)
+                    "⏮️", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline("☐", data="close"),
+                custom.Button.inline("❎", data="close"),
                 custom.Button.inline(
-                    "⌦", data="{}_next({})".format(prefix, modulo_page)
+                    "⏮️", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]
