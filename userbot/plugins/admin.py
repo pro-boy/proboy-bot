@@ -413,8 +413,8 @@ async def unmoot(unmot):
 async def muter(moot):
     """ Used for deleting the messages of muted people """
     try:
-        from userbot.modules.sql_helper.spam_mute_sql import is_muted
-        from userbot.modules.sql_helper.gmute_sql import is_gmuted
+        from userbot.plugins.sql_helper.spam_mute_sql import is_muted
+        from userbot.plugins.sql_helper.gmute_sql import is_gmuted
     except AttributeError:
         return
     muted = is_muted(moot.chat_id)
