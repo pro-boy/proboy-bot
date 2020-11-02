@@ -5,7 +5,6 @@ import re
 from telethon import Button, custom, events
 
 from userbot import ALIVE_NAME, CMD_LIST
-from userbot.plugins import inlinestats
 
 NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = os.environ.get(
     "NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD", None
