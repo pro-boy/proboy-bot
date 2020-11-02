@@ -7,9 +7,9 @@ import os
 from PIL import Image 
 from .. import LOGS , CMD_HELP
 from telethon import functions, types
-from glitch_this import ImageGlitcher
-from . import take_screen_shot ,runcmd
+from userbot.helpers import take_screen_shot ,runcmd
 from ..utils import admin_cmd, sudo_cmd, edit_or_reply
+from glitch_this import ImageGlitcher
 
 @borg.on(admin_cmd(outgoing=True, pattern="(glitch|glitchs)(?: |$)(.*)"))
 @borg.on(sudo_cmd(pattern="(glitch|glitchs)(?: |$)(.*)",allow_sudo = True))
