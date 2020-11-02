@@ -6,7 +6,7 @@ imported by @Nitesh_231 for USERBOT kek :) @heyworld roks🤘
 
 import os
 from PIL import Image
-from userbot.utils import take_screen_shot
+
 
 from userbot import bot, CMD_HELP, LOGS
 from userbot.events import register
