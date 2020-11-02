@@ -372,24 +372,6 @@ def humanbytes(size):
     return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
 
 
-
-
-
-async def take_screen_shot(video_file: str, duration: int, path: str = '') -> Optional[str]:
-    """ take a screenshot """
-    LOGS.info(
-        '[[[Extracting a frame from %s ||| Video duration => %s]]]',
-        video_file,
-        duration)
-    ttl = duration // 2
-    thumb_image_path = path or os.path.join(
-        "./temp/", f"{basename(video_file)}.jpg")
-    command = f"ffmpeg -ss {ttl} -i '{video_file}' -vframes 1 '{thumb_image_path}'"
-    err = (await runcmd(command))[1]
-    if err:
-        LOGS.error(err)
-    return thumb_image_path if os.path.exists(thumb_image_path) else None
-
 def time_formatter(milliseconds: int) -> str:
     """Inputs time in milliseconds, to get beautified time,
     as string"""
