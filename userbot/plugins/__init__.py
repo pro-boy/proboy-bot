@@ -1,4 +1,4 @@
-from userbot import catdef
+from userbot import *
 import requests
 import os
 from userbot.uniborgConfig import Config
