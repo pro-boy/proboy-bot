@@ -7,15 +7,25 @@
 #edited for all by @danish_00
 
 import asyncio
+import io
 import os
+import random
+import re
 import textwrap
-from telethon.tl.types import DocumentAttributeFilename
-from PIL import Image, ImageDraw, ImageFont
+import time
+from random import randint, uniform
+
+from glitch_this import ImageGlitcher
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from userbot import TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.events import register
+from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageOps
+from telethon import events, functions, types
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.types import DocumentAttributeFilename
 
+from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
+from userbot.events import register
+from userbot.helpers import progress
 THUMB_IMAGE_PATH = "./thumb_image.jpg"
 
 
