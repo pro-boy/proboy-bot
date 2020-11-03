@@ -8,7 +8,7 @@
 # Based code + improve from AdekMaulana and aidilaryanto
 
 import asyncio
-from asyncio.exceptions import TimeoutError
+
 import re
 import random
 from telethon import events
