@@ -1,10 +1,3 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
-""" Command: .dab , .brain 
-
-credit: lejend @r4v4n4"""
 
 import random
 
@@ -28,10 +21,10 @@ def choser(cmd, pack, blacklist={}):
         await event.respond(file=random.choice(docs))
 
 
-choser('rstic', 'Jayu_ke_locker_me')
-choser('rastic', 'Jayu_ke_adult_stickers')
-choser('ranastic', 'Jayu_Adult_Animated')
-choser('ranstic', 'Jayu_Animated', {
+choser('sgirls', 'cutegirls00_by_fStikBot')
+choser('solo', 'SungJinWoo')
+choser('scat', 'Jshshsbdbdbev')
+choser('sjay', 'Jayu_Animated', {
     1653974154589768377,
     1653974154589768312,
     1653974154589767857,
