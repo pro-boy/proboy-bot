@@ -56,7 +56,7 @@ async def mim(event):
             reply_message,
             "meme.tgs",
         )
-        os.system("lottie_convert.py meme.tgs meme.png")
+        os.system("lottie_convert.py --frame 0 -if lottie -of png meme.tgs meme.png")
         dls_loc = "meme.png"
     elif reply_message.video:
         video = await bot.download_media(
@@ -193,7 +193,7 @@ async def draw_meme_text(image_path, text):
     img.save(webp_file, "WebP")
     return webp_file
 
-@register(outgoing=True, pattern=r"^\.mmf(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.mms(?: |$)(.*)")
 async def mim(event):
     if not event.reply_to_msg_id:
         await event.edit(
@@ -218,7 +218,7 @@ async def mim(event):
             reply_message,
             "meme.tgs",
         )
-        os.system("lottie_convert.py meme.tgs meme.png")
+        os.system("lottie_convert.py --frame 0 -if lottie -of png meme.tgs meme.png")
         dls_loc = "meme.png"
     elif reply_message.video:
         video = await bot.download_media(
