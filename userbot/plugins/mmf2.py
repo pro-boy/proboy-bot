@@ -73,7 +73,7 @@ async def mim(event):
             downloaded_file_name,
         )
     await event.edit(
-        "```Transfiguration Time! Mwahaha Memifying this image! (」ﾟﾛﾟ)｣ ```"
+        "```Memefying 🔸🔸🔸```"
     )
     await asyncio.sleep(5)
     text = event.pattern_match.group(1)
@@ -143,7 +143,7 @@ async def draw_meme_text(image_path, text):
             draw.text(
                 xy=(
                     ((i_width - u_width) / 2) - 1,
-                    i_height - u_height - int((40 / 640) * i_width),
+                    i_height - u_height - int((80 / 640) * i_width),
                 ),
                 text=l_text,
                 font=m_font,
@@ -152,7 +152,7 @@ async def draw_meme_text(image_path, text):
             draw.text(
                 xy=(
                     ((i_width - u_width) / 2) + 1,
-                    i_height - u_height - int((40 / 640) * i_width),
+                    i_height - u_height - int((80 / 640) * i_width),
                 ),
                 text=l_text,
                 font=m_font,
@@ -161,7 +161,7 @@ async def draw_meme_text(image_path, text):
             draw.text(
                 xy=(
                     (i_width - u_width) / 2,
-                    (i_height - u_height - int((40 / 640) * i_width)) - 1,
+                    (i_height - u_height - int((80 / 640) * i_width)) - 1,
                 ),
                 text=l_text,
                 font=m_font,
@@ -170,7 +170,7 @@ async def draw_meme_text(image_path, text):
             draw.text(
                 xy=(
                     (i_width - u_width) / 2,
-                    (i_height - u_height - int((40 / 640) * i_width)) + 1,
+                    (i_height - u_height - int((80 / 640) * i_width)) + 1,
                 ),
                 text=l_text,
                 font=m_font,
@@ -180,7 +180,7 @@ async def draw_meme_text(image_path, text):
             draw.text(
                 xy=(
                     (i_width - u_width) / 2,
-                    i_height - u_height - int((40 / 640) * i_width),
+                    i_height - u_height - int((80 / 640) * i_width),
                 ),
                 text=l_text,
                 font=m_font,
@@ -234,7 +234,7 @@ async def mim(event):
             "meme.png",
         )
     await event.edit(
-        "```Transfiguration Time! Mwahaha Memifying this image! (」ﾟﾛﾟ)｣ ```"
+        "```Memifying 🔸🔸🔸 ```"
     )
     await asyncio.sleep(5)
     text = event.pattern_match.group(1)
