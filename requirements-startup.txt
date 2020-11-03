@@ -23,11 +23,12 @@ google-auth-oauthlib
 google_images_download>=2.7.1
 googletrans>=2.4.0
 gsearch
-hachoir>=3.0a5
+hachoir
 heroku3
 httplib2
 humanize
 lxml
+lottie
 oauth2client
 psutil
 psycopg2
@@ -50,6 +51,7 @@ selenium
 speedtest-cli>=2.0.2
 sqlalchemy>=1.2
 telegraph
+telethon
 urbandict>=0.5
 validators
 wand
