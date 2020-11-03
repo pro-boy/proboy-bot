@@ -9,12 +9,7 @@ from userbot import uniborgConfig as Config
 from userbot.helpers import progress, take_screen_shot, runcmd
 
 
-@borg.on_cmd("mmf", about={
-    'header': "Memify aka Geyify (๑¯ω¯๑)",
-    'description': "Write text on any gif/sticker/image. "
-                   "Top and bottom text are separated by ; \n Naw gu Awey",
-    'usage': "{tr}mmf [text on top] ; [text on bottom] as a reply.",
-    'examples': "Gwad who needs examples for this"})
+@register(outgoing=True, pattern=r"\.mmf ?(.*)")
 async def memify(message: Message):
     replied = message.reply_to_message
     
