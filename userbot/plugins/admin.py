@@ -306,7 +306,7 @@ async def spider(spdr):
     """
     # Check if the function running under SQL mode
     try:
-        from userbot.modules.sql_helper.spam_mute_sql import mute
+        from userbot.plugins.sql_helper.mute_sql import mute
     except AttributeError:
         await spdr.edit(NO_SQL)
         return
@@ -375,7 +375,7 @@ async def unmoot(unmot):
 
     # Check if the function running under SQL mode
     try:
-        from userbot.modules.sql_helper.spam_mute_sql import unmute
+        from userbot.plugins.sql_helper.mute_sql import unmute
     except AttributeError:
         await unmot.edit(NO_SQL)
         return
@@ -457,7 +457,7 @@ async def ungmoot(un_gmute):
 
     # Check if the function running under SQL mode
     try:
-        from userbot.modules.sql_helper.gmute_sql import ungmute
+        from userbot.plugins.sql_helper.gmute_sql import ungmute
     except AttributeError:
         await un_gmute.edit(NO_SQL)
         return
@@ -501,7 +501,7 @@ async def gspider(gspdr):
 
     # Check if the function running under SQL mode
     try:
-        from userbot.modules.sql_helper.gmute_sql import gmute
+        from userbot.plugins.sql_helper.gmute_sql import gmute
     except AttributeError:
         await gspdr.edit(NO_SQL)
         return
