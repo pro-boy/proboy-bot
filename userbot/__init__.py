@@ -1,6 +1,7 @@
 
 import os
 import sys
+import time
 from telethon.sessions import StringSession
 from telethon import TelegramClient
 from userbot import functions as darkdef
@@ -119,7 +120,7 @@ if bool(ENV):
 
     # Time & Date - Country and Time Zone
     COUNTRY = str(os.environ.get("COUNTRY", "India"))
-
+    StartTime = time.time()
     TZ_NUMBER = int(os.environ.get("TZ_NUMBER", 1))
 
     # Clean Welcome
