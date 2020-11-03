@@ -1,3 +1,7 @@
+from telethon import events
+import asyncio
+from collections import deque
+from userbot.util import admin_cmd
 
 @borg.on(admin_cmd(pattern=r"flower"))
 async def meme(event):
