@@ -45,10 +45,10 @@ async def drawText(image_path, text):
     shadowcolor = "black"
     i_width, i_height = img.size
     if os.name == "nt":
-        fnt = "arial.ttf"
+        fnt = "arialbd.ttf"
     else:
-        fnt = "/usr/share/fonts/TTF/dejavu/OpenSans-Regular.ttf"
-    m_font = ImageFont.truetype(Arialbd.ttf,int((70 / 640) * i_width))
+        fnt = "userbot/helpers/styles/impact.ttf"
+    m_font = ImageFont.truetype(fnt,int((70 / 640) * i_width))
     if ";" in text:
         upper_text, lower_text = text.split(";")
     else:
