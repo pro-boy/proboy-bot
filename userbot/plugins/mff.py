@@ -1,4 +1,4 @@
-"""Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
+"""Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom' `"""
 
 
 from PIL import Image, ImageFont, ImageDraw
@@ -111,5 +111,5 @@ async def draw_meme_text(image_path, text):
 
     image_name = "memify.webp"
     webp_file = os.path.join(Config.DOWN_PATH, image_name)
-    img.save(webp_file, "WebP")
+    img.save(webp_file, "webp")
     return webp_file
