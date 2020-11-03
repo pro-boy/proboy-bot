@@ -20,7 +20,7 @@ THUMB_IMAGE_PATH = "./thumb_image.jpg"
 
 
 @register(outgoing=True, pattern=r"^\.mms(?: |$)(.*)")
-async def mim(event):
+async def meme(event):
     if not event.reply_to_msg_id:
         await event.edit(
             "`Syntax: reply to an image with .mms` 'text on top' ; 'text on bottom' "
