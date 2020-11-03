@@ -24,12 +24,13 @@ from telethon.tl.types import (ChannelParticipantsAdmins, ChatAdminRights,
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot 
 from userbot.utils import register, errors_handler
+from userbot.utils import admin_cmd
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
 PP_ERROR = "`Failure while processing the image`"
 NO_ADMIN = "`I am not an admin nub nibba!`"
-NO_PERM = "`I don't have sufficient permissions! This is so sed. Alexa play despacito`"
+NO_PERM = "`I don't have sufficient permissions! This is so sed. Alexa play Tera Baap Aaya`"
 NO_SQL = "`Running on Non-SQL mode!`"
 
 CHAT_PP_CHANGED = "`Chat Picture Changed`"
@@ -67,7 +68,8 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@register(outgoing=True, pattern="^.setgpic$")
+#@register(outgoing=True, pattern="^.setgpic$")
+@borg.on(admin_cmd(pattern=r"setgpic"))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
@@ -105,7 +107,8 @@ async def set_group_photo(gpic):
             await gpic.edit(PP_ERROR)
 
 
-@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"promote(?: |$)(.*)"))
 @errors_handler
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
@@ -130,7 +133,7 @@ async def promote(promt):
     await promt.edit("`Promoting...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
-        rank = "admeme"  # Just in case.
+        rank = "DARK COBRA"  # Just in case.
     if user:
         pass
     else:
@@ -140,7 +143,7 @@ async def promote(promt):
     try:
         await promt.client(
             EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await promt.edit("`Promoted Successfully! Now gib Party`")
+        await promt.edit("`Promoted Successfully! Now gib Party 🥳`")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
@@ -156,7 +159,8 @@ async def promote(promt):
             f"CHAT: {promt.chat.title}(`{promt.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^.demote(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.demote(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"demote(?: |$)(.*)"))
 @errors_handler
 async def demote(dmod):
     """ For .demote command, demotes the replied/tagged person """
@@ -171,7 +175,7 @@ async def demote(dmod):
 
     # If passing, declare that we're going to demote
     await dmod.edit("`Demoting...`")
-    rank = "admeme"  # dummy rank, lol.
+    rank = "Noob"  # dummy rank, lol.
     user = await get_user_from_event(dmod)
     user = user[0]
     if user:
@@ -206,7 +210,8 @@ async def demote(dmod):
             f"CHAT: {dmod.chat.title}(`{dmod.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^.ban(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.ban(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"ban(?: |$)(.*)"))
 @errors_handler
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
@@ -260,7 +265,8 @@ async def ban(bon):
             f"CHAT: {bon.chat.title}(`{bon.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^.unban(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.unban(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"unban(?: |$)(.*)"))
 @errors_handler
 async def nothanos(unbon):
     """ For .unban command, unbans the replied/tagged person """
@@ -298,7 +304,8 @@ async def nothanos(unbon):
         await unbon.edit("`Uh oh my unban logic broke!`")
 
 
-@register(outgoing=True, pattern="^.mute(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.mute(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"mute(?: |$)(.*)"))
 @errors_handler
 async def spider(spdr):
     """
@@ -306,7 +313,7 @@ async def spider(spdr):
     """
     # Check if the function running under SQL mode
     try:
-        from userbot.plugins.sql_helper.mute_sql import mute
+        from userbot.plugins.sql_helper.antiflood_sql import mute
     except AttributeError:
         await spdr.edit(NO_SQL)
         return
@@ -359,7 +366,8 @@ async def spider(spdr):
             return await spdr.edit("`Uh oh my mute logic broke!`")
 
 
-@register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"unmute(?: |$)(.*)"))
 @errors_handler
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
@@ -375,7 +383,7 @@ async def unmoot(unmot):
 
     # Check if the function running under SQL mode
     try:
-        from userbot.plugins.sql_helper.mute_sql import unmute
+        from userbot.plugins.sql_helper.antiflood_sql import unmute
     except AttributeError:
         await unmot.edit(NO_SQL)
         return
@@ -413,7 +421,7 @@ async def unmoot(unmot):
 async def muter(moot):
     """ Used for deleting the messages of muted people """
     try:
-        from userbot.plugins.sql_helper.mute_sql import is_muted
+        from userbot.plugins.sql_helper.antiflood_sql import is_muted
         from userbot.plugins.sql_helper.gmute_sql import is_gmuted
     except AttributeError:
         return
@@ -440,7 +448,8 @@ async def muter(moot):
             await moot.delete()
 
 
-@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"ungmute(?: |$)(.*)"))
 @errors_handler
 async def ungmoot(un_gmute):
     """ For .ungmute command, ungmutes the target in the userbot """
@@ -484,7 +493,8 @@ async def ungmoot(un_gmute):
                 f"CHAT: {un_gmute.chat.title}(`{un_gmute.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"gmute(?: |$)(.*)"))
 @errors_handler
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
@@ -529,7 +539,8 @@ async def gspider(gspdr):
                 f"CHAT: {gspdr.chat.title}(`{gspdr.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^.delusers(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.delusers(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"delusers(?: |$)(.*)"))
 @errors_handler
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
@@ -601,7 +612,8 @@ async def rm_deletedacc(show):
             \nCHAT: {show.chat.title}(`{show.chat_id}`)")
 
 
-@register(outgoing=True, pattern="^.adminlist$")
+#@register(outgoing=True, pattern="^.adminlist$")
+@borg.on(admin_cmd(pattern=r"adminlist"))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
@@ -622,7 +634,8 @@ async def get_admin(show):
     await show.edit(mentions, parse_mode="html")
 
 
-@register(outgoing=True, pattern="^.pin(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.pin(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"pin(?: |$)(.*)"))
 @errors_handler
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
@@ -668,7 +681,8 @@ async def pin(msg):
             f"LOUD: {not is_silent}")
 
 
-@register(outgoing=True, pattern="^.kick(?: |$)(.*)")
+#@register(outgoing=True, pattern="^.kick(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"kick(?: |$)(.*)"))
 @errors_handler
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
@@ -711,7 +725,8 @@ async def kick(usr):
             f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n")
 
 
-@register(outgoing=True, pattern="^.users ?(.*)")
+#@register(outgoing=True, pattern="^.users ?(.*)")
+@borg.on(admin_cmd(pattern=r"users ?(.*)"))
 @errors_handler
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """
