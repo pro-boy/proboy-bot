@@ -9,7 +9,7 @@ from userbot import uniborgConfig as Config
 from userbot.helpers import progress, take_screen_shot, runcmd
 
 
-@userge.on_cmd("mmf", about={
+@borg.on_cmd("mmf", about={
     'header': "Memify aka Geyify (๑¯ω¯๑)",
     'description': "Write text on any gif/sticker/image. "
                    "Top and bottom text are separated by ; \n Naw gu Awey",
