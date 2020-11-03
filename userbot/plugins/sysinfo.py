@@ -17,7 +17,6 @@ from platform import python_version, uname
 from shutil import which
 
 import psutil
-from git import Repo
 from telethon import __version__, version
 
 from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, USERBOT_VERSION, StartTime, bot
@@ -25,7 +24,6 @@ from userbot.events import register
 
 # ================= CONSTANT =================
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
-repo = Repo()
 modules = CMD_HELP
 # ============================================
 
@@ -172,7 +170,7 @@ async def bot_ver(event):
             )
         else:
             await event.edit(
-                "Shame that you don't have git, you're running - 'v2.5' anyway!"
+                "Don't bother me😑😑 ,you're running - 'v4.7' anyway!"
             )
 
 
