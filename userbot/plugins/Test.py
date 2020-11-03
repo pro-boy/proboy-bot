@@ -4,6 +4,7 @@
 # you may not use this file except in compliance with the License.
 #
 """ Based code + improve from AdekMaulana and aidilaryanto """
+#edited for all by @danish_00
 
 import asyncio
 import os
@@ -77,7 +78,7 @@ async def draw_meme_text(image_path, text):
     os.remove(image_path)
     i_width, i_height = img.size
     m_font = ImageFont.truetype(
-        "resources/RoadRage-Regular.ttf", int((70 / 640) * i_width)
+        "userbot/helpers/styles/impact.ttf", int((70 / 640) * i_width)
     )
     if ";" in text:
         upper_text, lower_text = text.split(";")
@@ -239,7 +240,7 @@ async def draw_meme(image_path, text):
     os.remove(image_path)
     i_width, i_height = img.size
     m_font = ImageFont.truetype(
-        "resources/MADISI__.ttf", int((70 / 640) * i_width)
+        "userbot/helpers/styles/digital.ttf", int((70 / 640) * i_width)
     )
     if ";" in text:
         upper_text, lower_text = text.split(";")
