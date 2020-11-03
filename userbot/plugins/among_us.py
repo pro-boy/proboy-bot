@@ -93,7 +93,7 @@ async def bruh(message, user):
 CMD_HELP.update(
     {
         "amongus": ".saylie\
-    \n Among us."
+    \nSubmit a picture of an AMONG US impostor with a sentence from you."
     }
 
 )
