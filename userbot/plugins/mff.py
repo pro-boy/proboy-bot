@@ -1,33 +1,36 @@
-"""Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom' `"""
-
-
-from PIL import Image, ImageFont, ImageDraw
-from userbot.utils import admin_cmd
 import os
 import textwrap
+
+from PIL import Image, ImageFont, ImageDraw
+
 from userbot import uniborgConfig as Config
 from userbot.helpers import progress, take_screen_shot, runcmd
+from userbot.utils import admin_cmd
 
-
-@borg.on(admin_cmd(pattern=r"mmf ?(.*)"))
-    async def memify(e):
-    replied = e.reply_to_message
+@borg.on(admin_cmd(pattern=r"mmf", about={
+    'header': "Memify aka Geyify (๑¯ω¯๑)",
+    'description': "Write text on any gif/sticker/image. "
+                   "Top and bottom text are separated by ; \n Naw gu Awey",
+    'usage': "{tr}mmf [text on top] ; [text on bottom] as a reply.",
+    'examples': "Gwad who needs examples for this"})
+async def memify(message: Message):
+    replied = message.reply_to_message
     
     if not (replied.photo or replied.sticker or replied.animation):
-        await e.err("Bruh, U Comedy me? Read help or gtfo (¬_¬)")
+        await message.err("Bruh, U Comedy me? Read help or gtfo (¬_¬)")
         return
     if not os.path.isdir(Config.DOWN_PATH):
         os.makedirs(Config.DOWN_PATH)
-    await e.edit("He he, let me use my skills")
-    dls = await e.client.download_media(
-        message=e.reply_to_message,
+    await message.edit("He he, let me use my skills")
+    dls = await message.client.download_media(
+        message=message.reply_to_message,
         file_name=Config.DOWN_PATH,
         progress=progress,
         progress_args=(message, "Trying to Posses given content")
     )
     dls_loc = os.path.join(Config.DOWN_PATH, os.path.basename(dls))
     if replied.sticker and replied.sticker.file_name.endswith(".tgs"):
-        await e.edit("OMG, an Animated sticker ⊙_⊙, lemme do my bleck megik...")
+        await message.edit("OMG, an Animated sticker ⊙_⊙, lemme do my bleck megik...")
         png_file = os.path.join(Config.DOWN_PATH, "meme.png")
         cmd = f"lottie_convert.py --frame 0 -if lottie -of png {dls_loc} {png_file}"
         stdout, stderr = (await runcmd(cmd))[:2]
@@ -37,7 +40,7 @@ from userbot.helpers import progress, take_screen_shot, runcmd
             raise Exception(stdout + stderr)
         dls_loc = png_file
     elif replied.animation:
-        await e.edit("Look it's GF. Oh, no it's just a Gif ")
+        await message.edit("Look it's GF. Oh, no it's just a Gif ")
         jpg_file = os.path.join(Config.DOWN_PATH, "meme.jpg")
         await take_screen_shot(dls_loc, 0, jpg_file)
         os.remove(dls_loc)
@@ -45,12 +48,12 @@ from userbot.helpers import progress, take_screen_shot, runcmd
             await message.err("This Gif is Gey (｡ì _ í｡), won't memify it.")
             return
         dls_loc = jpg_file
-    await e.edit("Decoration Time ≧∇≦, I'm an Artist")
+    await message.edit("Decoration Time ≧∇≦, I'm an Artist")
     webp_file = await draw_meme_text(dls_loc, message.input_str)
-    await e.client.send_sticker(chat_id=message.chat.id,
+    await message.client.send_sticker(chat_id=message.chat.id,
                                       sticker=webp_file,
                                       reply_to_message_id=replied.message_id)
-    await e.delete()
+    await message.delete()
     os.remove(webp_file)
 
 
@@ -106,5 +109,5 @@ async def draw_meme_text(image_path, text):
 
     image_name = "memify.webp"
     webp_file = os.path.join(Config.DOWN_PATH, image_name)
-    img.save(webp_file, "webp")
+    img.save(webp_file, "WebP")
     return webp_file
