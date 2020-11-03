@@ -23,7 +23,7 @@ google-auth-oauthlib
 google_images_download>=2.7.1
 googletrans>=2.4.0
 gsearch
-hachoir
+hachoir>=3.0a5
 heroku3
 httplib2
 humanize
