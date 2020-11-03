@@ -37,7 +37,7 @@ EMOJI_PATTERN = re.compile(
     "]+")
 
 
-@register(outgoing=True, pattern="^.mmf(?: |$)(.*)")
+@register(outgoing=True, pattern="^.edt(?: |$)(.*)")
 async def mim(event):
     if event.fwd_from:
         return
