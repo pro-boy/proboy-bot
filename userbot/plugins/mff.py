@@ -9,25 +9,25 @@ from userbot import uniborgConfig as Config
 from userbot.helpers import progress, take_screen_shot, runcmd
 
 
-@register(outgoing=True, pattern=r"\.mmf ?(.*)")
-async def memify(message: Message):
-    replied = message.reply_to_message
+@borg.on(admin_cmd(pattern=r"mmf ?(.*)"))
+    async def memify(e):
+    replied = e.reply_to_message
     
     if not (replied.photo or replied.sticker or replied.animation):
-        await message.err("Bruh, U Comedy me? Read help or gtfo (¬_¬)")
+        await e.err("Bruh, U Comedy me? Read help or gtfo (¬_¬)")
         return
     if not os.path.isdir(Config.DOWN_PATH):
         os.makedirs(Config.DOWN_PATH)
-    await message.edit("He he, let me use my skills")
-    dls = await message.client.download_media(
-        message=message.reply_to_message,
+    await e.edit("He he, let me use my skills")
+    dls = await e.client.download_media(
+        message=e.reply_to_message,
         file_name=Config.DOWN_PATH,
         progress=progress,
         progress_args=(message, "Trying to Posses given content")
     )
     dls_loc = os.path.join(Config.DOWN_PATH, os.path.basename(dls))
     if replied.sticker and replied.sticker.file_name.endswith(".tgs"):
-        await message.edit("OMG, an Animated sticker ⊙_⊙, lemme do my bleck megik...")
+        await e.edit("OMG, an Animated sticker ⊙_⊙, lemme do my bleck megik...")
         png_file = os.path.join(Config.DOWN_PATH, "meme.png")
         cmd = f"lottie_convert.py --frame 0 -if lottie -of png {dls_loc} {png_file}"
         stdout, stderr = (await runcmd(cmd))[:2]
@@ -37,7 +37,7 @@ async def memify(message: Message):
             raise Exception(stdout + stderr)
         dls_loc = png_file
     elif replied.animation:
-        await message.edit("Look it's GF. Oh, no it's just a Gif ")
+        await e.edit("Look it's GF. Oh, no it's just a Gif ")
         jpg_file = os.path.join(Config.DOWN_PATH, "meme.jpg")
         await take_screen_shot(dls_loc, 0, jpg_file)
         os.remove(dls_loc)
@@ -45,12 +45,12 @@ async def memify(message: Message):
             await message.err("This Gif is Gey (｡ì _ í｡), won't memify it.")
             return
         dls_loc = jpg_file
-    await message.edit("Decoration Time ≧∇≦, I'm an Artist")
+    await e.edit("Decoration Time ≧∇≦, I'm an Artist")
     webp_file = await draw_meme_text(dls_loc, message.input_str)
-    await message.client.send_sticker(chat_id=message.chat.id,
+    await e.client.send_sticker(chat_id=message.chat.id,
                                       sticker=webp_file,
                                       reply_to_message_id=replied.message_id)
-    await message.delete()
+    await e.delete()
     os.remove(webp_file)
 
 
