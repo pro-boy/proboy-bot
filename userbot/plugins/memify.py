@@ -48,7 +48,7 @@ async def drawText(image_path, text):
         fnt = "arial.ttf"
     else:
         fnt = "/usr/share/fonts/TTF/dejavu/OpenSans-Regular.ttf"
-    m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
+    m_font = ImageFont.truetype(Arialbd,int((70 / 640) * i_width))
     if ";" in text:
         upper_text, lower_text = text.split(";")
     else:
