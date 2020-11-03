@@ -227,13 +227,13 @@ async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
-        "`Layanan bot sedang berjalan...`\n"
+        "`Bot is running smoothly 😎🏓...`\n"
         "`▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱`\n"
         f"»[>⚙️ `Telethon       : v{version.__version__} `\n"
         f"»[>🐍 `Python         : v{python_version()} `\n"
         f"»[>👤 `User           :`  {DEFAULTUSER} \n"
         "`▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱`\n"
-        f"»[>💻 `Running on     : [Hidden Repo](t.me/danish_00) `\n"
+        f"»[>💻 `Running on     :` [Hidden Repo](t.me/danish_00)\n"
         f"»[>🗃 `Loaded modules : {len(modules)} `\n"
         f"»[>🤖 `DanishBot      : v{USERBOT_VERSION} `\n"
         f"»[>🕒 `Bot Uptime     : {uptime} `\n"
