@@ -25,15 +25,15 @@ async def glitch(event):
     if not (reply and (reply.media)):
         await event.edit("`Media not found...`")
         return
-    if not os.path.isdir("./temp/"):
-        os.mkdir("./temp/")
+    if not os.path.isdir("./temp/a/"):
+        os.mkdir("./temp/a/")
     reply_to_id = event.reply_to_msg_id
-    remixsticker = await reply.download_media(file="./temp/")
+    remixsticker = await reply.download_media(file="./temp/a/")
     if not remixsticker.endswith(('.mp4', '.webp', '.tgs', '.png', '.jpg')):
         os.remove(remixsticker)
         await event.edit("`Media not found...`")
         return
-    file = os.path.join("./temp/", "glitch.png")
+    file = os.path.join("./temp/a/", "glitch.png")
     if input:
         if not input.isdigit():
             await event.edit("`You input is invalid, check help`")
@@ -45,7 +45,7 @@ async def glitch(event):
     else:
         input = 2
     if remixsticker.endswith(".tgs"):
-        file = os.path.join("./temp/", "glitch.png")
+        file = os.path.join("./temp/a/", "glitch.png")
         cmd = f"lottie_convert.py --frame 0 -if lottie -of png {remixsticker} {file}"
         stdout, stderr = (await runcmd(cmd))[:2]
         if not os.path.lexists(file):
@@ -53,14 +53,14 @@ async def glitch(event):
             LOGS.info(stdout + stderr)
         glitch_file = file
     elif remixsticker.endswith(".webp"):
-        file = os.path.join("./temp/", "glitch.png")
+        file = os.path.join("./temp/a/", "glitch.png")
         os.rename(remixsticker, file)
         if not os.path.lexists(file):
             await event.edit("`remixsticker not found... `")
             return
         glitch_file = file
     elif remixsticker.endswith(".mp4"):
-        file = os.path.join("./temp/", "glitch.png")
+        file = os.path.join("./temp/a/", "glitch.png")
         await take_screen_shot(remixsticker, 0, file)
         if not os.path.lexists(file):
             await event.edit("```remixsticker not found...```")
@@ -71,7 +71,7 @@ async def glitch(event):
     glitcher = ImageGlitcher()
     img = Image.open(glitch_file)
     if cmd == "glitchs":
-        glitched = "./temp/" + "glitched.webp"
+        glitched = "./temp/a/" + "glitched.webp"
         glitch_img = glitcher.glitch_image(img, input, color_offset=True)
         glitch_img.save(glitched)
         await bot.send_file(
@@ -81,7 +81,7 @@ async def glitch(event):
         os.remove(glitched)
         await event.delete()
     elif cmd == "glitch":
-        Glitched = "./temp/" + "glitch.gif"
+        Glitched = "./temp/a/" + "glitch.gif"
         glitch_img = glitcher.glitch_image(
             img, input, color_offset=True, gif=True)
         DURATION = 200
