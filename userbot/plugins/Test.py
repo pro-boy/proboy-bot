@@ -19,13 +19,14 @@ from userbot.events import register
 THUMB_IMAGE_PATH = "./thumb_image.jpg"
 
 
-@register(outgoing=True, pattern=r"^\.mms(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.mmf(?: |$)(.*)")
 async def mim(event):
     if not event.reply_to_msg_id:
         await event.edit(
-            "`Syntax: reply to an image with .mms` 'text on top' ; 'text on bottom' "
+            "`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' "
         )
         return
+
     reply_message = await event.get_reply_message()
     if not reply_message.media:
         await event.edit("```reply to a image/sticker/gif```")
@@ -55,9 +56,10 @@ async def mim(event):
         os.system("ffmpeg -i meme.mp4 -vframes 1 -an -s 480x360 -ss 1 meme.png")
         dls_loc = "meme.png"
     else:
+        downloaded_file_name = os.path.join(TEMP_DOWNLOAD_DIRECTORY, "meme.png")
         dls_loc = await bot.download_media(
             reply_message,
-            "meme.png",
+            downloaded_file_name,
         )
     await event.edit(
         "```Transfiguration Time! Mwahaha Memifying this image! (」ﾟﾛﾟ)｣ ```"
@@ -177,6 +179,5 @@ async def draw_meme_text(image_path, text):
 
     image_name = "memify.webp"
     webp_file = os.path.join(TEMP_DOWNLOAD_DIRECTORY, image_name)
-    img.save(webp_file, "webp")
+    img.save(webp_file, "WebP")
     return webp_file
-
