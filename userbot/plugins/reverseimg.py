@@ -117,7 +117,7 @@ async def ParseSauce(googleurl):
     except BaseException:
         pass
 
-    for guess in soup.findAll('div', attrs={'class': 'r5a77d'}):
+    for guess in soup.findAll('name', attrs={'class': 'r5a77d'}):
         results['guess'] = guess.get_text()
 
     return results
