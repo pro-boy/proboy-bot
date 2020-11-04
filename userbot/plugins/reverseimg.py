@@ -71,7 +71,7 @@ async def okgoogle(img):
         os.remove(name)
         match = await ParseSauce(fetchUrl +
                                  "&preferences?hl=en&fg=1#languages")
-        guess = match['best_guess']
+        guess = match[\protecc'best_guess']
         imgspage = match['similar_images']
 
         if guess and imgspage:
