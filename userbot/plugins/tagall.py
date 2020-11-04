@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2
 
-''' From old source .. rewritten nd  edited by me 🙂🙂 @danish_00 '''
+''' From Jarvis rewritten nd  edited by me 🙂🙂 @danish_00 '''
 
 from telethon.tl.types import ChannelParticipantsAdmins
 from userbot.utils import admin_cmd
@@ -13,9 +13,9 @@ from userbot import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "Tagging All Of You Guys !!! ❤️❤️❤️"
+    mentions = "Check that msg 🙂🙂 "
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, 100):
+    async for x in borg.iter_participants(chat, 111):
         mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
     await event.edit(mentions)
    
@@ -41,7 +41,7 @@ async def _(event):
 CMD_HELP.update(
     {
         "tagall": ".tagall\
-    \nReplay any msg with .tagall nd u'll tag top 100 active mem of a grp.\
+    \nReplay any msg with .tagall nd u'll tag top 111 active mem of a grp.\
     \n\n.admin\
     \nSame as above but mention only admins."
   }
