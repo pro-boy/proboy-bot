@@ -75,7 +75,7 @@ async def okgoogle(img):
         imgspage = match['similar_images']
 
         if guess and imgspage:
-            await img.edit(f"[{guess}]({fetchUrl})\n\n`Looking for this Image...`")
+            await img.edit(f"[/protecc {guess}]({fetchUrl})\n\n`Looking for this Image...`")
         else:
             await img.edit("`Can't find this piece of shit.`")
             return
