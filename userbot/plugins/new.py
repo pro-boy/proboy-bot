@@ -206,7 +206,7 @@ async def waifutxt(text, chat_id ,reply_to_id , bot, borg):
                             hide_via=True)
     if cat:
         await borg.send_file(int(chat_id) , dog , reply_to = reply_to_id ) 
-        await cat.delete()
+        await dog.delete()
 
 
 
