@@ -46,33 +46,16 @@ async def _(event):
 
     await event.edit("```Making a Quote```")
 
-    async with bot.conversation(chat) as conv:
-
+    async with borg.conversation(chat) as conv:
           try:     
-
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=105460780))
-
-              await bot.forward_messages(chat, reply_message)
-              response = await response
-              
-
-            
+              await borg.send_message(chat, reply_message)
+              response = await response 
           except YouBlockedUserError: 
-
-              await event.reply("```Please unblock @QuotLyBot and try again```")
-
+              await event.reply("Please unblock @asciiart_bot and try again🤐")
               return
-
-          if response.text.startswith("I understand only stickers"):
-              await event.edit("Sorry i cant't convert it check wheter is non animated sticker or not")
-          else:
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=105460780))
-              response = await response
-              if response.text.startswith("..."):
-                  response = conv.wait_event(events.NewMessage(incoming=True,from_users=105460780))
-                  response = await response
-                  await event.delete()
-                  await event.client.send_message(event.chat_id, response.message , reply_to = reply_message.id)
-              else:
-                  await event.edit("try again")
-          await bot.send_read_acknowledge(conv.chat_id)
+          if response.text.startswith("Forward"):
+             await event.edit("Cn you kindly disable your forward privacy settings for good?😒")
+          else: 
+             await borg.send_file(event.chat_id, response.message.media)  
+                
