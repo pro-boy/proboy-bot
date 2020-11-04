@@ -1,5 +1,5 @@
 """Get Telegram Profile Picture and other information
-Syntax: .whois @username"""
+Syntax: .info @username"""
 
 import html
 from telethon.tl.functions.photos import GetUserPhotosRequest
@@ -44,17 +44,18 @@ async def _(event):
     except Exception as e:
         dc_id = "`Need a Profile Picture to check **this**`"
         location = str(e)
-    caption = """<b>Extracted Userdata From Jayu's DATABASE<b>
-<b>ID</b>: <code>{}</code>
-<b>Person Name</b>: <a href='tg://user?id={}'>{}</a>
-<b>Last Name</b>:<code>{}</code>
-<b>Bio</b>: <code>{}</code>
-<b>DC ID</b>: {}
-<b>Number of PPs</b>: {}
-<b>Restricted?</b> : {}
-<b>Verified</b>: {}
-<b>Bot(nub)</b>: {}
-<b>Groups in Common</b>: {}
+    caption = """<b>Extracted User info From Telegram By HellBot<b>
+<b>🆔️User ID</b>: <code>{}</code>
+<b>📎Link To Profile</b>: <a href='tg://user?id={}'>Click Here🚪</a>
+<b>🗣️First Name</b>: <code>{}</code>
+<b>🗣️Second Name</b>: <code>{}</code>
+<b>👨🏿‍💻BIO</b>: {}
+<b>🌐DC ID</b>: {}
+<b>📸NO OF PSS</b> : {}
+<b>🧐RESTRICTED</b>: {}
+<b>✅VERIFIED</b>: {}
+<b>🤖BOT</b>: {}
+<b>👥Groups in Common</b>: {}
 """.format(
         user_id,
         user_id,
@@ -136,3 +137,6 @@ async def get_full_user(event):
                 return replied_user, None
             except Exception as e:
                 return None, e
+
+
+        
