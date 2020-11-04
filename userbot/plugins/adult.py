@@ -52,7 +52,7 @@ async def _(event):
 
           try:     
 
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=1031952739))
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=105460780))
 
               await bot.forward_messages(chat, reply_message)
               response = await conv.get_response()
