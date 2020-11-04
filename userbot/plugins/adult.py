@@ -53,8 +53,8 @@ async def _(event):
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=105460780))
 
               await bot.forward_messages(chat, reply_message)
-              response = await conv.get_response()
-              respond = await conv.get_response()
+              response = await response
+              
 
             
           except YouBlockedUserError: 
