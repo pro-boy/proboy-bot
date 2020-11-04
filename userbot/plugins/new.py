@@ -76,18 +76,17 @@ async def kannagen(text):
 
 
 async def moditweet(text):
-    r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi"
-    ).json()
-    geng = r.get("message")
-    kapak = url(geng)
-    if not kapak:
-        return "check syntax once more"
-    with open("gpx.png", "wb") as f:
-        f.write(requests.get(geng).content)
-    img = Image.open("gpx.png").convert("RGB")
-    img.save("gpx.webp", "webp")
-    return "gpx.webp"
+        r = requests.get(
+            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi").json()
+        geng = r.get("message")
+        kapak = url(geng)
+        if not kapak:
+            return  "check syntax once more"
+        with open("gpx.png", "wb") as f:
+            f.write(requests.get(geng).content)
+        img = Image.open("gpx.png").convert("RGB")
+        img.save("gpx.jpg", "webp")    
+        return "gpx.webp"
 
 
 async def tweets(text1, text2):
@@ -149,7 +148,7 @@ async def modi(event):
             return
     await event.edit("`Requesting Modi to tweet...`")
     text = deEmojify(text)
-    img = await qorygore(text)
+    img = await moditweet(text)
     await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
     await event.delete()
     await purge()
