@@ -71,7 +71,7 @@ async def okgoogle(img):
         os.remove(name)
         match = await ParseSauce(fetchUrl +
                                  "&preferences?hl=en&fg=1#languages")
-        guess = match['best_guess']
+        guess = match['guess']
         imgspage = match['similar_images']
 
         if guess and imgspage:
@@ -107,7 +107,7 @@ async def ParseSauce(googleurl):
     source = opener.open(googleurl).read()
     soup = BeautifulSoup(source, 'html.parser')
 
-    results = {'similar_images': '', 'best_guess': ''}
+    results = {'similar_images': '', 'guess': ''}
 
     try:
         for similar_image in soup.findAll('input', {'class': 'gLFyf'}):
@@ -117,8 +117,8 @@ async def ParseSauce(googleurl):
     except BaseException:
         pass
 
-    for best_guess in soup.findAll('div', attrs={'class': 'r5a77d'}):
-        results['best_guess'] = best_guess.get_text()
+    for guess in soup.findAll('div', attrs={'class': 'r5a77d'}):
+        results['guess'] = guess.get_text()
 
     return results
 
