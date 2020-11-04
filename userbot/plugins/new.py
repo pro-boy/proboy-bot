@@ -196,6 +196,19 @@ async def kanna(event):
     await event.delete()
     await purge()
 
+@register(outgoing=True, pattern=r"^\.waifu(?: |$)(.*)")
+async def waifutxt(text, chat_id ,reply_to_id , bot, borg):
+    animus = [0, 1, 2, 3, 4, 9, 15, 20, 22, 27, 29, 32, 33, 34, 37, 38, 
+              41, 42, 44, 45, 47, 48, 51, 52, 53, 55, 56, 57, 58, 61, 62, 63]
+    sticcers = await bot.inline_query(
+        "stickerizerbot", f"#{choice(animus)}{text}")
+    dog = await sticcers[0].click( "me" ,
+                            hide_via=True)
+    if cat:
+        await borg.send_file(int(chat_id) , dog , reply_to = reply_to_id ) 
+        await cat.delete()
+
+
 
 @register(outgoing=True, pattern=r"\.tweet(?: |$)(.*)")
 async def tweet(event):
