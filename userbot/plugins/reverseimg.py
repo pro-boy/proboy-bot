@@ -71,7 +71,7 @@ async def okgoogle(img):
         os.remove(name)
         match = await ParseSauce(fetchUrl +
                                  "&preferences?hl=en&fg=1#languages")
-        guess = match[\protecc'best_guess']
+        guess = match['best_guess']
         imgspage = match['similar_images']
 
         if guess and imgspage:
@@ -98,7 +98,7 @@ async def okgoogle(img):
         except TypeError:
             pass
         await img.edit(
-            f"[{guess}]({fetchUrl})\n\n[Visually similar images]({imgspage})")
+            f"[/protecc {guess}]({fetchUrl})\n\n[Visually similar images]({imgspage})")
 
 
 async def ParseSauce(googleurl):
