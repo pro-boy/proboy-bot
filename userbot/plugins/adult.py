@@ -19,35 +19,17 @@ async def _(event):
     if event.fwd_from:
 
         return 
-
-    if not event.reply_to_msg_id:
-
-       await event.edit("```Reply to any user message.```")
-
-       return
-
-    reply_message = await event.get_reply_message() 
-
-    if not reply_message.text:
-
-       await event.edit("```Reply to text message```")
-
-       return
-
+    pbot = so.pattern_match.group(1)
     chat = "@Epornerbot"
+    link = f"{pbot}"
+      
 
-    sender = reply_message.sender
-
-    if reply_message.sender.bot:
-
-       await event.edit("```Reply to actual users message.```")
-
-       return
-
-    await event.edit("```Making a Quote```")
-
-    async with borg.conversation(chat) as conv:
+    await so.edit("searching ur song Boss🔍")
+    async with bot.conversation(chat) as conv:
+        await asyncio.sleep(2)
+          await so.edit("select the song ßoss😅😅")
           try:     
+              msg = await conv.send_message(link)
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=105460780))
               await borg.send_message(chat, reply_message)
               response = await response 
