@@ -30,3 +30,4 @@ async def _(event):
           else: 
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)
+             await event.delete(response)
