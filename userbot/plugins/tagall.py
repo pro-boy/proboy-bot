@@ -1,10 +1,12 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2
+
+''' From old source .. rewritten nd  edited by me 🙂🙂 @danish_00 '''
+
 from telethon.tl.types import ChannelParticipantsAdmins
-
 from userbot.utils import admin_cmd
-
+from userbot import CMD_HELP
 
 @borg.on(admin_cmd(pattern=r"tagall", outgoing=True))
 @borg.on(admin_cmd(pattern=r"tagall", allow_sudo=True))
@@ -35,3 +37,13 @@ async def _(event):
     else:
         await event.edit(mentions)
     
+
+CMD_HELP.update(
+    {
+        "tagall": ".tagall\
+    \nReplay any msg with .tagall nd u'll tag top 100 active mem of a grp.\
+    \n\n.admin\
+    \nSame as above but mention only admins."
+  }
+
+)
