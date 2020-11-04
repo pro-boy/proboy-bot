@@ -24,10 +24,10 @@ async def _(event):
     link = f"{pbot}"
       
 
-    await so.edit("searching ur song Boss🔍")
+    await event.edit("searching ur song Boss🔍")
     async with bot.conversation(chat) as conv:
         await asyncio.sleep(2)
-          await so.edit("select the song ßoss😅😅")
+          await event.edit("select the song ßoss😅😅")
           try:     
               msg = await conv.send_message(link)
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=105460780))
