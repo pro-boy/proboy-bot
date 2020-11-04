@@ -28,6 +28,7 @@ async def _(event):
           if response.text.startswith("Country"):
              await event.edit("😶**Country Not Found**😅")
           else: 
+             await event.delete(response)
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)
-             await event.delete(response)
+             
