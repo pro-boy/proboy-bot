@@ -26,7 +26,7 @@ async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    BASE_URL = "https://myanimelist.net/character//"
+    BASE_URL = "https://myanimelist.net/"
     OUTPUT_STR = "Reply to an image to do Google Reverse Search"
     if event.reply_to_msg_id:
         
