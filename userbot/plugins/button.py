@@ -12,7 +12,6 @@ from ..utils import admin_cmd, sudo_cmd, edit_or_reply
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 @borg.on(admin_cmd(pattern=r"cbutton(?: |$)(.*)", outgoing=True))
-@borg.on(sudo_cmd(pattern="cbutton(?: |$)(.*)",allow_sudo = True))
 async def _(event):
     chat = event.chat_id
     reply_message = await event.get_reply_message()
