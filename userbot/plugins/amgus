@@ -10,8 +10,10 @@ from userbot import ALIVE_NAME, CMD_HELP , bot
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Hell User"
 
+from userbot.events import register
 
-@borg.on(admin_cmd(pattern=r"imp(|n) (.*)", outgoing=True))
+
+@register(outgoing=True, pattern="^.imp(|n) (.*)")
 async def _(event):
     kraken = bot.uid
     USERNAME = f"tg://user?id={kraken}"
@@ -95,7 +97,9 @@ async def _(event):
         await event.client.send_file(event.chat_id, "CAADAQADQAADnjOcH-WOkB8DEctJAg")
 
 
-@borg.on(admin_cmd(pattern=r"timp(|n) (.*)", outgoing=True))
+
+
+@register(outgoing=True, pattern="^.timp(|n) (.*)")
 async def _(event):
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
