@@ -21,7 +21,7 @@ def progress(current, total):
 
 
 
-@borg.on(admin_cmd(pattern=r"r"))
+@borg.on(admin_cmd(pattern=r"p"))
 async def _(event):
     if event.fwd_from:
         return
@@ -29,7 +29,7 @@ async def _(event):
     BASE_URL = "https://images.google.com/"
     OUTPUT_STR = "Reply to an image to do Google Reverse Search"
     if event.reply_to_msg_id:
-        await event.edit("_")
+        
 
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
