@@ -21,7 +21,7 @@ def progress(current, total):
 
 
 
-@borg.on(admin_cmd(pattern=r".a"))
+@borg.on(admin_cmd(pattern=r"r"))
 async def _(event):
     if event.fwd_from:
         return
@@ -73,7 +73,7 @@ async def _(event):
         img_size = img_size_div.find_all("div")
         end = datetime.now()
         ms = (end - start).seconds
-        OUTPUT_STR = """/protecc {prs_text}""".format(
+        OUTPUT_STR = """/protecc{prs_text}""".format(
             **locals()
             
         )
