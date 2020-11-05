@@ -6,11 +6,11 @@ from datetime import datetime
 
 import requests
 from bs4   import BeautifulSoup
-from google_images_download import google_images_download
+import google_images_download
 
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import admin_cmd
 
-DELETE_TIMEOUT = 4
+DELETE_TIMEOUT = 2
 
 def progress(current, total):
     logger.info(
@@ -59,8 +59,9 @@ async def _(event):
             the_location = google_rs_response.headers.get("Location")
 
         headers = {
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
-        }
+            "User-Agent": "Mozilla/5.0 (X11; Linux i686; rv:82.0) Gecko/20100101 Firefox/82.0
+"
+        }               
         response = requests.get(the_location, headers=headers)
         soup = BeautifulSoup(response.text, "html.parser")
         # document.getElementsByClassName("r5a77d"): PRS
