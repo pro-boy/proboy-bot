@@ -17,7 +17,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 @borg.on(admin_cmd(pattern=r"app (.*)"))
 async def apk(event):
     app_name = event.pattern_match.group(1)
-    event = await edit(event ,"Searching!")
+    event = await event.edit("Searching!")
     try:
         remove_space = app_name.split(' ')
         final_name = '+'.join(remove_space)
@@ -46,7 +46,7 @@ async def apk(event):
 @borg.on(admin_cmd(pattern="appr (.*)"))
 async def apkr(event):
     app_name = event.pattern_match.group(1)
-    event = await edit(event ,"searching!")
+    event = await event.edit("searching!")
     try:
         remove_space = app_name.split(' ')
         final_name = '+'.join(remove_space)
