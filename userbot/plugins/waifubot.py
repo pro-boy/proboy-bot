@@ -21,12 +21,12 @@ def progress(current, total):
 
 
 
-@borg.on(admin_cmd(pattern=r"p"))
+@borg.on(admin_cmd(pattern=r"pp"))
 async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    BASE_URL = "https://images.google.com/"
+    BASE_URL = "https://myanimelist.net/character//"
     OUTPUT_STR = "Reply to an image to do Google Reverse Search"
     if event.reply_to_msg_id:
         
