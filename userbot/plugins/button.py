@@ -18,8 +18,8 @@ async def _(event):
         await event.edit("need to set up a @BotFather bot for this module to work")
         return
 
-    if Config.PRIVATE_GROUP_BOT_API_ID is None:
-        await event.edit("need to have a `PRIVATE_GROUP_BOT_API_ID` for this module to work")
+    if Config.PRIVATE_CHANNEL_BOT_API_ID is None:
+        await event.edit("need to have a `PRIVATE_CHANNEL_BOT_API_ID` for this module to work")
         return
 
     reply_message = await event.get_reply_message()
@@ -63,13 +63,13 @@ async def _(event):
     if reply_message.media is not None:
         message_id_in_channel = reply_message.id
         tgbot_reply_message = await tgbot.get_messages(
-            entity=Config.PRIVATE_GROUP_BOT_API_ID,
+            entity=Config.PRIVATE_CHANNEL_BOT_API_ID,
             ids=message_id_in_channel
         )
         tgbot_reply_message = tgbot_reply_message.media
 
     await tgbot.send_message(
-        entity=Config.PRIVATE_GROUP_BOT_API_ID,
+        entity=Config.PRIVATE_CHANNEL_BOT_API_ID,
         message=message_text,
         parse_mode="html",
         file=tgbot_reply_message,
