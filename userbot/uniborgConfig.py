@@ -77,9 +77,9 @@ if ENV:
         if PRIVATE_GROUP_BOT_API_ID:
             PRIVATE_GROUP_BOT_API_ID = int(PRIVATE_GROUP_BOT_API_ID)
          # Send .get_id in any channel to fill this value. ReQuired for @Manuel15 inspiration to work!
-        PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
+        PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
         if PRIVATE_CHANNEL_BOT_API_ID:
-            PRIVATE_CHANNEL_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
+            PRIVATE_CHANNEL_BOT_API_ID = int(PRIVATE_CHANNEL_BOT_API_ID
         # send .get_id in your private channel to forward all your Private messages
         PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
         if PM_LOGGR_BOT_API_ID:
