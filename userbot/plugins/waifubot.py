@@ -5,12 +5,12 @@ from datetime import datetime
 
 
 import requests
-from bs4   import BeautifulSoup
-import google_images_download
+from bs4 import BeautifulSoup
+from google_images_download import google_images_download
 
-from userbot.utils import admin_cmd
+from fridaybot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 
-DELETE_TIMEOUT = 2
+DELETE_TIMEOUT = 3
 
 def progress(current, total):
     logger.info(
@@ -26,10 +26,10 @@ async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    BASE_URL = "https://google.com"
+    BASE_URL = "http://www.google.com"
     OUTPUT_STR = "Reply to an image to do Google Reverse Search"
     if event.reply_to_msg_id:
-        
+        await event.edit("_")
 
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
@@ -59,8 +59,8 @@ async def _(event):
             the_location = google_rs_response.headers.get("Location")
 
         headers = {
-                        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
-        }               
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
+        }
         response = requests.get(the_location, headers=headers)
         soup = BeautifulSoup(response.text, "html.parser")
         # document.getElementsByClassName("r5a77d"): PRS
@@ -75,7 +75,7 @@ async def _(event):
         ms = (end - start).seconds
         OUTPUT_STR = """/protecc {prs_text}""".format(
             **locals()
-            
+           
         )
 
 
