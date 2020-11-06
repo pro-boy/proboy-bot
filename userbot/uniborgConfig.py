@@ -72,7 +72,7 @@ if ENV:
         #heroku 
         HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
         HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
-       PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
+        PRIVATE_CHANNEL_BOT_API_ID = int("PRIVATE_CHANNEL_BOT_API_ID")
         # send .get_id in any channel to forward all your NEW PMs to this group
         PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
         if PRIVATE_GROUP_BOT_API_ID:
