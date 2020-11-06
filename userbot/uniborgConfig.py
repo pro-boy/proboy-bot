@@ -80,7 +80,7 @@ if ENV:
         PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
         if PRIVATE_CHANNEL_BOT_API_ID:
             PRIVATE_CHANNEL_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
-         send .get_id in your private channel to forward all your Private messages
+        # send .get_id in your private channel to forward all your Private messages
         PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
         if PM_LOGGR_BOT_API_ID:
             PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
