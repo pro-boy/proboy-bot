@@ -59,8 +59,7 @@ async def _(event):
             the_location = google_rs_response.headers.get("Location")
 
         headers = {
-            "User-Agent": "Mozilla/5.0 (X11; Linux i686; rv:82.0) Gecko/20100101 Firefox/82.0"
-
+                        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
         }               
         response = requests.get(the_location, headers=headers)
         soup = BeautifulSoup(response.text, "html.parser")
