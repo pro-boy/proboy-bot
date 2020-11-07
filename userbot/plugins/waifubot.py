@@ -10,7 +10,7 @@ from google_images_download import google_images_download
 
 from userbot.utils import admin_cmd
 
-DELETE_TIMEOUT = 3
+DELETE_TIMEOUT = 2
 
 def progress(current, total):
     logger.info(
@@ -29,7 +29,7 @@ async def _(event):
     BASE_URL = "http://images.google.com"
     OUTPUT_STR = "Reply to an image to do Google Reverse Search"
     if event.reply_to_msg_id:
-        await event.edit("_")
+        await event.edit("😂")
 
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
