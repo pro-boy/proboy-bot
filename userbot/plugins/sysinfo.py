@@ -222,7 +222,7 @@ async def pipcheck(pip):
             await pip.edit("`Use .help pip to see an example`")
 
 
-@register(outgoing=True, pattern=r"^.(alive|on)$")
+@register(outgoing=True, pattern="^.alive")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
@@ -236,7 +236,7 @@ async def amireallyalive(alive):
         f"»✳️>💻 `Running on    :`[Hidden Repo](t.me/danish_00)\n"
         f"»✳️>🗃 `New Plugins   : {len(modules)} `\n"
         f"»✳️>🤖 `DanishBot     : v{USERBOT_VERSION} `\n"
-        f"»✳️>🕒 `Bot Uptime    : {uptime} `\n"
+        f"»✳️>⏱️ `Bot Uptime    : {uptime} `\n"
         "`▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱`"
     )
     if ALIVE_LOGO:
@@ -296,8 +296,8 @@ CMD_HELP.update(
 )
 CMD_HELP.update(
     {
-        "alive": ".alive | .on\
-    \nUsage: Type .alive | .on to see if your bot works or not.\
+        "alive": ".alive\
+    \nUsage: Type .alive to see if your bot works or not.\
     \n\n.aliveu <text>\
     \nUsage: Change 'alive' user to the text you want.\
     \n\n.resetalive\
