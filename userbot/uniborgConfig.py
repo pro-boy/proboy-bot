@@ -125,7 +125,7 @@ if ENV:
         #MongoDB
         MONGO_URI = os.environ.get("MONGO_URI", None)
         #alive
-        ALIVE_PHOTTO = os.environ.get("ALIVE_PHOTTO", None)
+        ALIVE_PHOTTO = os.environ.get("ALIVE_PHOTTO","https://telegra.ph/file/98133bf551e53b6fe1354.jpg")
         ALIVE_MSG = os.environ.get("ALIVE_MSG", None)
         #auto bio
         BIO_MSG = os.environ.get("ALIVE_MSG", None)
