@@ -184,19 +184,19 @@ async def cmm(event):
 
 
 
-@register(outgoing=True, pattern="^.type(?: |$)(.*)")
+@register(outgoing=True, pattern="^.waifu(?: |$)(.*)")
 
-async def type(animu):
-#"""Creates random anime sticker!"""
-
+async def waifu(animu):
+#"""Generate random waifu sticker with the text!"""
+     
     text = animu.pattern_match.group(1)
     if not text:
         if animu.is_reply:
             text = (await animu.get_reply_message()).message
         else:
-            await animu.edit("`You haven't written any article.`")
+            await animu.answer("`No text given, hence the waifu ran away.`")
             return
-    animus = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+    animus = [1, 3, 7, 9, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53, 55]
     sticcers = await bot.inline_query(
         "stickerizerbot", f"#{random.choice(animus)}{(deEmojify(text))}")
     await sticcers[0].click(animu.chat_id,
@@ -245,7 +245,7 @@ CMD_HELP.update(
         "\nUsage: Create tweet for `Narendra Modi`.\n\n"
         ".cmm <text>"
         "\nUsage: Create banner for Change My Mind.\n\n"
-        ".type <text>"
+        ".waifu <text>"
         "\nUsage: random sticker is writing your text."
     }
 )
