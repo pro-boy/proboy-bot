@@ -183,29 +183,10 @@ async def cmm(event):
     await purge()
 
 
-@register(outgoing=True, pattern=r"^\.kanna(?: |$)(.*)")
-async def kanna(event):
-    text = event.pattern_match.group(1)
-    text = re.sub("&", "", text)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
-    if not text:
-        if event.is_reply and not reply_to_id.media:
-            text = reply_to_id.message
-        else:
-            await event.edit("`What should kanna write give text!`")
-            return
-    await event.edit("`Kanna is writing your text...`")
-    text = deEmojify(text)
-    img = await kannagen(text)
-    await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
-    await event.delete()
-    await purge()
 
-@register(outgoing=True, pattern="^.waifu(?: |$)(.*)")
+@register(outgoing=True, pattern="^.type(?: |$)(.*)")
 
-async def waifu(animu):
+async def type(animu):
 #"""Creates random anime sticker!"""
 
     text = animu.pattern_match.group(1)
@@ -213,9 +194,9 @@ async def waifu(animu):
         if animu.is_reply:
             text = (await animu.get_reply_message()).message
         else:
-            await animu.edit("`You haven't written any article, Waifu is going away.`")
+            await animu.edit("`You haven't written any article.`")
             return
-    animus = [1, 3, 7, 9, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53, 55]
+    animus = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
     sticcers = await bot.inline_query(
         "stickerizerbot", f"#{random.choice(animus)}{(deEmojify(text))}")
     await sticcers[0].click(animu.chat_id,
@@ -264,7 +245,7 @@ CMD_HELP.update(
         "\nUsage: Create tweet for `Narendra Modi`.\n\n"
         ".cmm <text>"
         "\nUsage: Create banner for Change My Mind.\n\n"
-        ".kanna <text>"
-        "\nUsage: Kanna is writing your text."
+        ".type <text>"
+        "\nUsage: random sticker is writing your text."
     }
 )
