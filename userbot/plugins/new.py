@@ -1,10 +1,18 @@
 import os
 import re
-
 import requests
-from PIL import Image
 from validators.url import url
-
+from asyncio import sleep
+from random import choice, getrandbits, randint
+import random
+import time
+from telethon import events
+from userbot import bot
+from collections import deque
+import sys
+import html
+import json
+from PIL import Image, ImageEnhance, ImageOps
 from userbot import CMD_HELP
 from userbot.events import register
 
@@ -85,7 +93,7 @@ async def moditweet(text):
         with open("gpx.png", "wb") as f:
             f.write(requests.get(geng).content)
         img = Image.open("gpx.png").convert("RGB")
-        img.save("gpx.jpg", "webp")    
+        img.save("gpx.webp", "webp")    
         return "gpx.webp"
 
 
@@ -195,19 +203,27 @@ async def kanna(event):
     await event.delete()
     await purge()
 
-@register(outgoing=True, pattern=r"^\.waifu(?: |$)(.*)")
-async def waifutxt(text, chat_id ,reply_to_id , bot, borg):
-    animus = [0, 1, 2, 3, 4, 9, 15, 20, 22, 27, 29, 32, 33, 34, 37, 38, 
-              41, 42, 44, 45, 47, 48, 51, 52, 53, 55, 56, 57, 58, 61, 62, 63]
+@register(outgoing=True, pattern="^.waifu(?: |$)(.*)")
+
+async def waifu(animu):
+#"""Creates random anime sticker!"""
+
+    text = animu.pattern_match.group(1)
+    if not text:
+        if animu.is_reply:
+            text = (await animu.get_reply_message()).message
+        else:
+            await animu.edit("`You haven't written any article, Waifu is going away.`")
+            return
+    animus = [1, 3, 7, 9, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53, 55]
     sticcers = await bot.inline_query(
-        "stickerizerbot", f"#{choice(animus)}{text}")
-    cat = await sticcers[0].click( "me" ,
+        "stickerizerbot", f"#{random.choice(animus)}{(deEmojify(text))}")
+    await sticcers[0].click(animu.chat_id,
+                            reply_to=animu.reply_to_msg_id,
+                            silent=True if animu.is_reply else False,
                             hide_via=True)
-    if cat:
-        await borg.send_file(int(chat_id) , cat , reply_to = reply_to_id ) 
-        await cat.delete()
-
-
+    await animu.delete()
+    
 
 @register(outgoing=True, pattern=r"\.tweet(?: |$)(.*)")
 async def tweet(event):
