@@ -231,7 +231,7 @@ async def amireallyalive(alive):
         "`▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱`\n"
         f"»✳️>⚙️ `Telethon      : v{version.__version__} `\n"
         f"»✳️>🐍 `Python        : v{python_version()} `\n"
-        f"»✳️>👤 `User          : {DEFAULTUSER}`\n"
+        f"»✳️>👤 `User          : {mention}`\n"
         "`▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱`\n"
         f"»✳️>💻 `Running on    :`[Hidden Repo](t.me/danish_00)\n"
         f"»✳️>🗃 `New Plugins   : {len(modules)} `\n"
