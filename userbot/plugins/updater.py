@@ -120,7 +120,7 @@ async def upstream(ups):
 
     if force_updateme:
         await ups.edit(
-            '`Force-Updating to latest stable Hêllẞø† code, please wait sur😅😅...`')
+            '`Force-Updating to latest stable code, please wait sur😅😅...`')
     else:
         await ups.edit('`Updating your` **ßoott** `please wait for 5 mins then type .alive/.ping/.awake/.help/.test to see if I am On... \n\n          __Hêllẞø†__')
     # We're in a Heroku Dyno, handle it's memez.
@@ -143,7 +143,7 @@ async def upstream(ups):
             )
             repo.__del__()
             return
-        await ups.edit('`Updated Successfully 😎😎✨\nRestarting, please wait...5 mins...then type .ping to check if I am On!!!😐`'
+        await ups.edit('`Updating Started 😎😎✨\nRestarting, please wait 5min then type .alive to check if I alive!!!🙂`'
                        )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -161,7 +161,7 @@ async def upstream(ups):
             repo.__del__()
             return
         await ups.edit('`Sync Verified Successfully 🙂🙂\n'
-                       'Restarting, please wait...1 mins...then type .ping to check if I am On!!!😐`')
+                       'Restarting, please wait a min ,then type .alive to check if I alive 😂!!`')
     else:
         # Classic Updater, pretty straightforward.
         try:
@@ -170,7 +170,7 @@ async def upstream(ups):
             repo.git.reset("--hard", "FETCH_HEAD")
         await updateme_requirements()
         await ups.edit('`Successfully Updated!\n'
-                       'Bot is restarting... Wait for a minute!`')
+                       'Bot is restarting... Wait for a minute😎😎!`')
         # Spin a new instance of bot
         args = [sys.executable, "-m", "userbot"]
         execle(sys.executable, *args, environ)
