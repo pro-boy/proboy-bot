@@ -26,6 +26,7 @@ gsearch
 hachoir
 heroku3
 httplib2
+html_telegraph_poster
 humanize
 jikanpy
 lxml
