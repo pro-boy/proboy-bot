@@ -80,5 +80,5 @@ async def _(event):
 
 
     await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
-      
+     await asyncio.sleep(1) 
         await event.delete()
