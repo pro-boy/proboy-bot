@@ -1,4 +1,7 @@
-from userbot import CMD_HELP
+from userbot import CMD_HELP, admin_cmd, register
+
+
+@command(outgoing=True, pattern="^.alive$")
 
 CMD_HELP.update(
     {
