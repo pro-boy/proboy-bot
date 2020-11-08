@@ -190,6 +190,39 @@ def prettyjson(obj, indent=2, maxlinelength=80):
     items, _ = getsubitems(obj, itemkey="", islast=True, maxlinelength=maxlinelength - indent, indent=indent)
     return indentitems(items, indent, level=0)
 
+@borg.on(admin_cmd(pattern=r"send (?P<shortname>\w+)$", outgoing=True))
+async def send(event):
+    if event.fwd_from:
+        return
+    reply_to_id = None
+    if event.reply_to_msg_id:
+        reply_to_id = event.reply_to_msg_id
+    thumb = None
+    if os.path.exists(thumb_image_path):
+        thumb = thumb_image_path
+    input_str = event.pattern_match["shortname"]
+    the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
+    if os.path.exists(the_plugin_file):
+        start = datetime.now()
+        plug = await event.client.send_file(  # pylint:disable=E0602
+            event.chat_id,
+            the_plugin_file,
+            force_document=True,
+            allow_cache=False,
+            reply_to=reply_to_id,
+            thumb=thumb,
+        )
+        end = datetime.now()
+        ms = (end - start).seconds
+        await event.delete()
+        await plug.edit(
+            f"__**➥ Plugin Name:- {input_str} .**__\n__**➥ Uploaded in {ms} seconds.**__\n__**➥ Uploaded by :-**__ {DEFAULTUSER}"
+        )
+    else:
+        await edit_or_reply(event, "404: File Not Found")
+
+
+
 CMD_HELP.update({
   "heroku":
   "Info for Module to Manage Heroku:**\n\n`.usage`\nUsage:__Check your heroku dyno hours status.__\n\n`.set var <NEW VAR> <VALUE>`\nUsage: __add new variable or update existing value variable__\n**!!! WARNING !!!, after setting a variable the bot will restart.**\n\n`.get var or .get var <VAR>`\nUsage: __get your existing varibles, use it only on your private group!__\n**This returns all of your private information, please be cautious...**\n\n`.del var <VAR>`\nUsage: __delete existing variable__\n**!!! WARNING !!!, after deleting variable the bot will restarted**\n\n`.herokulogs`\nUsage:sends you recent 100 lines of logs in heroku"
