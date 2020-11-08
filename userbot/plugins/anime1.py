@@ -2,9 +2,8 @@
 #
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
-#
-
-# requires: jikanpy pendulum html_telegraph_poster
+# Very difficulty find this man .. i'm searching this from many weeks now i've it 
+# @danish_00 (just little edited nd fixed)
 
 import asyncio
 import html
@@ -15,21 +14,17 @@ import bs4
 import jikanpy
 import pendulum
 import requests
-
 from io import BytesIO, StringIO
 from urllib.parse import quote as urlencode
 from html_telegraph_poster import TelegraphPoster
 from jikanpy import Jikan
 from jikanpy.exceptions import APIException
-
 from telethon.errors.rpcerrorlist import FilePartsInvalidError
 from telethon.tl.types import (
     DocumentAttributeAnimated,
     DocumentAttributeFilename,
-    MessageMediaDocument,
-)
+    MessageMediaDocument )
 from telethon.utils import is_image, is_video
-
 from userbot import CMD_HELP
 from userbot.events import register
 
@@ -310,57 +305,7 @@ async def manga(event):
         rep += f'<b>Read More:</b> <a href="{url}">MyAnimeList</a>'
         await event.edit(rep, parse_mode="HTML", link_preview=False)
 
-
-@register(outgoing=True, pattern=r"^\.a(kaizoku|kayo) ?(.*)")
-async def site_search(event):
-    message = await event.get_reply_message()
-    search_query = event.pattern_match.group(2)
-    site = event.pattern_match.group(1)
-    if search_query:
-        pass
-    elif message:
-        search_query = message.text
-    else:
-        await event.edit("`Uuf Bro.. Gib something to Search`")
-        return
-
-    if site == "kaizoku":
-        search_url = f"https://animekaizoku.com/?s={search_query}"
-        html_text = requests.get(search_url).text
-        soup = bs4.BeautifulSoup(html_text, "html.parser")
-        search_result = soup.find_all("h2", {"class": "post-title"})
-
-        if search_result:
-            result = f"<a href='{search_url}'>Click Here For More Results</a> <b>of</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKaizoku</code>: \n\n"
-            for entry in search_result:
-                post_link = entry.a["href"]
-                post_name = html.escape(entry.text.strip())
-                result += f"• <a href='{post_link}'>{post_name}</a>\n"
-                await event.edit(result, parse_mode="HTML")
-        else:
-            result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKaizoku</code>"
-            await event.edit(result, parse_mode="HTML")
-
-    elif site == "kayo":
-        search_url = f"https://animekayo.com/?s={search_query}"
-        html_text = requests.get(search_url).text
-        soup = bs4.BeautifulSoup(html_text, "html.parser")
-        search_result = soup.find_all("h2", {"class": "title"})
-
-        result = f"<a href='{search_url}'>Click Here For More Results</a> <b>of</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKayo</code>: \n\n"
-        for entry in search_result:
-
-            if entry.text.strip() == "Nothing Found":
-                result = f"<b>No result found for</b> <code>{html.escape(search_query)}</code> <b>on</b> <code>AnimeKayo</code>"
-                break
-
-            post_link = entry.a["href"]
-            post_name = html.escape(entry.text.strip())
-            result += f"• <a href='{post_link}'>{post_name}</a>\n"
-            await event.edit(result, parse_mode="HTML")
-
-
-@register(outgoing=True, pattern=r"^\.char ?(.*)")
+@register(outgoing=True, pattern=r"^\.character ?(.*)")
 async def character(event):
     message = await event.get_reply_message()
     search_query = event.pattern_match.group(1)
@@ -398,7 +343,7 @@ async def character(event):
     for entity in character:
         if character[entity] is None:
             character[entity] = "Unknown"
-    caption += f"\n🔰**Extracted Character Data**🔰\n\n{about_string}"
+    caption += f"\n⚜️**Extracted Character Data**⚜️\n\n{about_string}"
     caption += f" [Read More]({mal_url})..."
     await event.delete()
     await event.client.send_file(
@@ -409,7 +354,7 @@ async def character(event):
     )
 
 
-@register(outgoing=True, pattern=r"^\.upcoming ?(.*)")
+@register(outgoing=True, pattern=r"^\.airing ?(.*)")
 async def upcoming(message):
     rep = "<b>Upcoming anime</b>\n"
     later = jikan.season_later()
@@ -658,11 +603,9 @@ CMD_HELP.update(
     \nUsage: Returns with Anime information.\
     \n\n.manga <manga name>\
     \nUsage: Returns with the Manga information.\
-    \n\n.akaizoku or .akayo <anime name>\
-    \nUsage: Returns with the Anime Download link.\
-    \n\n.char <character name>\
+    \n\n.character <character name>\
     \nUsage: Return with character information.\
-    \n\n.upcoming\
+    \n\n.airing\
     \nUsage: Returns with Upcoming Anime information.\
     \n\n.scanime <anime> or .sanime <anime>\
     \nUsage: Search anime.\
