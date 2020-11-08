@@ -19,12 +19,12 @@ from shutil import which
 import psutil
 from telethon import __version__, version
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, USERBOT_VERSION, StartTime, bot
+from userbot import ALIVE_LOGO, CMD_LIST, ALIVE_NAME, CMD_HELP, USERBOT_VERSION, StartTime, bot
 from userbot.events import register
 
 # ================= CONSTANT =================
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
-modules = CMD_HELP
+modules = CMD_LIST
 # ============================================
 
 
@@ -231,8 +231,8 @@ async def amireallyalive(alive):
         "`Bot is running smoothly 😎🏓...`\n"
         "`▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱`\n"
         f"✳️>⚙️ `Telethon`    `: v{version.__version__} `\n"
-        f"✳️>🐍 `Python`        `: v{python_version()} `\n"
-        f"✳️>👤 `User`           : {DEFAULTUSER}\n"
+        f"✳️>🐍 `Python`         `: v{python_version()} `\n"
+        f"✳️>👤 `User`            : {DEFAULTUSER}\n"
         "`▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱`\n"
         f"✳️>💻 `Running on  :`[Hidden](t.me/danish_00)\n"
         f"✳️>🗃 `New Plugs   : {len(modules)} `\n"
