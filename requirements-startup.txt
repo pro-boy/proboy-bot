@@ -27,9 +27,11 @@ hachoir
 heroku3
 httplib2
 humanize
+jikanpy
 lxml
 lottie
 oauth2client
+pendulum
 psutil
 psycopg2
 psycopg2-binary
