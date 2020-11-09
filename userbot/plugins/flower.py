@@ -8,7 +8,7 @@ async def meme(event):
     if event.fwd_from:
         return   
     flower ="✨ 🌹✨"
-    sleepValue = 4
+    sleepValue = 2
            
     await event.edit(flower+"        ")
     await asyncio.sleep(sleepValue)
