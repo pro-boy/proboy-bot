@@ -1,18 +1,4 @@
-# (c) Shrimadhav U K
-#
-# This file is part of @UniBorg
-#
-# @UniBorg is free software; you cannot redistribute it and/or modify
-# it under the terms of the GNU General Public License as published
-# by the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# @UniBorg is not distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-"""Remove.BG Plugin for @UniBorg
+"""Remove.BG Plugin 
 Syntax: .remove.bg https://link.to/image.extension
 Syntax: .remove.bg as reply to a media"""
 import asyncio
@@ -21,8 +7,8 @@ import io
 import os
 import requests
 from telethon import events
-from userbot.utils import progress, admin_cmd
-
+from userbot.utils import admin_cmd
+from userbot.helpers import progress
 
 @borg.on(admin_cmd("remove\.bg ?(.*)"))
 async def _(event):
@@ -74,7 +60,7 @@ async def _(event):
         ms = (end - start).seconds
         await event.edit("Background Removed in {} seconds😎😎".format(ms))
     else:
-        await event.edit("ReMove.BG API returned Errors. Please report to @danish_00\n`{}".format(output_file_name.content.decode("UTF-8")))
+        await event.edit("ReMove.BG API returned Errors. Please report the provider or server\n`{}".format(output_file_name.content.decode("UTF-8")))
 
 
 # this method will call the API, and return in the appropriate format
@@ -108,6 +94,6 @@ def ReTrieveURL(input_url):
         headers=headers,
         data=data,
         allow_redirects=True,
-        stream=False
+        stream=True
     )
     return r
