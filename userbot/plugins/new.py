@@ -217,7 +217,7 @@ async def waifu(danish):
         else:
             await danish.answer("`No text given.`")
             return
-    King = [ 32, 33, 37, 40, 41, 42, 58, 20]
+    king = [ 32, 33, 37, 40, 41, 42, 58, 20]
     sticcers = await bot.inline_query(
         "stickerizerbot", f"#{random.choice(king)}{(deEmojify(text))}")
     await sticcers[0].click(danish.chat_id,
