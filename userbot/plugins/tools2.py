@@ -1,5 +1,8 @@
-
-
+# TBH ported for @javes05 old verson
+#
+# It takes too much time to check, eval and edit all
+#
+# on tg @danish_00
 
 import asyncio, time, io, math, os, logging, asyncio, shutil, re, subprocess, json
 from datetime import datetime
@@ -18,7 +21,7 @@ from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.types import Channel, Chat, User
 from telethon.tl import functions, types
-from userbot import   CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, TEMP_DOWNLOAD_DIRECTORY, CHROME_DRIVER, GOOGLE_CHROME_BIN, bot
+from userbot import   CMD_HELP, YOUTUBE_API_KEY, TEMP_DOWNLOAD_DIRECTORY, CHROME_DRIVER, GOOGLE_CHROME_BIN, bot
 from telethon.tl.functions.messages import GetHistoryRequest, CheckChatInviteRequest, GetFullChatRequest
 from telethon.errors import (ChannelInvalidError, ChannelPrivateError, ChannelPublicGroupNaError, InviteHashEmptyError, InviteHashExpiredError, InviteHashInvalidError)
 from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipantsRequest
@@ -143,73 +146,7 @@ def user_full_name(user):
  
 
 
-
-
-
-@register(outgoing=True, pattern="^!reupload (.*)")
-async def _(event):
-    if event.fwd_from:
-        return
-    thumb = None
-    if os.path.exists(thumb_image_path):
-        thumb = thumb_image_path    
-    sender = await event.get_sender() ; me = await event.client.get_me()
-    if not sender.id == me.id:
-        rkp = await event.reply("`processing...`")
-    else:
-    	rkp = await event.edit("`processing...`")
-    input_str = event.pattern_match.group(1)
-    if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
-    if event.reply_to_msg_id:
-        start = datetime.now()
-        end = datetime.now()
-        file_name = input_str
-        reply_message = await event.get_reply_message()
-        to_download_directory = TEMP_DOWNLOAD_DIRECTORY
-        downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await client.download_media(
-            reply_message,
-            downloaded_file_name,
-            )
-        ms_one = (end - start).seconds
-        if os.path.exists(downloaded_file_name):
-            c_time = time.time()
-            await client.send_file(
-                event.chat_id,
-                downloaded_file_name,
-                force_document=True,
-                supports_streaming=False,
-                allow_cache=False,
-                reply_to=event.message.id,
-                thumb=thumb,
-                )
-            end_two = datetime.now()
-            os.remove(downloaded_file_name)
-            ms_two = (end_two - end).seconds
-            await rkp.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(ms_one, ms_two))
-        else:
-            await rkp.edit("File Not Found {}".format(input_str))
-    else:
-        await rkp.edit("Syntax // !reupload file.name as reply to a Telegram media")
-
-
-
-
-@register(outgoing=True, pattern="^!search (.*)")
-async def telethon_search(event):
- if event.is_private:
-     return await rk.reply("`**Error! Permission Denied.**") 
- query = event.pattern_match.group(1)
- group = event.chat.title
- gr = (await client.get_entity(group))
- (await client.send_message(event.input_chat, f"**Search Query:** `{query}`\n\n**Results**\n\nMsg~> " + "\nMsg~> ".join(map(lambda x:f"[{x}](tg://privatepost?channel={gr.id}&post={x})", [msg.id for msg in await client.get_messages(group, search=query, limit=25) if msg.entities and [e for e in msg.entities if isinstance(e, (types.MessageEntityCode, types.MessageEntityPre))]])), link_preview=False, reply_to=event.reply_to_msg_id))
- await event.delete()
-
-
-
-
-@register(outgoing=True, pattern=r"^!stats(?: |$)(.*)") 
+@register(outgoing=True, pattern=r"^.stats(?: |$)(.*)") 
 async def stats(event: NewMessage.Event) -> None:  
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
@@ -292,7 +229,7 @@ async def stats(event: NewMessage.Event) -> None:
 
 
 
-@register(pattern="!inviteall(?: |$)(.*)", outgoing=True)
+@register(pattern=".inviteall2(?: |$)(.*)", outgoing=True)
 async def get_users(event):   
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
@@ -319,7 +256,7 @@ async def get_users(event):
 
 
 
-@register(pattern="!inviteall2(?: |$)(.*)", outgoing=True)
+@register(pattern=".inviteall3(?: |$)(.*)", outgoing=True)
 async def get_users(event):   
     rk1 = await get_chatinfo(event) ; chat = await event.get_chat()
     if event.is_private:
@@ -340,43 +277,10 @@ async def get_users(event):
                 except Exception as e:
                     error = str(e) ; f = f + 1             
     return await rkp.edit(f"**Terminal Finished** \n\n• Successfully Invited `{s}` people \n• failed to invite `{f}` people")
-    
-    
-@register(outgoing=True, pattern="^!tagall$")
-async def _(event):
-    sender = await event.get_sender() ; me = await event.client.get_me()
-    if not sender.id == me.id:
-        rkp = await event.reply("`processing...`")
-    else:
-    	rkp = await event.edit("`processing...`")
-    if event.is_private:
-              return await rkp.edit("`Sorry, Can tag users here`")
-    mentions = "@tagedall"
-    chat = await event.get_input_chat()
-    async for x in bot.iter_participants(chat, 100):
-        mentions += f"[\u2063](tg://user?id={x.id})"
-    await event.reply(mentions)
-    await event.delete()
 
 
-@register(outgoing=True, pattern="^!crblang (.*)")
-async def setlang(prog):
-    try:
-       await prog.delete()
-    except:
-       pass      
-    global CARBONLANG
-    CARBONLANG = prog.pattern_match.group(1)
-    await prog.reply(f"Language for carbon.now.sh set to {CARBONLANG}")
 
-
- 
-
- 
-
-
- 
-@register(outgoing=True, pattern=r"^!tts2(?: |$)([\s\S]*)")
+@register(outgoing=True, pattern=r"^.tts2(?: |$)([\s\S]*)")
 async def text_to_speech(query):    
     sender = await query.get_sender() ; me = await query.client.get_me()
     if not sender.id == me.id:
@@ -445,7 +349,7 @@ async def translateme(trans):
     
  
  
-@register(pattern="!lang (trt|tts) (.*)", outgoing=True)
+@register(pattern=".lang (trt|tts) (.*)", outgoing=True)
 async def lang(value):
     sender = await value.get_sender() ; me = await value.client.get_me()
     if not sender.id == me.id:
@@ -484,7 +388,7 @@ async def lang(value):
 
  
  
-@register(outgoing=True, pattern=r"!get (audio|video) (.*)")
+@register(outgoing=True, pattern=r".get (audio|video) (.*)")
 async def download_video(v_url):
     sender = await v_url.get_sender() ; me = await v_url.client.get_me()
     if not sender.id == me.id:
@@ -613,7 +517,7 @@ async def download_video(v_url):
         await v_url.delete()
  
 
-@register(outgoing=True, pattern=r"^\!tts(?: |$)([\s\S]*)")
+@register(outgoing=True, pattern=r"^\.tts(?: |$)([\s\S]*)")
 async def _(event):
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
@@ -726,7 +630,7 @@ async def time_func(tdata):
         return
 
 
-@register(outgoing=True, pattern="^!date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
+@register(outgoing=True, pattern="^.date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
 async def date_func(dat):
     sender = await dat.get_sender() ; me = await dat.client.get_me()
     if not sender.id == me.id:
@@ -777,49 +681,6 @@ async def date_func(dat):
         await rkp.edit(f"`It's`  **{dtnow}**  `here, in {COUNTRY}"
                        f"({time_zone} timezone).`")
         return
-
-
-@register(outgoing=True, pattern="^!carbon ?(.*)")
-async def _(event):
-    if event.fwd_from:
-        return
-    sender = await event.get_sender() ; me = await event.client.get_me()
-    if not sender.id == me.id:
-        rkp = await event.reply("`processing...`")
-    else:
-    	rkp = await event.edit("`processing...`")   
-    input_str = event.pattern_match.group(1)
-    to_rip_mesg = event
-    if event.reply_to_msg_id and (not input_str or input_str == "reply"):
-        rep_mesg = await event.get_reply_message()
-        input_str = rep_mesg.message
-        to_rip_mesg = rep_mesg
-    chat = "@CarbonNowShBot"
-    chat_e = await event.client.get_entity(chat)
-    await rkp.edit("creating a carbon")
-    async with event.client.conversation(chat_e, timeout=180) as conv:
-        try:
-            await conv.send_message(input_str)
-            response = await conv.wait_event(events.MessageEdited(
-                incoming=True,
-                from_users=chat_e.id
-            ))          
-            row = random.randint(0, 8)
-            column = random.randint(0, 2)
-            await response.click(row, column)
-            response = await conv.wait_event(events.NewMessage(
-                incoming=True,
-                from_users=chat_e.id
-            ))
-            response_caption = response.message.message
-            response_caption_sp = response_caption.split("\n")           
-            response_caption = "\n".join(response_caption_sp[0:2])
-            carbon_media = response.message.media
-            await to_rip_mesg.reply(response_caption, file=carbon_media)          
-            await rkp.delete()
-        except YouBlockedUserError:
-            await rkp.reply("Please unblock me (@CarbonNowShBot)")
-            return
 
 
 
@@ -1065,35 +926,20 @@ async def download_video(v_url):
 
 CMD_HELP.update({
     "tools":
-    "`!reupload <customname>`\
-\n**Usage:** Reply to a media / video / photo to reupload with your custom name\
-\n\n`!search <keyword>`\
-\n**Usage:** Search given keyword in group and give results\
-\n\n`!stats `\
+    "`.stats `\
 \n**Usage:** Command to get stats about your account\
-\n\n`!carbon <text>`\
-\n**Usage:** Beautify your text\
-\n\n`!inviteall <chatusername/chatid>`\
+\n\n`.inviteall3 <chatusername/chatid>`\
 \n**Usage:** Invite all the members to current chat from given group/channel\
-\n\n`!tagall`\
-\n**Usage:** Tag all people in group\
-\n\n`!tts2 <text> (or reply) **or** `!tts` <langcode> <reply to a media>`\
+\n\n`.tts2 <text> (or reply) **or** `!tts` <langcode> <reply to a media>`\
 \n**Usage:** Translates text to speech for the language which is set.\n`!lang tts <language code>` to set language for trt. (Default is English)\
 \n\n`!trt <text> (or reply)` \
 \n**Usage:** Translates text to the language which is set..\n`!lang trt <language code>` to set language for trt. (Default is English)\
-\n\n`!get video <url> or get audio <url>`\
+\n\n`.get video <url> or get audio <url>`\
 \n**Usage:** Download video or audio from YouTube , facebook, Yahoo , [many other sites](https://ytdl-org.github.io/youtube-dl/supportedsites.html)\
 \n\n`!time <country name/code> <timezone number>`\
 \n**Usage:** Get the time of a country. If a country has multiple timezones it will list all of them and let you select one.\
-\n\n`!date <country name/code> <timezone number>`\
+\n\n`.date <country name/code> <timezone number>`\
 \n**Usage:** Get the date of a country. \
-\n\n**All Commands Support Sudo type !help sudo fore more info**\
 "
 })
-
-
-
-
-
-
 
