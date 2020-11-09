@@ -22,7 +22,7 @@ from datetime import datetime
 
 from google_images_download import google_images_download
 
-from userbot.util import admin_cmd
+from userbot.utils import admin_cmd
 
 from userbot.helpers import progress
 
