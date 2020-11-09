@@ -400,9 +400,9 @@ CMD_HELP.update({
     ".dl <link|filename> or reply to media\
 \nUsage: Downloads file to the server.\
 \n\n.upload <path in server>\
-\nUsage: Uploads a locally stored file to the chat."
+\nUsage: Uploads a locally stored file to the chat.
 \n\n.uploadir <path in server>\
-\nUsage: Uploads all files in that path."
+\nUsage: Uploads all files in that path.
 \n\n.uploadas(stream|vn|all) <path in server>\
 \nUsage: Uploads a locally stored file to the chat."
 
