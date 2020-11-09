@@ -31,7 +31,7 @@ async def grt(event):
     if event.fwd_from:
         return
     animation_interval = 2
-    animation_ttl = range(0,5)
+    animation_ttl = range(0,6)
     giveVar = event.text
     a = giveVar[5:6]
     if not a:
@@ -45,7 +45,7 @@ async def grt(event):
     for i in animation_ttl:
         	
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 5])
+        await event.edit(animation_chars[i % 6])
 
 @borg.on(admin_cmd(pattern=r"cheer"))
 async def cheer(event):
@@ -75,7 +75,7 @@ async def sprinkle(event):
 async def _(event):
     if event.fwd_from:
         return
-    animation_interval = 2
+    animation_interval = 3
     animation_ttl = range(0,7)
     await event.edit("☠️EVIL IS WAKE UP...HA...HA...HA ...👽‼️👾")
     animation_chars = [
@@ -84,7 +84,7 @@ async def _(event):
             "🎃",
             "💀",
             "👻",
-            "🧟",
+            "🧟‍♀",
             "🧛",
                   ]
 
