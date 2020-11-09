@@ -204,6 +204,27 @@ async def type(animu):
                             silent=True if animu.is_reply else False,
                             hide_via=True)
     await animu.delete()
+
+@register(outgoing=True, pattern="^.waifu(?: |$)(.*)")
+
+async def waifu(danish):
+#"""Generate random waifu sticker with the text!"""
+     
+    text = danish.pattern_match.group(1)
+    if not text:
+        if danish.is_reply:
+            text = (await danish.get_reply_message()).message
+        else:
+            await danish.answer("`No text given.`")
+            return
+    King = [ 32, 33, 37, 40, 41, 42, 58, 20]
+    sticcers = await bot.inline_query(
+        "stickerizerbot", f"#{random.choice(king)}{(deEmojify(text))}")
+    await sticcers[0].click(danish.chat_id,
+                            reply_to=danish.reply_to_msg_id,
+                            silent=True if danish.is_reply else False,
+                            hide_via=True)
+    await danish.delete()
     
 
 @register(outgoing=True, pattern=r"\.tweet(?: |$)(.*)")
@@ -245,6 +266,8 @@ CMD_HELP.update(
         "\nUsage: Create tweet for `Narendra Modi`.\n\n"
         ".cmm <text>"
         "\nUsage: Create banner for Change My Mind.\n\n"
+        ".waifu <text>"
+        "\nUsage: Random anime girl stickers.\n\n"
         ".type <text>"
         "\nUsage: random sticker is writing your text."
     }
