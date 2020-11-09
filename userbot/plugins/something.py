@@ -1,10 +1,9 @@
-''' Whatever Plugin by Noobs of Telegram i.e. @PhycoNinja13b and @Halto_Tha '''
 
 from telethon import events
 import asyncio
 import os
 import sys
-from uniborg.util import admin_cmd
+from userbot.utils import admin_cmd
 
 @borg.on(admin_cmd(pattern=r"lmoon"))
 async def test(event):
@@ -26,13 +25,27 @@ async def test(event):
    🌳/🚶           |   🚍         \ 🌴🚴🚴
 🌴/                    |                     \🌲""")
 
-# @PhycoNinja13b 's Part begin from here
 
-@borg.on(admin_cmd(pattern=r"hi"))
-async def hi(event):
+@borg.on(admin_cmd("hi"))
+async def grt(event):
     if event.fwd_from:
         return
-    await event.edit("🌺✨✨🌺✨🌺🌺🌺\n🌺✨✨🌺✨✨🌺✨\n🌺🌺🌺🌺✨✨🌺✨\n🌺✨✨🌺✨✨🌺✨\n🌺✨✨🌺✨🌺🌺🌺\n☁☁☁☁☁☁☁☁")
+    animation_interval = 2
+    animation_ttl = range(0,5)
+    giveVar = event.text
+    a = giveVar[5:6]
+    if not a:
+        a = "🌺"
+    b = giveVar[7:8]
+    if not b:
+        b = "✨"
+    await event.edit("Hoi")
+    animation_chars = [f"{a}{b}{b}{a}{b}{a}{a}{a}\n{a}{b}{b}{a}{b}{b}{a}{b}\n{a}{a}{a}{a}{b}{b}{a}{b}\n{a}{b}{b}{a}{b}{b}{a}{b}\n{a}{b}{b}{a}{b}{a}{a}{a}\n☁☁☁☁☁☁☁☁",f"{b}{a}{b}{b}{a}{b}{a}{b}\n{b}{a}{b}{b}{a}{b}{b}{b}\n{b}{a}{a}{a}{a}{b}{a}{b}\n{b}{a}{b}{b}{a}{b}{a}{b}\n{b}{a}{b}{b}{a}{b}{a}{b}",f"{b}{a}{b}{b}{a}{b}{a}{b}{b}{b}{b}{a}{a}{a}{a}{b}\n{b}{a}{b}{b}{a}{b}{a}{b}{b}{b}{b}{a}{b}{b}{a}{b}\n{b}{a}{a}{a}{a}{b}{a}{b}{b}{b}{b}{a}{b}{b}{a}{b}\n{b}{a}{b}{b}{a}{b}{a}{b}{b}{b}{b}{a}{b}{b}{a}{b}\n{b}{a}{b}{b}{a}{b}{a}{a}{a}{a}{b}{a}{a}{a}{a}{b}",f"{a}{b}{b}{a}{a}{b}{a}{a}{a}{b}{a}{b}{b}{b}{a}\n{a}{b}{a}{b}{a}{a}{b}{a}{b}{a}{a}{b}{a}{a}{a}\n{a}{b}{b}{a}{a}{a}{a}{b}{a}{a}{a}{b}{b}{a}{a}\n{a}{b}{a}{b}{a}{a}{a}{b}{a}{a}{a}{b}{a}{a}{a}\n{a}{b}{b}{a}{a}{a}{a}{b}{a}{a}{a}{b}{b}{b}{a}"]
+
+    for i in animation_ttl:
+        	
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[i % 5])
 
 @borg.on(admin_cmd(pattern=r"cheer"))
 async def cheer(event):
@@ -57,3 +70,25 @@ async def sprinkle(event):
     if event.fwd_from:
         return
     await event.edit("✨.•*¨*.¸.•*¨*.¸¸.•*¨*• ƸӜƷ\n🌸🌺🌸🌺🌸🌺🌸🌺\n Sprinkled with love❤\n🌷🌻🌷🌻🌷🌻🌷🌻\n ¨*.¸.•*¨*. ¸.•*¨*.¸¸.•*¨`*•.✨\n🌹🍀🌹🍀🌹🍀🌹🍀")
+
+@borg.on(admin_cmd("evil"))
+async def _(event):
+    if event.fwd_from:
+        return
+    animation_interval = 2
+    animation_ttl = range(0,7)
+    await event.edit("☠️EVIL IS WAKE UP...HA...HA...HA ...👽‼️👾")
+    animation_chars = [
+            "😈",
+            "👿",
+            "🎃",
+            "💀",
+            "👻",
+            "🧟",
+            "🧛",
+                  ]
+
+    for i in animation_ttl:
+         
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[i % 7])
