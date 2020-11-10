@@ -6,7 +6,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-@register(incoming=True, disable_edited=True, disable_errors=True)
+@register(incoming=True, disable_edited=False)
 async def filter_incoming_handler(handler):
     """ Checks if the incoming message contains handler of a filter """
     try:
