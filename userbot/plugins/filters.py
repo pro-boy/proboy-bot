@@ -2,7 +2,7 @@
 
 from asyncio import sleep
 from re import fullmatch, IGNORECASE, escape
-from userbot import PRIVATE_GROUP_BOT_API_ID, CMD_HELP
+from userbot import CMD_HELP
 from userbot.events import register
 
 
