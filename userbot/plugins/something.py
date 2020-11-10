@@ -31,7 +31,7 @@ async def hi(event):
     if event.fwd_from:
         return
     animation_interval = 2
-    animation_ttl = range(0,7)
+    animation_ttl = range(0,5)
     giveVar = event.text
     a = giveVar[5:6]
     if not a:
@@ -91,4 +91,4 @@ async def _(event):
     for i in animation_ttl:
          
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 8])
+        await event.edit(animation_chars[i % 7])
