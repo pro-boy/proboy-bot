@@ -1,127 +1,116 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-"""Filters
-Available Commands:
-.savefilter
-.listfilters
-.clearfilter"""
+""" Userbot module for filter commands """
+
 import asyncio
 import re
-from telethon import events, utils
-from telethon.tl import types
-from userbot.plugins.sql_helper.filter_sql import get_filter, add_filter, remove_filter, get_all_filters, remove_all_filters
-from userbot.utils import admin_cmd
+import sqlite3
+import time
 
-DELETE_TIMEOUT = 0
-TYPE_TEXT = 0
-TYPE_PHOTO = 1
-TYPE_DOCUMENT = 2
+from sqlalchemy import (Boolean, Column, Integer, String, UnicodeText,
+                        distinct, func)
 
-
-global last_triggered_filters
-last_triggered_filters = {}  # pylint:disable=E0602
+from userbot import CMD_HELP
+from userbot.events import register
 
 
-@command(incoming=True)
-async def on_snip(event):
-    global last_triggered_filters
-    name = event.raw_text
-    if event.chat_id in last_triggered_filters:
-        if name in last_triggered_filters[event.chat_id]:
-            # avoid userbot spam
-            # "I demand rights for us bots, we are equal to you humans." -Henri Koivuneva (t.me/UserbotTesting/2698)
-            return False
-    snips = get_all_filters(event.chat_id)
-    if snips:
-        for snip in snips:
-            pattern = r"( |^|[^\w])" + re.escape(snip.keyword) + r"( |$|[^\w])"
-            if re.search(pattern, name, flags=re.IGNORECASE):
-                if snip.snip_type == TYPE_PHOTO:
-                    media = types.InputPhoto(
-                        int(snip.media_id),
-                        int(snip.media_access_hash),
-                        snip.media_file_reference
-                    )
-                elif snip.snip_type == TYPE_DOCUMENT:
-                    media = types.InputDocument(
-                        int(snip.media_id),
-                        int(snip.media_access_hash),
-                        snip.media_file_reference
-                    )
-                else:
-                    media = None
-                message_id = event.message.id
-                if event.reply_to_msg_id:
-                    message_id = event.reply_to_msg_id
-                await event.reply(
-                    snip.reply,
-                    file=media
-                )
-                if event.chat_id not in last_triggered_filters:
-                    last_triggered_filters[event.chat_id] = []
-                last_triggered_filters[event.chat_id].append(name)
-                await asyncio.sleep(DELETE_TIMEOUT)
-                last_triggered_filters[event.chat_id].remove(name)
+@register(incoming=True)
+async def filter_incoming_handler(handler):
+    """ Checks if the incoming message contains handler of a filter """
+    try:
+        if not (await handler.get_sender()).bot:
+            try:
+                from userbot.plugins.sql_helper.filter_sql import get_filters
+            except AttributeError:
+                await handler.edit("`Running on Non-SQL mode!`")
+                return
+            listes = handler.text.split(" ")
+            filters = get_filters(handler.chat_id)
+            for trigger in filters:
+                for item in listes:
+                    pro = re.fullmatch(trigger.keyword, item, flags=re.IGNORECASE)
+                    if pro:
+                        await handler.reply(trigger.reply)
+                        return
+    except AttributeError:
+        pass
 
 
-@borg.on(admin_cmd("savefilter(.*)"))
-async def on_snip_save(event):
-    name = event.pattern_match.group(1)
-    msg = await event.get_reply_message()
-    if msg:
-        snip = {'type': TYPE_TEXT, 'text': msg.message or ''}
-        if msg.media:
-            media = None
-            if isinstance(msg.media, types.MessageMediaPhoto):
-                media = utils.get_input_photo(msg.media.photo)
-                snip['type'] = TYPE_PHOTO
-            elif isinstance(msg.media, types.MessageMediaDocument):
-                media = utils.get_input_document(msg.media.document)
-                snip['type'] = TYPE_DOCUMENT
-            if media:
-                snip['id'] = media.id
-                snip['hash'] = media.access_hash
-                snip['fr'] = media.file_reference
-        add_filter(event.chat_id, name, snip['text'], snip['type'], snip.get('id'), snip.get('hash'), snip.get('fr'))
-        await event.edit(f"filter {name} saved successfully. Get it with {name}")
-    else:
-        await event.edit("Reply to a message with `savefilter keyword` to save the filter")
+@register(outgoing=True, pattern="^.filter\\s.*")
+async def add_new_filter(new_handler):
+    """ For .filter command, allows adding new filters in a chat """
+    if not new_handler.text[0].isalpha() and new_handler.text[0] not in ("/", "#", "@", "!"):
+        try:
+            from userbot.plugins.sql_helper.filter_sql import add_filter
+        except AttributeError:
+            await new_handler.edit("`Running on Non-SQL mode!`")
+            return
+        message = new_handler.text
+        kek = message.split()
+        string = ""
+        for i in range(2, len(kek)):
+            string = string + " " + str(kek[i])
+        add_filter(str(new_handler.chat_id), kek[1], string)
+        await new_handler.edit("```Filter added successfully```")
 
 
-@borg.on(admin_cmd("listfilters"))
-async def on_snip_list(event):
-    all_snips = get_all_filters(event.chat_id)
-    OUT_STR = "Available Filters in the Current Chat:\n"
-    if len(all_snips) > 0:
-        for a_snip in all_snips:
-            OUT_STR += f"👉 {a_snip.keyword} \n"
-    else:
-        OUT_STR = "No Filters. Start Saving using `.savefilter`"
-    if len(OUT_STR) > 4096:
-        with io.BytesIO(str.encode(OUT_STR)) as out_file:
-            out_file.name = "filters.text"
-            await bot.send_file(
-                event.chat_id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
-                caption="Available Filters in the Current Chat",
-                reply_to=event
-            )
-            await event.delete()
-    else:
-        await event.edit(OUT_STR)
+@register(outgoing=True, pattern="^.stop\\s.*")
+async def remove_a_filter(r_handler):
+    """ For .stop command, allows you to remove a filter from a chat. """
+    if not r_handler.text[0].isalpha() and r_handler.text[0] not in ("/", "#", "@", "!"):
+        try:
+            from userbot.plugins.sql_helper.filter_sql import remove_filter
+        except AttributeError:
+            await r_handler.edit("`Running on Non-SQL mode!`")
+            return
+        message = r_handler.text
+        kek = message.split(" ")
+        remove_filter(r_handler.chat_id, kek[1])
+        await r_handler.edit("```Filter removed successfully```")
 
 
-@borg.on(admin_cmd("clearfilter (.*)"))
-async def on_snip_delete(event):
-    name = event.pattern_match.group(1)
-    remove_filter(event.chat_id, name)
-    await event.edit(f"filter {name} deleted successfully")
+@register(outgoing=True, pattern="^.rmfilters$")
+async def kick_marie_filter(kick):
+    """ For .rmfilters command, allows you to kick all \
+        Marie(or her clones) filters from a chat. """
+    if not kick.text[0].isalpha() and kick.text[0] not in ("/", "#", "@", "!"):
+        await kick.edit("```Will be kicking away all Marie filters.```")
+        time.sleep(3)
+        resp = await kick.get_reply_message()
+        filters = resp.text.split("-")[1:]
+        for i in filters:
+            await kick.reply("/stop %s" % (i.strip()))
+            await asyncio.sleep(0.3)
+        await kick.respond(
+            "```Successfully purged Marie filters yaay!```\n Gimme cookies!"
+        )
+        
 
 
-@borg.on(admin_cmd("clearallfilters$"))
-async def on_all_snip_delete(event):
-    remove_all_filters(event.chat_id)
-    await event.edit(f"filters **in current chat** deleted successfully")
+@register(outgoing=True, pattern="^.filters$")
+async def filters_active(event):
+    """ For .filters command, lists all of the active filters in a chat. """
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        try:
+            from userbot.modules.sql_helper.filter_sql import get_filters
+        except AttributeError:
+            await event.edit("`Running on Non-SQL mode!`")
+            return
+        transact = "`There are no filters in this chat.`"
+        filters = get_filters(event.chat_id)
+        for i in filters:
+            message = "Active filters in this chat: \n\n"
+            transact = message + "🔹 " + i.keyword + "\n"
+        await event.edit(transact)
+
+CMD_HELP.update({
+    "filters": "\
+.filters\
+\nUsage: List all active filters in this chat.\
+\n\n.filter <keyword> <reply message>\
+\nUsage: Add a filter to this chat. \
+The bot will now reply that message whenever 'keyword' is mentioned. \
+If you reply to a sticker with a keyword, the bot will reply with that sticker.\
+\nNOTE: all filter keywords are in lowercase.\
+\n\n.stop <filter>\
+\nUsage: Stops that filter.\
+"
+})
