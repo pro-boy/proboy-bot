@@ -90,7 +90,7 @@ async def filters_active(event):
     """ For .filters command, lists all of the active filters in a chat. """
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         try:
-            from userbot.modules.sql_helper.filter_sql import get_filters
+            from userbot.plugins.sql_helper.filter_sql import get_filters
         except AttributeError:
             await event.edit("`Running on Non-SQL mode!`")
             return
