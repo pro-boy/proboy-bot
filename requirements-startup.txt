@@ -28,6 +28,7 @@ heroku3
 httplib2
 html_telegraph_poster
 humanize
+keyboard
 jikanpy
 lxml
 lottie
