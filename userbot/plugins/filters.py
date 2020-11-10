@@ -58,10 +58,10 @@ async def add_new_filter(new_handler):
             )
             msg_id = msg_o.id
         else:
-            await 
-                new_handler.edit(
-                "`Saving media as reply to the filter requires the BOTLOG_CHATID to be set.`",
+            await new_handler.edit(
+                "`Saving media as reply to the filter requires the BOTLOG_CHATID to be set.`"
             )
+                
             return
     elif new_handler.reply_to_msg_id and not string:
         rep_msg = await new_handler.get_reply_message()
