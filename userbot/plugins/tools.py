@@ -684,7 +684,7 @@ async def date_func(dat):
 
 
 
-@register(outgoing=True, pattern=r"!song (.*)")
+@register(outgoing=True, pattern=r".isong (.*)")
 async def download_video(v_url):  
     lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
     if not sender.id == me.id:
@@ -940,6 +940,10 @@ CMD_HELP.update({
 \n**Usage:** Get the time of a country. If a country has multiple timezones it will list all of them and let you select one.\
 \n\n`.date <country name/code> <timezone number>`\
 \n**Usage:** Get the date of a country. \
+\n\n`.isong <song name>`\
+\n**Usage:** Direct song nd perfect for Indian. \
+\n\n`.!vsong <song name>`\
+\n**Usage:** Get Direct streaming song video. \
 "
 })
 
