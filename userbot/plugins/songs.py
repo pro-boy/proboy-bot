@@ -19,7 +19,8 @@ def bruh(name):
 
     os.system("instantmusic -q -s "+name)
 
-@register(outgoing=True, pattern=r".song (.*)")
+
+@borg.on(events.NewMessage(pattern='.song (.*)'))
  async def getmusic(so):
     if so.fwd_from:
         return
