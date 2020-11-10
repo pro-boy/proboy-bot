@@ -1,8 +1,7 @@
-
 from telethon import events
 import asyncio
 from userbot.utils import admin_cmd
-from userbot import bot, CMD_HELP, register
+from userbot import bot, CMD_HELP
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 import os
 try:
@@ -19,10 +18,9 @@ def bruh(name):
 
     os.system("instantmusic -q -s "+name)
 
-
-@borg.on(admin_cmd(pattern='.song ?(.*) '))
+@borg.on(admin_cmd(pattern='song ?(.*) '))
 @borg.on(events.NewMessage(pattern='.song (.*)'))
- async def getmusic(so):
+async def getmusic(so):
     if so.fwd_from:
         return
     song = so.pattern_match.group(1)
