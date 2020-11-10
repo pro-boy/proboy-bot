@@ -33,10 +33,10 @@ async def hi(event):
     animation_interval = 2
     animation_ttl = range(0,5)
     giveVar = event.text
-    a = giveVar[5:6]
+    a = giveVar[4]
     if not a:
         a = "🌺"
-    b = giveVar[7:8]
+    b = giveVar[5]
     if not b:
         b = "✨"
     await event.edit("Hoi")
