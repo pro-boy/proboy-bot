@@ -5,7 +5,7 @@ import requests
 
 from userbot.utils import admin_cmd
 from userbot.helpers import convert_toimage
-from userbot.events import CMD_HELP
+from userbot import CMD_HELP
 
 @borg.on(admin_cmd(pattern="(rmbg|srmbg) ?(.*)"))
 async def remove_background(event):
