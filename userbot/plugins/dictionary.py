@@ -1,12 +1,12 @@
 """Dictionary Plugin for @UniBorg
-Syntax: .meaning <word>"""
+Syntax: .mean <word>"""
 
 import requests
 from telethon import events
 from uniborg.util import admin_cmd
 
 
-@borg.on(admin_cmd("meaning (.*)"))
+@borg.on(admin_cmd("mean (.*)"))
 async def _(event):
     if event.fwd_from:
         return
