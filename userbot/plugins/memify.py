@@ -99,9 +99,9 @@ async def memes(cat):
 CMD_HELP.update({
     "memify":
     "**Plugin : **`memify`\
-    \n\n**Syntax :** `.mmf toptext ; bottomtext`\
+    \n\n**Syntax :** `.mms toptext ; bottomtext`\
     \n**Usage : **Creates a image meme with give text at specific locations and sends\
-    \n\n**Syntax : **`.mms toptext ; bottomtext`\
+    \n\n**Syntax : **`.mmf toptext ; bottomtext`\
     \n**Usage : **Creates a sticker meme with give text at specific locations and sends\
     "
 })
