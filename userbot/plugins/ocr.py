@@ -7,6 +7,7 @@ import os
 import requests
 from uniborg.util import admin_cmd
 
+OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
 
 def ocr_space_file(filename, overlay=False, api_key=Config.OCR_SPACE_API_KEY, language='eng'):
     """ OCR.space API request with local file.
