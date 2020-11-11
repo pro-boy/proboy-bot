@@ -5,7 +5,8 @@ from telethon import events
 import json
 import os
 import requests
-from uniborg.util import admin_cmd
+from userbot import uniborgConfig as Config
+from userbot.utils import admin_cmd
 
 OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
 
