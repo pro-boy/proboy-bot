@@ -5,7 +5,7 @@ from userbot import LOGS , CMD_HELP
 from userbot.helpers import take_screen_shot ,runcmd, convert_toimage, convert_tosticker, cat_meme, cat_meeme
 from userbot.utils import admin_cmd
 
-@borg.on(admin_cmd(outgoing=True, pattern="(mmf|mms) ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="(mms|mmf) ?(.*)"))
 async def memes(cat):
     cmd = cat.pattern_match.group(1)
     catinput = cat.pattern_match.group(2)
@@ -39,7 +39,7 @@ async def memes(cat):
 
     if catsticker.endswith(".tgs"):
         await cat.edit(
-            "```Transfiguration Time! Mwahaha memifying this animated sticker! (」ﾟﾛﾟ)｣```"
+            "Memifying🔸🔸🔸 "
         )
         catfile = os.path.join("./temp/", "meme.png")
         catcmd = (
@@ -52,7 +52,7 @@ async def memes(cat):
         meme_file = catfile
     elif catsticker.endswith(".webp"):
         await cat.edit(
-            "```Transfiguration Time! Mwahaha memifying this sticker! (」ﾟﾛﾟ)｣```"
+            "Memifying🔸🔸🔸"
         )
         catfile = os.path.join("./temp/", "memes.jpg")
         os.rename(catsticker, catfile)
@@ -62,7 +62,7 @@ async def memes(cat):
         meme_file = catfile
     elif catsticker.endswith((".mp4", ".mov")):
         await cat.edit(
-            "```Transfiguration Time! Mwahaha memifying this video! (」ﾟﾛﾟ)｣```"
+            "Memifying🔸🔸🔸"
         )
         catfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(catsticker, 0, catfile)
@@ -72,7 +72,7 @@ async def memes(cat):
         meme_file = catfile
     else:
         await cat.edit(
-            "```Transfiguration Time! Mwahaha memifying this image! (」ﾟﾛﾟ)｣```"
+            "Memifying🔸🔸🔸"
         )
         meme_file = catsticker
     try:
