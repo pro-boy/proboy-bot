@@ -6,6 +6,8 @@
    Heroku manager for your userbot
 """
 
+from operator import itemgetter
+import aiohttp
 import heroku3
 import asyncio
 import os
