@@ -1,7 +1,7 @@
 
 import random
-from userbot.events import register
-from userbot import admin_cmd, CMD_HELP
+from userbot.events import register, CMD_HELP
+from userbot.utils import admin_cmd
 from telethon import events, types, functions, utils
 
 
