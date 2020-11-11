@@ -202,6 +202,14 @@ def convert_toimage(image):
     os.remove(image)
     return "temp.jpg"
 
+async def convert_tosticker(image):
+    img = Image.open(image)
+    if img.mode != "RGB":
+        img = img.convert("RGB")
+    img.save("./temp/temp.webp", "webp")
+    os.remove(image)
+    return "./temp/temp.webp"
+
 # for nekobot
 async def trumptweet(text):
         r = requests.get(
