@@ -2,7 +2,7 @@ import os
 import asyncio
 import lottie
 from userbot import LOGS , CMD_HELP
-from userbot.helpers import take_screen_shot ,runcmd, convert_toimage
+from userbot.helpers import take_screen_shot ,runcmd, convert_toimage, cat_meme, cat_meeme
 from userbot.utils import admin_cmd
 
 @borg.on(admin_cmd(outgoing=True, pattern="(mmf|mms) ?(.*)"))
