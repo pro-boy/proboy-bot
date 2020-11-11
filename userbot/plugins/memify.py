@@ -5,7 +5,7 @@ from userbot import LOGS , CMD_HELP
 from userbot.helpers import take_screen_shot ,runcmd, convert_toimage, convert_tosticker, cat_meme, cat_meeme
 from userbot.utils import admin_cmd
 
-@borg.on(admin_cmd(outgoing=True, pattern="(mms|mmf) ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="(mmf|mms) ?(.*)"))
 async def memes(cat):
     cmd = cat.pattern_match.group(1)
     catinput = cat.pattern_match.group(2)
