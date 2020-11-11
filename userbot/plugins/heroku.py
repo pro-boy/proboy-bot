@@ -11,6 +11,7 @@ import asyncio
 import os
 import requests
 import math
+from userbot.events import register
 from userbot.utils import admin_cmd
 from userbot import CMD_HELP
 from userbot.uniborgConfig import Config
@@ -102,6 +103,106 @@ async def variable(var):
             del heroku_var[variable]
         else:
             return await var.edit(f"**{variable}**  `is not exists`")
+
+@register(outgoing=True, pattern="^\!shutdown$")
+
+async def _(dyno):        
+
+        try:
+
+             Heroku = heroku3.from_key(HEROKU_API_KEY)                         
+
+             app = Heroku.app(HEROKU_APP_NAME)
+
+        except:
+
+  	       return await dyno.reply(" `Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var` please check https://telegra.ph/RkPavi-06-09-6")
+
+        app.scale_formation_process("worker", 0)
+
+        text = f"`Turning Off Dynos` "
+
+        sleep = 1
+
+        dot = "."
+
+        while (sleep <= 3):
+
+            await dyno.edit(text + f"`{dot}`")
+
+            await asyncio.sleep(1)
+
+            dot += "."
+
+            sleep += 1
+
+        await dyno.respond(f"turned off...`")
+
+        return await dyno.delete()
+
+@register(outgoing=True, pattern="^\!restart$")
+
+async def _(dyno):        
+
+        try:
+
+             Heroku = heroku3.from_key(HEROKU_API_KEY)                         
+
+             app = Heroku.app(HEROKU_APP_NAME)
+
+        except:
+
+  	       return await dyno.reply(" `Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var` please check https://telegra.ph/RkPavi-06-09-6")
+
+        try:           
+
+            Dyno = app.dynos()[0]
+
+        except IndexError:
+
+            return await dyno.respond(f"**{HEROKU_APP_NAME}** `is not on...`")
+
+        else:
+
+            text = f"`Restarted Dynos....`"
+
+            Dyno.restart()
+
+            sleep = 1
+
+            dot = "."
+
+            await dyno.edit(text)
+
+            while (sleep <= 24):
+
+                await dyno.edit(text + f"`{dot}`")
+
+                await asyncio.sleep(1)
+
+                if len(dot) == 3:
+
+                    dot = "."
+
+                else:
+
+                    dot += "."
+
+                sleep += 1
+
+            state = Dyno.state
+
+            if state == "up":
+
+                await dyno.respond(f"**{HEROKU_APP_NAME}** `restarted...`")
+
+            elif state == "crashed":
+
+                await dyno.respond(f"**{HEROKU_APP_NAME}** `crashed...`")
+
+            return await dyno.delete()
+
+            
 
 
 @borg.on(admin_cmd(pattern="usage(?: |$)", outgoing=True))
