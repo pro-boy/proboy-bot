@@ -1,6 +1,5 @@
 import os
 import asyncio
-from .. import tempmemes
 from userbot import LOGS , CMD_HELP
 from userbot.helpers import take_screen_shot ,runcmd, convert_toimage
 from userbot.utils import admin_cmd
