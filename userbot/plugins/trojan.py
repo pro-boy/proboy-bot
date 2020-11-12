@@ -8,9 +8,10 @@ from userbot.utils import admin_cmd
 from userbot import CMD_HELP, CMD_LIST
 from userbot.events import register
 
-@borg.on(admin_cmd(pattern=r"trojan"))
-async def typewriter(typew):
-	message = typew.pattern_match.group(1)
+@borg.on(admin_cmd(pattern=r"dvirus"))
+async def dvirus(typew):
+    if event.fwd_from:
+        return
 	await typew.edit("`Trojan is thrown ...`")
 	sleep(4)
 	await typew.edit("0%")
@@ -318,7 +319,7 @@ async def typewriter(typew):
 	#
 
 CMD_HELP.update({
-    "trojan":
-    ".trojan\
+    "dvirus":
+    ".dvirus\
     ."
 })
