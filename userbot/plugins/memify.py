@@ -20,7 +20,12 @@ async def memes(cat):
         else:
             top = catinput
             bottom = ""
-    
+    else:
+        await edit_or_reply(
+            cat, "```what should i write on that u idiot give some text```"
+        )
+        return
+
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
     cat = await cat.edit("`Downloading media......`")
@@ -84,7 +89,7 @@ async def memes(cat):
         await cat_meme(top, bottom, meme_file, meme)
     else:
         await cat_meeme(top, bottom, meme_file, meme)
-    if cmd != "mmf":
+    if cmd != "mms":
         meme = await convert_tosticker(meme)
     await cat.client.send_file(cat.chat_id, meme, reply_to=catid)
     await cat.delete()
