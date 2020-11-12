@@ -83,9 +83,10 @@ async def kannagen(text):
     return "gpx.webp"
 
 
+
 async def moditweet(text):
-        r = requests.get(
-            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi").json()
+       r = requests.get(
+            f"https://nekobot.xyz/api/imagegen?type=moditweet&text={text}&username=narendramodi").json()
         geng = r.get("message")
         kapak = url(geng)
         if not kapak:
@@ -196,7 +197,7 @@ async def type(animu):
         else:
             await animu.answer("`No text given.`")
             return
-    animus = [1, 2, 3, 4, 5, 6, 8, 7, 9, 10, 11, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53, 55]
+    animus = [1, 2, 3, 4, 5, 6, 8, 7, 10, 11, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53]
     sticcers = await bot.inline_query(
         "stickerizerbot", f"#{random.choice(animus)}{(deEmojify(text))}")
     await sticcers[0].click(animu.chat_id,
