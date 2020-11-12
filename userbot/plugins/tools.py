@@ -684,7 +684,7 @@ async def date_func(dat):
 
 
 
-@borg.on(admin_cmd(pattern=r".isong (.*)"))
+@borg.on(admin_cmd(pattern=r"isong (.*)"))
 async def download_video(v_url):  
     lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
     if not sender.id == me.id:
