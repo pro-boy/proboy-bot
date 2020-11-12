@@ -86,7 +86,7 @@ async def kannagen(text):
 
 async def moditweet(text):
        r = requests.get(
-            f"https://nekobot.xyz/api/imagegen?type=moditweet&text={text}&username=narendramodi").json()
+            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi").json()
         geng = r.get("message")
         kapak = url(geng)
         if not kapak:
