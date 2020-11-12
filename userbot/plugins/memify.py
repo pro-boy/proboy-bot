@@ -31,7 +31,7 @@ async def memes(cat):
     cat = await cat.edit("`Downloading media......`")
     from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-    await asyncio.sleep(2)
+    await asyncio.sleep(0.3)
     catsticker = await reply.download_media(file="./temp/")
     if not catsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
         os.remove(catsticker)
