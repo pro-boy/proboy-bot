@@ -60,4 +60,4 @@ urbandict>=0.5
 validators
 wand
 wikipedia>=1.4.0
-youtube-dl-gui
+youtube-dl
