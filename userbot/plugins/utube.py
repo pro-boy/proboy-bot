@@ -58,7 +58,7 @@ async def fetcher(event):
         return
     song = event.pattern_match.group(1)
     chat = "@utubebot"
-    event = await event.edit("SEARCH_STRING, parse_mode="html")
+    event = await event.edit(SEARCH_STRING, parse_mode="html")
     async with event.client.conversation(chat) as conv:
         try:
             purgeflag = await conv.send_message("/start")
