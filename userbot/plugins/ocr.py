@@ -5,7 +5,6 @@ from telethon import events
 import json
 import os
 import requests
-from userbot import uniborgConfig as Config
 from userbot.utils import admin_cmd
 
 
