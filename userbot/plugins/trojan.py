@@ -4,9 +4,10 @@ import asyncio
 import re
 import time
 from time import sleep
-from userbot import CMD_HELP, CMD_LIST
+from userbot import CMD_HELP, CMD_LIST, admin_cmd
 from userbot.events import register
 
+@borg.on(admin_cmd(pattern=r"trojan"))
 @borg.on(events.NewMessage(pattern=r"trojan", outgoing=True))
 async def typewriter(typew):
 	message = typew.pattern_match.group(1)
