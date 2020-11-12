@@ -26,7 +26,7 @@ def choser(cmd, pack, blacklist={}):
 choser('sgirls', 'cutegirls00_by_fStikBot')
 choser('solo', 'SungJinWoo')
 choser('scat', 'Jshshsbdbdbev')
-choser('sani', 'Jayu_Animated', {
+choser('sjay', 'Jayu_Animated', {
     1653974154589768377,
     1653974154589768312,
     1653974154589767857,
