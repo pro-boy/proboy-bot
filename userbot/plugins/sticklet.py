@@ -1,5 +1,7 @@
-# Random RGB Sticklet by @PhycoNinja13b
-# modified by @UniBorg
+"""
+Command - .sticklet <text>
+Make sticker of text with random colour and font.
+"""
 
 import io
 import os
@@ -8,10 +10,10 @@ import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
-from uniborg.util import admin_cmd
+from userbot.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="srgb (.*)"))
+@borg.on(admin_cmd(pattern="sticklet (.*)"))
 async def sticklet(event):
     R = random.randint(0,256)
     G = random.randint(0,256)
@@ -22,7 +24,6 @@ async def sticklet(event):
     sticktext = event.pattern_match.group(1)
 
     # delete the userbot command,
-    # i don't know why this is required
     await event.delete()
 
     # https://docs.python.org/3/library/textwrap.html#textwrap.wrap
@@ -34,7 +35,7 @@ async def sticklet(event):
     draw = ImageDraw.Draw(image)
     fontsize = 230
 
-    FONT_FILE = await get_font_file(event.client, "@FontRes")
+    FONT_FILE = await get_font_file(event.client, "@FontHub")
 
     font = ImageFont.truetype(FONT_FILE, size=fontsize)
 
@@ -46,15 +47,13 @@ async def sticklet(event):
     draw.multiline_text(((512-width)/2,(512-height)/2), sticktext, font=font, fill=(R, G, B))
 
     image_stream = io.BytesIO()
-    image_stream.name = "@UniBorg.webp"
+    image_stream.name = "leobrownlee.webp"
     image.save(image_stream, "WebP")
     image_stream.seek(0)
 
     # finally, reply the sticker
-    #await event.reply( file=image_stream, reply_to=event.message.reply_to_msg_id)
-    #replacing upper line with this to get reply tags
+    await event.client.send_message(event.chat_id, "{}".format(sticktext), file=image_stream, reply_to=event.message.reply_to_msg_id)
 
-    await event.client.send_file(event.chat_id, image_stream, reply_to=event.message.reply_to_msg_id)
     # cleanup
     try:
         os.remove(FONT_FILE)
