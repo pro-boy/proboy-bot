@@ -146,7 +146,7 @@ def user_full_name(user):
  
 
 
-@register(outgoing=True, pattern=r"^.stats(?: |$)(.*)") 
+@borg.on(admin_cmd(pattern=r"stats(?: |$)(.*)"))
 async def stats(event: NewMessage.Event) -> None:  
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
@@ -229,7 +229,7 @@ async def stats(event: NewMessage.Event) -> None:
 
 
 
-@register(pattern=".inviteall2(?: |$)(.*)", outgoing=True)
+@borg.on(admin_cmd(pattern=r"inviteall2(?: |$)(.*)"))
 async def get_users(event):   
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
@@ -256,7 +256,7 @@ async def get_users(event):
 
 
 
-@register(pattern=".inviteall3(?: |$)(.*)", outgoing=True)
+@borg.on(admin_cmd(pattern=r"inviteall3(?: |$)(.*)"))
 async def get_users(event):   
     rk1 = await get_chatinfo(event) ; chat = await event.get_chat()
     if event.is_private:
@@ -280,7 +280,7 @@ async def get_users(event):
 
 
 
-@register(outgoing=True, pattern=r"^.tts2(?: |$)([\s\S]*)")
+@borg.on(admin_cmd(pattern=r"tts2(?: |$)([\s\S]*)"))
 async def text_to_speech(query):    
     sender = await query.get_sender() ; me = await query.client.get_me()
     if not sender.id == me.id:
@@ -349,7 +349,7 @@ async def translateme(trans):
     
  
  
-@register(pattern=".lang (trt|tts) (.*)", outgoing=True)
+@borg.on(admin_cmd(pattern=r"lang (trt|tts) (.*)"))
 async def lang(value):
     sender = await value.get_sender() ; me = await value.client.get_me()
     if not sender.id == me.id:
@@ -388,7 +388,7 @@ async def lang(value):
 
  
  
-@register(outgoing=True, pattern=r".get (audio|video) (.*)")
+@borg.on(admin_cmd(pattern=r"get (audio|video) (.*)"))
 async def download_video(v_url):
     sender = await v_url.get_sender() ; me = await v_url.client.get_me()
     if not sender.id == me.id:
@@ -517,7 +517,7 @@ async def download_video(v_url):
         await v_url.delete()
  
 
-@register(outgoing=True, pattern=r"^\.tts(?: |$)([\s\S]*)")
+@borg.on(admin_cmd(pattern=r"tts(?: |$)([\s\S]*)"))
 async def _(event):
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
@@ -630,7 +630,7 @@ async def time_func(tdata):
         return
 
 
-@register(outgoing=True, pattern="^.date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
+@borg.on(admin_cmd(pattern=r"date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?"))
 async def date_func(dat):
     sender = await dat.get_sender() ; me = await dat.client.get_me()
     if not sender.id == me.id:
@@ -684,7 +684,7 @@ async def date_func(dat):
 
 
 
-@register(outgoing=True, pattern=r".isong (.*)")
+@borg.on(admin_cmd(pattern=r".isong (.*)"))
 async def download_video(v_url):  
     lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
     if not sender.id == me.id:
