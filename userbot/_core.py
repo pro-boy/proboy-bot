@@ -43,29 +43,24 @@ async def install(event):
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
 
-@bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)$"))
+@bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
 async def send(event):
     if event.fwd_from:
         return
-    reply_to_id = None
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    thumb = None
-    if os.path.exists(thumb_image_path):
-        thumb = thumb_image_path
-    input_str = event.pattern_match["shortname"]
+    kraken = bot.uid
+    message_id = event.message.id
+    input_str = event.pattern_match.group(1)
     the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
     if os.path.exists(the_plugin_file):
         start = datetime.now()
-        plug = await event.client.send_file(  # pylint:disable=E0602
+        pro = await event.client.send_file(
             event.chat_id,
             the_plugin_file,
             force_document=True,
             allow_cache=False,
-            reply_to=reply_to_id,
-            thumb=thumb,
+            reply_to=message_id,
         )
-        end = datetime.now()
+         end = datetime.now()
         ms = (end - start).seconds
         await event.delete()
         await plug.edit(
