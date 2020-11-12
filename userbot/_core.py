@@ -60,15 +60,15 @@ async def send(event):
             allow_cache=False,
             reply_to=message_id,
         )
-         end = datetime.now()
-        ms = (end - start).seconds
-        await event.delete()
-        await plug.edit(
+        end = datetime.now()
+        time_taken_in_ms = (end - start).seconds
+        await pro.edit(
             f"__**♐Plugin --->> {input_str} .**__\n__**♋In ---->> {ms} sec.**__\n__**♎ ßy ---->> **__ {DEFAULTUSER}"
         )
+        await asyncio.sleep(DELETE_TIMEOUT)
+        await event.delete()
     else:
-        await event.edit("404: File Not Found")
-
+        await event.edit("`ERROR 404 : File not found`")
 
 @bot.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
 async def unload(event):
