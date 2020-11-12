@@ -87,12 +87,13 @@ async def kannagen(text):
 async def moditweet(text):
        r = requests.get(
             f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi").json()
-        geng = r.get("message")
-        kapak = url(geng)
+      
+        gang = r.get("message")
+        kapak = url(gang)
         if not kapak:
             return  "check syntax once more"
         with open("gpx.png", "wb") as f:
-            f.write(requests.get(geng).content)
+            f.write(requests.get(gang).content)
         img = Image.open("gpx.png").convert("RGB")
         img.save("gpx.webp", "webp")    
         return "gpx.webp"
