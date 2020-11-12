@@ -98,18 +98,7 @@ async def moditweet(text):
 
 async def miatweet(text):
         r = requests.get(
-            async def miatweet(text):
-        r = requests.get(
-            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi").json()
-        geng = r.get("message")
-        kapak = url(geng)
-        if not kapak:
-            return  "check syntax once more"
-        with open("gpx.png", "wb") as f:
-            f.write(requests.get(geng).content)
-        img = Image.open("gpx.png").convert("RGB")
-        img.save("gpx.webp", "webp")    
-        return "gpx.webp"
+            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa").json()
         geng = r.get("message")
         kapak = url(geng)
         if not kapak:
