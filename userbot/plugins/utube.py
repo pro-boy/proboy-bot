@@ -52,13 +52,13 @@ NOT_FOUND_STRING = "<code>Sorry !I am unable to find any results to your query</
 SENDING_STRING = "<code>Ok I found something related to that.....</code>"
 BOT_BLOCKED_STRING = "<code>Please unblock @utubebot and try again</code>"
 
-@bot.on(admin_cmd(pattern="yt (.*)"))
+@bot.on(admin_cmd(pattern="ut (.*)"))
 async def fetcher(event):
     if event.fwd_from:
         return
     song = event.pattern_match.group(1)
     chat = "@utubebot"
-    event = await edit_or_reply(event, SEARCH_STRING, parse_mode="html")
+    event = await event.edit("SEARCH_STRING, parse_mode="html")
     async with event.client.conversation(chat) as conv:
         try:
             purgeflag = await conv.send_message("/start")
@@ -92,7 +92,7 @@ async def fetcher(event):
         await event.delete()
         await delete_messages(event, chat, purgeflag)
 
-@borg.on(admin_cmd(pattern="utube(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="utv(?: |$)(.*)"))
 
 async def nope(doit):
     ok = doit.pattern_match.group(1)
