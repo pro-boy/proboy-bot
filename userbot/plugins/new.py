@@ -15,7 +15,7 @@ import json
 from PIL import Image, ImageEnhance, ImageOps
 from userbot import CMD_HELP
 from userbot.events import register
-from userbot.helpers.functions import moditweet, miatweet
+from userbot.helpers.functions import moditweet
 
 EMOJI_PATTERN = re.compile(
     "["
@@ -151,6 +151,19 @@ async def modi(event):
     await event.delete()
     await purge()
 
+async def miatweet(text):
+        r = requests.get(
+            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa").json()
+        wew = r.get("message")
+        hburl = url(wew)
+        if not hburl:
+            return  "check syntax once more"
+        with open("temp.png", "wb") as f:
+            f.write(requests.get(wew).content)
+        img = Image.open("temp.png").convert("RGB")
+        img.save("temp.webp", "webp")    
+        return "temp.webp"   
+   
 @register(pattern="^\.mia(?: |$)(.*)", outgoing=True)
 async def nekobot(borg):
     text = borg.pattern_match.group(1)
