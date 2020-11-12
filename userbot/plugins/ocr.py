@@ -5,8 +5,8 @@ Available Languages: .ocrlanguages"""
 import os
 import requests
 import json
-from userbot.utils import admin_cmd
-from userbot.events import CMD_HELP
+from userbot.utils import admin_cmd, CMD_HELP
+
 
 OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
 
