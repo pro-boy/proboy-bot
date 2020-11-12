@@ -43,6 +43,38 @@ async def install(event):
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
 
+@bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)$"))
+async def send(event):
+    if event.fwd_from:
+        return
+    reply_to_id = None
+    if event.reply_to_msg_id:
+        reply_to_id = event.reply_to_msg_id
+    thumb = None
+    if os.path.exists(thumb_image_path):
+        thumb = thumb_image_path
+    input_str = event.pattern_match["shortname"]
+    the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
+    if os.path.exists(the_plugin_file):
+        start = datetime.now()
+        plug = await event.client.send_file(  # pylint:disable=E0602
+            event.chat_id,
+            the_plugin_file,
+            force_document=True,
+            allow_cache=False,
+            reply_to=reply_to_id,
+            thumb=thumb,
+        )
+        end = datetime.now()
+        ms = (end - start).seconds
+        await event.delete()
+        await plug.edit(
+            f"__**♐Plugin --->> {input_str} .**__\n__**♋In ---->> {ms} sec.**__\n__**♎ ßy ---->> **__ {DEFAULTUSER}"
+        )
+    else:
+        await event.edit("404: File Not Found")
+
+
 @bot.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
 async def unload(event):
     if event.fwd_from:
