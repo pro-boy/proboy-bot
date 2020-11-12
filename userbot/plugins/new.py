@@ -112,7 +112,6 @@ async def tweets(text1, text2):
     return "gpx.webp"
 
 
-
 async def purge():
     try:
         os.remove("gpx.png")
@@ -140,7 +139,6 @@ async def trump(event):
     await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
     await event.delete()
     await purge()
-
 
 
 @register(outgoing=True, pattern=r"^\.modi(?: |$)(.*)")
