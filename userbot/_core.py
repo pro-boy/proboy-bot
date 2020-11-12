@@ -7,12 +7,36 @@ from userbot.utils import admin_cmd, load_module, remove_plugin, edit_or_reply
 from userbot import ALIVE_NAME
 from userbot import bot
 
-DELETE_TIMEOUT = 5
+DELETE_TIMEOUT = 3
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Mr.X"
 
 
-
-
+@bot.on(admin_cmd(pattern="install"))
+async def install(event):
+    if event.fwd_from:
+        return
+    if event.reply_to_msg_id:
+        try:
+            downloaded_file_name = (
+                await event.client.download_media(  # pylint:disable=E0602
+                    await event.get_reply_message(),
+                    "userbot/plugins/",  # pylint:disable=E0602
+                )
+            )
+            if "(" not in downloaded_file_name:
+                path1 = Path(downloaded_file_name)
+                shortname = path1.stem
+                load_module(shortname.replace(".py", ""))
+                await event.edit(
+                    "Plugin successfully installed\n 🙏🙏🙏 `{}`".format(
+                        os.path.basename(downloaded_file_name)
+                    )
+                )
+            else:
+                os.remove(downloaded_file_name)
+                await event.edit(
+                    "**Error!**\nPlugin cannot be installed!\n Or may have been pre-installed."
+                )
         except Exception as e:  # pylint:disable=C0103,W0703
             await event.edit(str(e))
             os.remove(downloaded_file_name)
