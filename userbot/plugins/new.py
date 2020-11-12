@@ -96,6 +96,29 @@ async def moditweet(text):
         img.save("gpx.webp", "webp")    
         return "gpx.webp"
 
+async def miatweet(text):
+        r = requests.get(
+            async def miatweet(text):
+        r = requests.get(
+            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi").json()
+        geng = r.get("message")
+        kapak = url(geng)
+        if not kapak:
+            return  "check syntax once more"
+        with open("gpx.png", "wb") as f:
+            f.write(requests.get(geng).content)
+        img = Image.open("gpx.png").convert("RGB")
+        img.save("gpx.webp", "webp")    
+        return "gpx.webp"
+        geng = r.get("message")
+        kapak = url(geng)
+        if not kapak:
+            return  "check syntax once more"
+        with open("gpx.png", "wb") as f:
+            f.write(requests.get(geng).content)
+        img = Image.open("gpx.png").convert("RGB")
+        img.save("gpx.webp", "webp")    
+        return "gpx.webp"
 
 async def tweets(text1, text2):
     r = requests.get(
@@ -111,18 +134,7 @@ async def tweets(text1, text2):
     img.save("gpx.webp", "webp")
     return "gpx.webp"
 
-async def miatweet(text):
-        r = requests.get(
-            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa").json()
-        wew = r.get("message")
-        hburl = url(wew)
-        if not hburl:
-            return  "check syntax once more"
-        with open("temp.png", "wb") as f:
-            f.write(requests.get(wew).content)
-        img = Image.open("temp.png").convert("RGB")
-        img.save("temp.webp", "webp")    
-        return "temp.webp"
+
 
 async def purge():
     try:
@@ -152,32 +164,25 @@ async def trump(event):
     await event.delete()
     await purge()
 
-@register(pattern="^.mia(?: |$)(.*)", outgoing=True)
-async def nekobot(borg):
-    text = borg.pattern_match.group(1)
-    reply_to_id = borg.message
-    if borg.reply_to_msg_id:
-        reply_to_id = await borg.get_reply_message()
+@register(outgoing=True, pattern=r"^\.mia(?: |$)(.*)")
+async def mia(event):
+    text = event.pattern_match.group(1)
+    text = re.sub("&", "", text)
+    reply_to_id = event.message
+    if event.reply_to_msg_id:
+        reply_to_id = await event.get_reply_message()
     if not text:
-        if borg.is_reply:
-            if not reply_to_id.media:
-                text = reply_to_id.message
-            else:
-                await borg.edit("Send you text to Mia so she can tweet.")
-                return
+        if event.is_reply and not reply_to_id.media:
+            text = reply_to_id.message
         else:
-            await borg.edit("Send you text to Mia so she can tweet.")
+            await event.edit("`Send you text to Mia so he can tweet.`")
             return
-    await borg.edit("Requesting Mia to tweet...")
-    try:
-        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
-        await borg.client(hell)
-    except:
-        pass   
+    await event.edit("`Requesting Mia to tweet...`")
     text = deEmojify(text)
-    borgfile = await miatweet(text)
-    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
-    await borg.delete()
+    img = await miatweet(text)
+    await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
+    await event.delete()
+    await purge()
 
 @register(outgoing=True, pattern=r"^\.modi(?: |$)(.*)")
 async def modi(event):
