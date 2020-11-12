@@ -263,19 +263,7 @@ async def moditweet(text):
         img.save("temp.webp", "webp")    
         return "temp.webp"     
 
- async def miatweet(text):
-        r = requests.get(
-            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa").json()
-        wew = r.get("message")
-        hburl = url(wew)
-        if not hburl:
-            return  "check syntax once more"
-        with open("temp.png", "wb") as f:
-            f.write(requests.get(wew).content)
-        img = Image.open("temp.png").convert("RGB")
-        img.save("temp.webp", "webp")    
-        return "temp.webp"   
-   
+ 
 async def tweets(text1,text2):
         r = requests.get(
             f"https://nekobot.xyz/api/imagegen?type=tweet&text={text1}&username={text2}").json()
