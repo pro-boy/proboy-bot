@@ -96,18 +96,6 @@ async def moditweet(text):
         img.save("gpx.webp", "webp")    
         return "gpx.webp"
 
-async def miatweet(text):
-        r = requests.get(
-            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa").json()
-        geng = r.get("message")
-        kapak = url(geng)
-        if not kapak:
-            return  "check syntax once more"
-        with open("gpx.png", "wb") as f:
-            f.write(requests.get(geng).content)
-        img = Image.open("gpx.png").convert("RGB")
-        img.save("gpx.webp", "webp")    
-        return "gpx.webp"
 
 async def tweets(text1, text2):
     r = requests.get(
@@ -153,25 +141,7 @@ async def trump(event):
     await event.delete()
     await purge()
 
-@register(outgoing=True, pattern=r"^\.mia(?: |$)(.*)")
-async def mia(event):
-    text = event.pattern_match.group(1)
-    text = re.sub("&", "", text)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
-    if not text:
-        if event.is_reply and not reply_to_id.media:
-            text = reply_to_id.message
-        else:
-            await event.edit("`Send you text to Mia so he can tweet.`")
-            return
-    await event.edit("`Requesting Mia to tweet...`")
-    text = deEmojify(text)
-    img = await miatweet(text)
-    await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
-    await event.delete()
-    await purge()
+
 
 @register(outgoing=True, pattern=r"^\.modi(?: |$)(.*)")
 async def modi(event):
@@ -296,8 +266,6 @@ CMD_HELP.update(
         "\nUsage: Create tweet for Donald Trump.\n\n"
         ".modi <tweet>"
         "\nUsage: Create tweet for `Narendra Modi`.\n\n"
-        ".mia <tweet>"
-        "\nUsage: Create tweet for `Mia`.\n\n"
         ".cmm <text>"
         "\nUsage: Create banner for Change My Mind.\n\n"
         ".waifu <text>"
