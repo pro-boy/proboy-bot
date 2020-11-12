@@ -319,10 +319,10 @@ async def send(event):
         ms = (end - start).seconds
         await event.delete()
         await plug.edit(
-            f"__**♐Plugin Name:- {input_str} .**__\n__**♋Uploaded in {ms} seconds.**__\n__**♎ Uploaded by :-**__ {DEFAULTUSER}"
+            f"__**♐Plugin --->> {input_str} .**__\n__**♋In ---->> {ms} sec.**__\n__**♎ ßy ---->> **__ {DEFAULTUSER}"
         )
     else:
-        await edit_or_reply(event, "404: File Not Found")
+        await event.edit("404: File Not Found")
 
 
 
