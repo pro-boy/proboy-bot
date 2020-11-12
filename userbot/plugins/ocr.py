@@ -6,7 +6,8 @@ import os
 import requests
 import json
 from userbot.utils import admin_cmd
-
+from userbot import CMD_HELP
+from userbot.uniborgConfig import Config
 
 OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
 
