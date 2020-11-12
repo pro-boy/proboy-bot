@@ -7,12 +7,11 @@ Available Commands:
 from telethon import events
 
 import asyncio
-from userbot import admin_cmd
+from userbot.utils import admin_cmd
 
 
 
 @borg.on(admin_cmd(pattern=r"virus"))
-@borg.on(events.NewMessage(pattern=r"virus(.*)", outgoing=True))
 
 async def _(event):
 
