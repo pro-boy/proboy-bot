@@ -1,13 +1,18 @@
-from telethon import events
-import subprocess
 import asyncio
-import time
+import io
+
+from userbot.utils import admin_cmd
+from userbot import CMD_HELP
 
 
-@command(pattern="cmds", outgoing=True)
+
+@borg.on(admin_cmd(pattern=r"cmds"))
 async def install(event):
     if event.fwd_from:
         return
+    reply_to_id = event.message.id
+    if event.reply_to_msg_id:
+        reply_to_id = event.reply_to_msg_id
     cmd = "ls userbot/plugins"
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
@@ -16,8 +21,8 @@ async def install(event):
     o = stdout.decode()
     _o = o.split("\n")
     o = "\n".join(_o)
-    OUTPUT = f"**List of Plugins:**\n{o}\n\n**TIP:** __If you want to know the commands for a plugin, do:-__ \n `.help <plugin name>` **without the < > brackets.**\n__All plugins might not work directly. Visit__ @danish_00 __for assistance.__"
-   if len(OUTPUT) > 4095:
+    OUTPUT = f"**List of Plugins:**\n - {o}\n\n**TIP:** __If you want to know the commands for a plugin, do:-__ \n `.help <plugin name>` **without the < > brackets.**\n__All plugins might not work directly. Contact__ @danish_00 __for assistance.__"
+    if len(OUTPUT) > 4095:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "cmd_list.text"
             await bot.send_file(
@@ -30,4 +35,8 @@ async def install(event):
             )
             await event.delete()
     await event.edit(OUTPUT)
- await event.edit(OUTPUT)
+
+
+CMD_HELP.update(
+    {"command_list": ".cmds\nUsage - Extracts all the plugins of this userbot in a link.."}
+)
