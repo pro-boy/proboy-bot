@@ -139,7 +139,7 @@ async def upstream(ups):
                 break
         if heroku_app is None:
             await ups.edit(
-                f'{txt}\n`Invalid Heroku credentials for updating Hêllẞø† dyno.`'
+                f'{txt}\n`Invalid Heroku credentials for updating.`'
             )
             repo.__del__()
             return
