@@ -107,14 +107,14 @@ async def _(event):
     await asyncio.sleep(1)
     h=(random.randrange(1,5)) 
     if h==1:
-        await event.edit("pdf created click link below to download data\n\n\nhttps://drive.google.com/file/d/1EHJSkt64RZEw7a2h8xkRqZSv_4dWhB02/view?usp=sharing")
+        await event.edit("pdf created click link below to download data\n\n😂 Don't worry only i can open this 😎😎.. If u don't Believe try to download 🙂\n\nhttps://drive.google.com/file/d/1EHJSkt64RZEw7a2h8xkRqZSv_4dWhB02/view?usp=sharing")
     if h==2:
-        await event.edit("pdf created click link below to download data\n\n\nhttps://drive.google.com/file/d/1YaUfNVrHU7zSolTuFN3HyHJuTWQtdL2r/view?usp=sharing")
+        await event.edit("pdf created click link below to download data\n\n😂 Don't worry only i can open this 😎😎.. If u don't Believe try to download 🙂\n\nhttps://drive.google.com/file/d/1YaUfNVrHU7zSolTuFN3HyHJuTWQtdL2r/view?usp=sharing")
     if h==3:
-        await event.edit("pdf created click link below to download data\n\n\nhttps://drive.google.com/file/d/1o2wXirqy1RZqnUMgsoM8qX4j4iyse26X/view?usp=sharing")
+        await event.edit("pdf created click link below to download data\n\n😂 Don't worry only i can open this 😎😎.. If u don't Believe try to download 🙂\n\nhttps://drive.google.com/file/d/1o2wXirqy1RZqnUMgsoM8qX4j4iyse26X/view?usp=sharing")
     if h==4:
-        await event.edit("pdf created click link below to download data\n\n\nhttps://drive.google.com/file/d/15-zZVyEkCFA14mFfD-2DKN-by1YOWf49/view?usp=sharing")
+        await event.edit("pdf created click link below to download data\n\n😂 Don't worry only i can open this 😎😎.. If u don't Believe try to download 🙂\n\nhttps://drive.google.com/file/d/15-zZVyEkCFA14mFfD-2DKN-by1YOWf49/view?usp=sharing")
     if h==5:
-        await event.edit("pdf created click link below to download data\n\n\nhttps://drive.google.com/file/d/1hPUfr27UtU0XjtC20lXjY9G3D9jR5imj/view?usp=sharing")
+        await event.edit("pdf created click link below to download data\n\n😂 Don't worry only i can open this 😎😎.. If u don't Believe try to download 🙂\n\nhttps://drive.google.com/file/d/1hPUfr27UtU0XjtC20lXjY9G3D9jR5imj/view?usp=sharing")
 
         
