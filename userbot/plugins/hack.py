@@ -1,3 +1,8 @@
+#created by me (@danish_00)
+#😁😁😁😁
+#Koi naya banda Dekhlega aisa toh phat jayegi 😂😂
+
+
 from telethon import events
 import asyncio
 import os
