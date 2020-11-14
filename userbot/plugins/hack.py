@@ -1,7 +1,7 @@
 #created by me (@danish_00)
 #😁😁😁😁
 #Koi naya banda Dekhlega aisa toh phat jayegi 😂😂
-
+#
 
 from telethon import events
 import asyncio
@@ -9,12 +9,12 @@ import os
 import sys
 import random
 from userbot.utils import admin_cmd
+
+
 @borg.on(admin_cmd(pattern="hack ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
-
-
 
     animation_interval = 0.7
 
@@ -118,3 +118,4 @@ async def _(event):
         await event.edit("pdf created click link below to download data\n\n😂 Don't worry only i can open this 😎😎.. If u don't Believe try to download 🙂\n\nhttps://drive.google.com/file/d/1hPUfr27UtU0XjtC20lXjY9G3D9jR5imj/view?usp=sharing")
 
         
+#Noice 😂
