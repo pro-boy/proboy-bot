@@ -27,7 +27,7 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
 # =========================================================== #
 
 
-@bot.on(admin_cmd(pattern="(song|song320)($| (.*))"))
+@bot.on(admin_cmd(pattern="(song128|song320)($| (.*))"))
 async def _(event):
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
@@ -216,9 +216,9 @@ async def cat_song_fetcer(event):
 CMD_HELP.update(
     {
         "getsongs": "**Plugin : **`songs`\
-        \n\n  •**Syntax : **`..song <query/reply>`\
+        \n\n  •**Syntax : **`.song128 <query/reply>`\
         \n  •**Function : **__searches the song you entered in query from youtube and sends it, quality of it is 128k__\
-        \n\n  •**Syntax : **`..song320 <query/reply>`\
+        \n\n  •**Syntax : **`.song320 <query/reply>`\
         \n  •**Function : **__searches the song you entered in query from youtube and sends it quality of it is 320k__\
         \n\n  •**Syntax : **`..vsong <query/reply>`\
         \n  •**Function : **__Searches the video song you entered in query and sends it__\
