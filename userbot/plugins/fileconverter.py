@@ -26,7 +26,7 @@ async def _(cat):
     reply_to_id = cat.message.id
     if cat.reply_to_msg_id:
         reply_to_id = cat.reply_to_msg_id
-    event = await edit_or_reply(cat, "Converting.....")
+    event = await cat.edit("Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -60,7 +60,7 @@ async def _(cat):
     reply_to_id = cat.message.id
     if cat.reply_to_msg_id:
         reply_to_id = cat.reply_to_msg_id
-    event = await edit_or_reply(cat, "Converting.....")
+    event = await cat.edit("Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -94,7 +94,7 @@ async def silently_send_message(conv, text):
     return response
 
 
-@borg.on(admin_cmd(pattern="ttf ?(.*)"))
+@borg.on(admin_cmd(pattern="doc ?(.*)"))
 async def get(event):
     name = event.text[5:]
     if name is None:
@@ -309,7 +309,7 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "fileconverts": "**Plugin : **`fileconverts`\
+        "fileconverter": "**Plugin : **`fileconverts`\
     \n\n**Syntax : **`.stoi` reply to sticker\
     \n**Usage :**Converts sticker to image\
     \n\n**Syntax : **`.itos` reply to image\
