@@ -517,7 +517,7 @@ async def download_video(v_url):
         await v_url.delete()
  
 
-@borg.on(admin_cmd(pattern=r"tts(?: |$)([\s\S]*)"))
+@borg.on(admin_cmd(pattern=r"tts3(?: |$)([\s\S]*)"))
 async def _(event):
     sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
@@ -930,7 +930,7 @@ CMD_HELP.update({
 \n**Usage:** Command to get stats about your account\
 \n\n`.inviteall3 <chatusername/chatid>`\
 \n**Usage:** Invite all the members to current chat from given group/channel\
-\n\n`.tts2 <text> (or reply) **or** `!tts` <langcode> <reply to a media>`\
+\n\n`.tts2 <text> (or reply) **or** `!tts3` <langcode> <reply to a media>`\
 \n**Usage:** Translates text to speech for the language which is set.\n`!lang tts <language code>` to set language for trt. (Default is English)\
 \n\n`!trt <text> (or reply)` \
 \n**Usage:** Translates text to the language which is set..\n`!lang trt <language code>` to set language for trt. (Default is English)\
