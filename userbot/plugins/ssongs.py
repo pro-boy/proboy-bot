@@ -47,7 +47,7 @@ async def _(event):
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
     cmd = event.pattern_match.group(1)
-    if cmd == "song":
+    if cmd == "song128":
         q = "128k"
     elif cmd == "song320":
         q = "320k"
@@ -118,7 +118,7 @@ async def _(event):
         event = await event.edit("What I am Supposed to find")
         return
     cat = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
+    catevent = await event.edit("`wi8..! I am finding your song....`")
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await catevent.edit(
@@ -154,7 +154,7 @@ async def _(event):
     if not os.path.exists(catthumb):
         catthumb = Path(f"{catname}.webp")
     elif not os.path.exists(catthumb):
-        catthumb = None
+        catthumb = None 
     await event.client.send_file(
         event.chat_id,
         vsong_file,
