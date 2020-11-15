@@ -66,9 +66,8 @@ async def cmd_list(event):
     else:
         if HELPTYPE is True:
             help_string = f"Userbot Helper.. Provided by {DEFAULTUSER}\
-                          \nUserbot Helper to reveal all the plugin names\
-                          \n__Do__ `.help` __plugin_name for commands, in case popup doesn't appear.__\
-                          \nDo `.info` plugin_name for usage"
+                          \nUserbot Helper to reveal all the plugin names"
+                          
             tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername, help_string
@@ -89,7 +88,7 @@ async def cmd_list(event):
 
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="infos ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="check ?(.*)"))
 
 async def info(event):
     """ For .info command,"""
@@ -99,7 +98,7 @@ async def info(event):
             await event.edit(str(CMD_HELP[args]))
         else:
             event = await event.edit("Please specify a valid plugin name.")
-            await asyncio.sleep(2)
+            await asyncio.sleep(4)
             await event.delete()
     else:
         string = "<b>Please specify which plugin do you want help for !!\
