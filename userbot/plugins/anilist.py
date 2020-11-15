@@ -3,7 +3,7 @@ import re
 
 import requests
 
-from userbot.events import CMD_HELP
+from userbot import CMD_HELP
 from userbot.utils import admin_cmd
 from userbot.helpers import time_formatter as t
 
