@@ -2,6 +2,7 @@ import os
 import re
 import time
 import shlex
+import zipfile
 import asyncio
 import requests 
 import subprocess
@@ -63,6 +64,12 @@ async def take_screen_shot(video_file: str, duration: int, path: str = '') -> Op
     if err:
         print(err)
     return thumb_image_path if os.path.exists(thumb_image_path) else None
+
+async def unzip(downloaded_file_name):
+    with zipfile.ZipFile(downloaded_file_name, "r") as zip_ref:
+        zip_ref.extractall("./temp")
+    downloaded_file_name = os.path.splitext(downloaded_file_name)[0]
+    return f"{downloaded_file_name}.gif"
 
 # executing of terminal commands 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
