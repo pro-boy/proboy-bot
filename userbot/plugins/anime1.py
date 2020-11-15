@@ -189,7 +189,7 @@ async def formatJSON(outData):
 url = "https://graphql.anilist.co"
 
 
-@borg.on(admin_cmd(pattern="char (.*)"))
+@borg.on(admin_cmd(pattern="character (.*)"))
 async def anilist(event):
     search = event.pattern_match.group(1)
     reply_to_id = event.message.id
@@ -236,7 +236,7 @@ async def anilist(event):
     await event.edit(ms_g)
 
 
-@borg.on(admin_cmd(pattern="amanga (.*)"))
+@borg.on(admin_cmd(pattern="manga (.*)"))
 async def anilist(event):
     search = event.pattern_match.group(1)
     reply_to_id = event.message.id
@@ -297,7 +297,7 @@ async def anilist(event):
             await event.edit(ms_g)
 
 
-@borg.on(admin_cmd(pattern="anilist (.*)"))
+@borg.on(admin_cmd(pattern="anime (.*)"))
 async def anilist(event):
     input_str = event.pattern_match.group(1)
     event = await event.edit("Searching...")
@@ -308,12 +308,12 @@ async def anilist(event):
 
 CMD_HELP.update(
     {
-        "anilist": "**Plugin : **`anilist`\
-    \n\n**Syntax : **`.anilist <anime name >`\
+        "anime1": "**Plugin : **`anime1`\
+    \n\n**Syntax : **`.anime <anime name >`\
     \n**Usage : **Shows you the details of the anime.\
-    \n\n**Syntax : **`.char <character name >`\
+    \n\n**Syntax : **`.character <character name >`\
     \n**Usage : **Shows you the details of that character in anime with pic.\
-    \n\n**Syntax : **`.amanga <manga name >`\
+    \n\n**Syntax : **`.manga <manga name >`\
     \n**Usage : **Shows you the details of the manga.\
     \n\n**Syntax : **`.airing <anime name >`\
     \n**Usage : **Shows you the time for that current running anime show.\
