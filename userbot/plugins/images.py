@@ -2,8 +2,8 @@ import os
 import shutil
 
 from userbot import CMD_HELP
-from Userbot.helpers.google_image_download import googleimagesdownload
-from Userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.helpers.google_image_download import googleimagesdownload
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @bot.on(admin_cmd(pattern=r"img(?: |$)(\d*)? ?(.*)"))
