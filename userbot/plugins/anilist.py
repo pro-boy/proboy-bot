@@ -313,7 +313,7 @@ CMD_HELP.update(
     \n**Usage : **Shows you the details of the anime.\
     \n\n**Syntax : **`.char <character name >`\
     \n**Usage : **Shows you the details of that character in anime with pic.\
-    \n\n**Syntax : **`.manga <anime name >`\
+    \n\n**Syntax : **`.amanga <manga name >`\
     \n**Usage : **Shows you the details of the manga.\
     \n\n**Syntax : **`.airing <anime name >`\
     \n**Usage : **Shows you the time for that current running anime show.\
