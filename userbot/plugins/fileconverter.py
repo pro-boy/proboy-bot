@@ -155,7 +155,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
     chat = "@tgstogifbot"
-    catevent = await event.edit("`Converting to gif ...`")
+    catevent = await event.edit("`Converting to gif ⌛⏳ takes time 🤭 ...`")
     async with event.client.conversation(chat) as conv:
         try:
             await silently_send_message(conv, "/start")
@@ -194,7 +194,7 @@ async def _(event):
             return
 
 
-@bot.on(admin_cmd(pattern="nfc ?(.*)"))
+@borg.on(admin_cmd(pattern="nfc ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -309,7 +309,7 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "fileconverter": "**Plugin : **`fileconverts`\
+        "fileconverter": "**Plugin : **`fileconverter`\
     \n\n**Syntax : **`.stoi` reply to sticker\
     \n**Usage :**Converts sticker to image\
     \n\n**Syntax : **`.itos` reply to image\
