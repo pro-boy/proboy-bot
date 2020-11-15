@@ -182,7 +182,7 @@ def post_to_telegraph(anime_title, html_format_content):
 def replace_text(text):
     return text.replace('"', "").replace("\\r", "").replace("\\n", "").replace("\\", "")
 
-
+'''
 #@register(outgoing=True, pattern=r"^\.anime ?(.*)")
 @borg.on(admin_cmd(pattern="anime (.*)"))
 async def anime(event):
@@ -357,8 +357,8 @@ async def character(event):
         reply_to=event,
     )
 
+'''
 
-#@register(outgoing=True, pattern=r"^\.upcoming ?(.*)")
 @borg.on(admin_cmd(pattern="upcoming"))
 async def upcoming(message):
     rep = "<b>Upcoming anime</b>\n"
@@ -373,7 +373,7 @@ async def upcoming(message):
         await message.edit(rep, parse_mode="html")
 
 
-#@register(outgoing=True, pattern=r"^\.scanime ?(.*)")
+
 @borg.on(admin_cmd(pattern="scanime (.*)"))
 async def get_anime(message):
     try:
@@ -479,7 +479,7 @@ async def get_anime(message):
     await message.client.send_file(message.chat_id, file=main_poster, caption=captions)
 
 
-#@register(outgoing=True, pattern=r"^\.smanga ?(.*)")
+
 @borg.on(admin_cmd(pattern="smanga (.*)"))
 async def manga(message):
     search_query = message.pattern_match.group(1)
@@ -495,7 +495,7 @@ async def manga(message):
     )
 
 
-#@register(outgoing=True, pattern=r"^\.sanime ?(.*)")
+
 @borg.on(admin_cmd(pattern="sanime (.*)"))
 async def anime(message):
     search_query = message.pattern_match.group(1)
@@ -517,7 +517,7 @@ async def anime(message):
         )
 
 
-#@register(outgoing=True, pattern=r"^\.whatanime")
+
 @borg.on(admin_cmd(pattern="whatanime (.*)"))
 async def whatanime(e):
     media = e.media
