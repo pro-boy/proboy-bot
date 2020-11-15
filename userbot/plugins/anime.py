@@ -27,6 +27,7 @@ from telethon.tl.types import (
 from telethon.utils import is_image, is_video
 from userbot import CMD_HELP
 from userbot.events import register
+from userbot.utils import admin_cmd
 
 jikan = Jikan()
 
@@ -182,7 +183,8 @@ def replace_text(text):
     return text.replace('"', "").replace("\\r", "").replace("\\n", "").replace("\\", "")
 
 
-@register(outgoing=True, pattern=r"^\.anime ?(.*)")
+#@register(outgoing=True, pattern=r"^\.anime ?(.*)")
+@borg.on(admin_cmd(pattern="anime (.*)"))
 async def anime(event):
     query = event.pattern_match.group(1)
     reply = await event.get_reply_message()
@@ -258,7 +260,8 @@ async def anime(event):
     await event.edit(rep, parse_mode="HTML", link_preview=False)
 
 
-@register(outgoing=True, pattern=r"^\.manga ?(.*)")
+#@register(outgoing=True, pattern=r"^\.manga ?(.*)")
+@borg.on(admin_cmd(pattern="manga (.*)"))
 async def manga(event):
     query = event.pattern_match.group(1)
     await event.edit("`Searching Manga...`")
@@ -305,7 +308,8 @@ async def manga(event):
         rep += f'<b>Read More:</b> <a href="{url}">MyAnimeList</a>'
         await event.edit(rep, parse_mode="HTML", link_preview=False)
 
-@register(outgoing=True, pattern=r"^\.character ?(.*)")
+#@register(outgoing=True, pattern=r"^\.character ?(.*)")
+@borg.on(admin_cmd(pattern="character (.*)"))
 async def character(event):
     message = await event.get_reply_message()
     search_query = event.pattern_match.group(1)
@@ -354,7 +358,8 @@ async def character(event):
     )
 
 
-@register(outgoing=True, pattern=r"^\.airing ?(.*)")
+#@register(outgoing=True, pattern=r"^\.upcoming ?(.*)")
+@borg.on(admin_cmd(pattern="upcoming"))
 async def upcoming(message):
     rep = "<b>Upcoming anime</b>\n"
     later = jikan.season_later()
@@ -368,7 +373,8 @@ async def upcoming(message):
         await message.edit(rep, parse_mode="html")
 
 
-@register(outgoing=True, pattern=r"^\.scanime ?(.*)")
+#@register(outgoing=True, pattern=r"^\.scanime ?(.*)")
+@borg.on(admin_cmd(pattern="scanime (.*)"))
 async def get_anime(message):
     try:
         query = message.pattern_match.group(1)
@@ -473,7 +479,8 @@ async def get_anime(message):
     await message.client.send_file(message.chat_id, file=main_poster, caption=captions)
 
 
-@register(outgoing=True, pattern=r"^\.smanga ?(.*)")
+#@register(outgoing=True, pattern=r"^\.smanga ?(.*)")
+@borg.on(admin_cmd(pattern="smanga (.*)"))
 async def manga(message):
     search_query = message.pattern_match.group(1)
     await message.get_reply_message()
@@ -488,7 +495,8 @@ async def manga(message):
     )
 
 
-@register(outgoing=True, pattern=r"^\.sanime ?(.*)")
+#@register(outgoing=True, pattern=r"^\.sanime ?(.*)")
+@borg.on(admin_cmd(pattern="sanime (.*)"))
 async def anime(message):
     search_query = message.pattern_match.group(1)
     await message.get_reply_message()
@@ -509,7 +517,8 @@ async def anime(message):
         )
 
 
-@register(outgoing=True, pattern=r"^\.whatanime")
+#@register(outgoing=True, pattern=r"^\.whatanime")
+@borg.on(admin_cmd(pattern="whatanime (.*)"))
 async def whatanime(e):
     media = e.media
     if not media:
@@ -605,7 +614,7 @@ CMD_HELP.update(
     \nUsage: Returns with the Manga information.\
     \n\n.character <character name>\
     \nUsage: Return with character information.\
-    \n\n.airing\
+    \n\n.upcoming\
     \nUsage: Returns with Upcoming Anime information.\
     \n\n.scanime <anime> or .sanime <anime>\
     \nUsage: Search anime.\
