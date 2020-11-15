@@ -182,7 +182,7 @@ def post_to_telegraph(anime_title, html_format_content):
 def replace_text(text):
     return text.replace('"', "").replace("\\r", "").replace("\\n", "").replace("\\", "")
 
-'''
+"""
 #@register(outgoing=True, pattern=r"^\.anime ?(.*)")
 @borg.on(admin_cmd(pattern="anime (.*)"))
 async def anime(event):
@@ -357,7 +357,7 @@ async def character(event):
         reply_to=event,
     )
 
-'''
+"""
 
 @borg.on(admin_cmd(pattern="upcoming"))
 async def upcoming(message):
