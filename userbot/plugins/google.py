@@ -2,7 +2,7 @@
 import io
 import os
 import re
-import urllib
+import urllib3
 from datetime import datetime
 
 import requests
@@ -112,7 +112,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"reverse(?: |$)(\d*)", outgoing=True))
-@errors_handler
 async def _(img):
     if os.path.isfile("okgoogle.png"):
         os.remove("okgoogle.png")
