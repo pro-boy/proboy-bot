@@ -13,8 +13,8 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
 
 from userbot.utils import admin_cmd
-from userbot import CMD_HELP, name_dl, reply_id, runcmd, song_dl, video_dl, yt_search
-
+from userbot.helpers import name_dl, reply_id, runcmd, song_dl, video_dl, yt_search
+from userbot import CMD_HELP
 # =========================================================== #
 #                           STRINGS                           #
 # =========================================================== #
