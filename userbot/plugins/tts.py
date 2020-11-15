@@ -1,7 +1,7 @@
 """ Google Text to Speech
 Available Commands:
 .tts LanguageCode as reply to a message
-.tts LangaugeCode | text to speak"""
+.tts LangaugeCode . text to speak"""
 import asyncio
 import os
 import subprocess
@@ -24,8 +24,8 @@ async def _(event):
         previous_message = await event.get_reply_message()
         text = previous_message.message
         lan = input_str
-    elif "|" in input_str:
-        lan, text = input_str.split("|")
+    elif "." in input_str:
+        lan, text = input_str.split(".")
     else:
         await event.edit("Invalid Syntax. Module stopping.")
         return
@@ -87,7 +87,7 @@ CMD_HELP.update(
         "tts": "**Plugin :** `tts`\
         \n\nAvailable Commands:\
         \n.tts LanguageCode as reply to a message\
-        \n.tts LangaugeCode | text to speak\
+        \n.tts LangaugeCode . text to speak\
          "
     }
 )
