@@ -44,7 +44,7 @@ async def _(event):
 
        return
 
-    await event.edit("```Making a Quote```")
+    await event.edit("```sending a  girl for u🍑```")
 
     async with borg.conversation(chat) as conv:
           try:     
@@ -52,7 +52,7 @@ async def _(event):
               await borg.send_message(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
-              await event.reply("Please unblock @asciiart_bot and try again🤐")
+              await event.reply("Please do /start on  @Epornerbot and try again🤐")
               return
           if response.text.startswith("Forward"):
              await event.edit("Cn you kindly disable your forward privacy settings for good?😒")

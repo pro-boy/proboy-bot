@@ -7,10 +7,10 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 from google_images_download import google_images_download
+from userbot.events import register
+from userbot.utils import admin_cmd
 
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-
-DELETE_TIMEOUT = 4
+DELETE_TIMEOUT = 0
 
 def progress(current, total):
     logger.info(
@@ -18,19 +18,14 @@ def progress(current, total):
             current, total, (current / total) * 100
         )
     )
-
-
-
-@borg.on(admin_cmd(pattern=r"r"))
+@register(outgoing=True, pattern=r"P")
 async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    BASE_URL = "http://www.google.com"
+    BASE_URL = "http://images.google.com"
     OUTPUT_STR = "Reply to an image to do Google Reverse Search"
     if event.reply_to_msg_id:
-        await event.edit("_")
-
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
         if previous_message.media:
@@ -73,10 +68,6 @@ async def _(event):
         img_size = img_size_div.find_all("div")
         end = datetime.now()
         ms = (end - start).seconds
-        OUTPUT_STR = """/protecc{prs_text}""".format(
-            **locals()
-            
-        )
-
-
-    await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
+        OUTPUT_STR = """/protecc {prs_text}""".format(
+            **locals())
+    await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)     

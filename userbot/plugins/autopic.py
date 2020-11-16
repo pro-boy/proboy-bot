@@ -6,7 +6,7 @@ from telethon.tl import functions
 import asyncio
 import shutil
 
-FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+FONT_FILE_TO_USE = "userbot/helpers/styles/digital.tff"
 
 @command(pattern="autopic", outgoing=True)
 async def autopic(event):

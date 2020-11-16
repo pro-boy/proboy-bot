@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String
-from userbot.plugins.sql_helper import SESSION, BASE
+
+from userbot.plugins.sql_helper import BASE, SESSION
 
 
 class PMPermit(BASE):
@@ -18,7 +19,7 @@ PMPermit.__table__.create(checkfirst=True)
 def is_approved(chat_id):
     try:
         return SESSION.query(PMPermit).filter(PMPermit.chat_id == str(chat_id)).one()
-    except:
+    except BaseException:
         return None
     finally:
         SESSION.close()

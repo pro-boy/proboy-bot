@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Numeric
-from userbot.plugins.sql_helper import SESSION, BASE
+from sqlalchemy import Column, Numeric
+
+from userbot.plugins.sql_helper import BASE, SESSION
 
 
 class NOLogPMs(BASE):
@@ -16,7 +17,7 @@ NOLogPMs.__table__.create(checkfirst=True)
 def is_approved(chat_id):
     try:
         return SESSION.query(NOLogPMs).filter(NOLogPMs.chat_id == chat_id).one()
-    except:
+    except BaseException:
         return None
     finally:
         SESSION.close()

@@ -1,38 +1,59 @@
-"""Download & Upload Images on Telegram
-Syntax: .img <Name>"""
-
-
-from google_images_download import google_images_download
 import os
 import shutil
-from re import findall
-from userbot.utils import admin_cmd
+
+from userbot import CMD_HELP
+from userbot.helpers.google_image_download import googleimagesdownload
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@borg.on(admin_cmd("img ?(.*)"))
+@bot.on(admin_cmd(pattern=r"img(?: |$)(\d*)? ?(.*)"))
 async def img_sampler(event):
-    await event.edit("Processing...")
-    query = event.pattern_match.group(1)
-    lim = findall(r"lim=\d+", query)
-    try:
-        lim = lim[0]
-        lim = lim.replace("lim=", "")
-        query = query.replace("lim=" + lim[0], "")
-    except IndexError:
-        lim = 2
-    response = google_images_download.googleimagesdownload()
-
+    reply_to_id = event.message.id
+    if event.reply_to_msg_id:
+        reply_to_id = event.reply_to_msg_id
+    if event.is_reply and not event.pattern_match.group(2):
+        query = await event.get_reply_message()
+        query = str(query.message)
+    else:
+        query = str(event.pattern_match.group(2))
+    if not query:
+        return await  event.edit(
+          "Reply to a message or pass a query to search!"
+        )
+    cat = await event.edit("`Processing...`")
+    if event.pattern_match.group(1) != "":
+        lim = int(event.pattern_match.group(1))
+        if lim > 10:
+            lim = int(10)
+        if lim <= 0:
+            lim = int(1)
+    else:
+        lim = int(3)
+    response = googleimagesdownload()
     # creating list of arguments
     arguments = {
         "keywords": query,
         "limit": lim,
         "format": "jpg",
-        "no_directory": "no_directory"
+        "no_directory": "no_directory",
     }
-
     # passing the arguments to the function
-    paths = response.download(arguments)
+    try:
+        paths = response.download(arguments)
+    except Exception as e:
+        return await cat.edit(f"Error: \n`{e}`")
     lst = paths[0][query]
-    await borg.send_file(await borg.get_input_entity(event.chat_id), lst)
+    await bot.send_file(
+        await bot.get_input_entity(event.chat_id), lst, reply_to=reply_to_id
+    )
     shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
-    await event.delete()
+    await cat.delete()
+
+
+CMD_HELP.update(
+    {
+        "images": "**Plugin :**`images`\
+\n\n**Syntax :** `.img <limit> <Name>` or `.img <limit> (replied message)`\
+    \n**Usage : **do google image search and sends 3 images. default if you havent mentioned limit"
+    }
+)

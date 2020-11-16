@@ -70,6 +70,7 @@ async def _(event):
         return
     start = datetime.now()
     await event.edit("🤩Pong!!🕸️🕸️🙏!")
+    await asyncio.sleep(3)
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await event.edit(

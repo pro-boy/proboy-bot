@@ -19,12 +19,12 @@ from shutil import which
 import psutil
 from telethon import __version__, version
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, USERBOT_VERSION, StartTime, bot
+from userbot import ALIVE_LOGO, CMD_LIST, ALIVE_NAME, CMD_HELP, USERBOT_VERSION, StartTime, bot
 from userbot.events import register
 
 # ================= CONSTANT =================
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
-modules = CMD_HELP
+modules = CMD_LIST
 # ============================================
 
 
@@ -222,21 +222,22 @@ async def pipcheck(pip):
             await pip.edit("`Use .help pip to see an example`")
 
 
-@register(outgoing=True, pattern=r"^.(alive|on)$")
+
+@command(outgoing=True, pattern="^.alive$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
         "`Bot is running smoothly 😎🏓...`\n"
         "`▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱`\n"
-        f"»✳️>⚙️ `Telethon      : v{version.__version__} `\n"
-        f"»✳️>🐍 `Python        : v{python_version()} `\n"
-        f"»✳️>👤 `User          : {DEFAULTUSER}`\n"
+        f"✳️>⚙️ `Telethon`    `: v{version.__version__} `\n"
+        f"✳️>🐍 `Python`         `: v{python_version()} `\n"
+        f"✳️>👤 `User`            : {DEFAULTUSER}\n"
         "`▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱`\n"
-        f"»✳️>💻 `Running on    :`[Hidden Repo](t.me/danish_00)\n"
-        f"»✳️>🗃 `New Plugins   : {len(modules)} `\n"
-        f"»✳️>🤖 `DanishBot     : v{USERBOT_VERSION} `\n"
-        f"»✳️>🕒 `Bot Uptime    : {uptime} `\n"
+        f"✳️>💻 `Running on  :`[Hidden](t.me/danish_00)\n"
+        f"✳️>🗃 `New Plugs   : {len(modules)} `\n"
+        f"✳️>🤖 `DanishBot   : v{USERBOT_VERSION} `\n"
+        f"✳️>⏱️ `Bot-Alive   : {uptime} `\n"
         "`▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱`"
     )
     if ALIVE_LOGO:
@@ -296,8 +297,8 @@ CMD_HELP.update(
 )
 CMD_HELP.update(
     {
-        "alive": ".alive | .on\
-    \nUsage: Type .alive | .on to see if your bot works or not.\
+        "alive": ".alive\
+    \nUsage: Type .alive to see if your bot works or not.\
     \n\n.aliveu <text>\
     \nUsage: Change 'alive' user to the text you want.\
     \n\n.resetalive\

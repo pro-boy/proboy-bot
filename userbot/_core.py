@@ -7,36 +7,9 @@ from userbot.utils import admin_cmd, load_module, remove_plugin, edit_or_reply
 from userbot import ALIVE_NAME
 from userbot import bot
 
-DELETE_TIMEOUT = 5
+DELETE_TIMEOUT = 3
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Mr.X"
 
-
-@bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
-async def send(event):
-    if event.fwd_from:
-        return
-    kraken = bot.uid
-    message_id = event.message.id
-    input_str = event.pattern_match.group(1)
-    the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
-    if os.path.exists(the_plugin_file):
-        start = datetime.now()
-        pro = await event.client.send_file(
-            event.chat_id,
-            the_plugin_file,
-            force_document=True,
-            allow_cache=False,
-            reply_to=message_id,
-        )
-        end = datetime.now()
-        time_taken_in_ms = (end - start).seconds
-        await pro.edit(
-            f"**⍟ Plugin name ≈** `{input_str}`\n**⍟ Uploaded in ≈** `{time_taken_in_ms} secs`\n**⍟ Uploaded by≈** [{DEFAULTUSER}](tg://user?id={kraken})\n"
-        )
-        await asyncio.sleep(DELETE_TIMEOUT)
-        await event.delete()
-    else:
-        await edit_or_reply(event, "File not found..... Kek")
 
 @bot.on(admin_cmd(pattern="install"))
 async def install(event):
@@ -69,6 +42,33 @@ async def install(event):
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
+
+@bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
+async def send(event):
+    if event.fwd_from:
+        return
+    kraken = bot.uid
+    message_id = event.message.id
+    input_str = event.pattern_match.group(1)
+    the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
+    if os.path.exists(the_plugin_file):
+        start = datetime.now()
+        pro = await event.client.send_file(
+            event.chat_id,
+            the_plugin_file,
+            force_document=True,
+            allow_cache=False,
+            reply_to=message_id,
+        )
+        end = datetime.now()
+        time_taken_in_ms = (end - start).seconds
+        await pro.edit(
+            f"__**➥ Plugin Name:- {input_str} .**__\n__**➥ Uploaded in {time_taken_in_ms} seconds.**__\n__**➥ Uploaded by :-**__ {DEFAULTUSER}"
+          )
+        await asyncio.sleep(DELETE_TIMEOUT)
+        await event.delete()
+    else:
+        await event.edit("`ERROR 404 : File not found`")
 
 @bot.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
 async def unload(event):
