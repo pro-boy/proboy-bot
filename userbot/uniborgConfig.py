@@ -137,6 +137,15 @@ if ENV:
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         HELP_INLINETYPE = os.environ.get("HELP_INLINETYPE", None)
+        # SpamWatch API you can get it from get api from http://t.me/SpamWatchBot?start=token
+    SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
+    # SpamWatch, CAS, SpamProtection ban Needed or not
+    ANTISPAMBOT_BAN = os.environ.get("ANTISPAMBOT_BAN", False)
+    # Deepai value can get from https://deepai.org/
+    DEEP_AI = os.environ.get("DEEP_AI", None)
+# specify LOAD and NO_LOAD
+    NO_LOAD = [x for x in os.environ.get("NO_LOAD", "").split()]
+   
 else:
     class Config(object):
         DB_URI = None
