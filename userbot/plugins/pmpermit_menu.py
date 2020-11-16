@@ -10,10 +10,9 @@ from telethon import events, functions
 
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 
-from userbot import ALIVE_NAME
-from userbot.plugins._init_ import PM_START
+from . import ALIVE_NAME, PM_START
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Master"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 PREV_REPLY_MESSAGE = {}
 
 
