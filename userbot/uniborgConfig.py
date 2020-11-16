@@ -56,8 +56,7 @@ if ENV:
     # specify LOAD and NO_LOAD
     NO_LOAD = [x for x in os.environ.get("NO_LOAD", "").split()]
     # chat ids or usernames, it is recommended to use chat ids,
-        # providing usernames means an additional overhead for the user
-        CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
+        
         # Get your own API key from https://www.remove.bg/ or
         # feel free to use http://telegram.dog/Remove_BGBot
         REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
