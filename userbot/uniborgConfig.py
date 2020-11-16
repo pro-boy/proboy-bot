@@ -72,11 +72,10 @@ if ENV:
         #heroku 
         HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
         HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
-          # send .get_id in any channel to forward all your NEW PMs to this group
+        # send .get_id in any channel to forward all your NEW PMs to this group
         PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
         if PRIVATE_GROUP_BOT_API_ID:
             PRIVATE_GROUP_BOT_API_ID = int(PRIVATE_GROUP_BOT_API_ID)
-         # Send .get_id in any channel to fill this value. ReQuired for @Manuel15 inspiration to work!
         # send .get_id in your private channel to forward all your Private messages
         PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
         if PM_LOGGR_BOT_API_ID:
@@ -125,7 +124,7 @@ if ENV:
         #MongoDB
         MONGO_URI = os.environ.get("MONGO_URI", None)
         #alive
-        ALIVE_PHOTTO = os.environ.get("ALIVE_PHOTTO","https://telegra.ph/file/98133bf551e53b6fe1354.jpg")
+        ALIVE_PHOTTO = os.environ.get("ALIVE_PHOTTO", None)
         ALIVE_MSG = os.environ.get("ALIVE_MSG", None)
         #auto bio
         BIO_MSG = os.environ.get("ALIVE_MSG", None)
@@ -134,7 +133,6 @@ if ENV:
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         HELP_INLINETYPE = os.environ.get("HELP_INLINETYPE", None)
-   
 else:
     class Config(object):
         DB_URI = None
