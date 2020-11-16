@@ -11,7 +11,7 @@ from telethon import events, functions
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 
 from userbot import ALIVE_NAME
-from userbot.helpers._init_ import PM_START
+from userbot.plugins._init_ import PM_START
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Master"
 PREV_REPLY_MESSAGE = {}
