@@ -7,7 +7,7 @@ import re
 
 from telethon import Button
 
-from userbot import CMD_HELP
+from userbot import CMD_HELP, bot
 from userbot.utils import admin_cmd
 
 # regex obtained from:
