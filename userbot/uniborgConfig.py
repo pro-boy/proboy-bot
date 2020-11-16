@@ -43,20 +43,17 @@ if ENV:
         MAX_MESSAGE_SIZE_LIMIT = 4095
         # set blacklist_chats where you do not want userbot's features
         UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
-        # specify LOAD and NO_LOAD
-    LOAD = []
-    # foloowing plugins won't work on Heroku,
-    # because of their ephemeral file system
-    MAX_ANTI_FLOOD_MESSAGES = 10
-    # warn mode for anti flood
-    ANTI_FLOOD_WARN_MODE = ChatBannedRights(
-        until_date=None, view_messages=None, send_messages=True
-    )
-    
-    # specify LOAD and NO_LOAD
-    NO_LOAD = [x for x in os.environ.get("NO_LOAD", "").split()]
-    # chat ids or usernames, it is recommended to use chat ids,
-        
+        # maximum number of messages for antiflood
+        MAX_ANTI_FLOOD_MESSAGES = 10
+        # warn mode for anti flood
+        ANTI_FLOOD_WARN_MODE = ChatBannedRights(
+            until_date=None,
+            view_messages=None,
+            send_messages=True
+        )
+        # chat ids or usernames, it is recommended to use chat ids,
+        # providing usernames means an additional overhead for the user
+        CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
         # Get your own API key from https://www.remove.bg/ or
         # feel free to use http://telegram.dog/Remove_BGBot
         REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
@@ -140,13 +137,6 @@ if ENV:
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         HELP_INLINETYPE = os.environ.get("HELP_INLINETYPE", None)
-        # SpamWatch API you can get it from get api from http://t.me/SpamWatchBot?start=token
-    SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
-    # SpamWatch, CAS, SpamProtection ban Needed or not
-    ANTISPAMBOT_BAN = os.environ.get("ANTISPAMBOT_BAN", False)
-    # Deepai value can get from https://deepai.org/
-    DEEP_AI = os.environ.get("DEEP_AI", None)
-
 else:
     class Config(object):
         DB_URI = None
