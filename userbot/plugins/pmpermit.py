@@ -15,7 +15,7 @@ PMPERMIT_PIC = Config.PMPERMIT_PIC
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Master"
 USER_BOT_WARN_ZERO = "You were spamming my peru master's inbox, henceforth you are blocked by my master's userbot. **Now GTFO, i'm playing minecraft** "
 
-if Config.PRIVATE_GROUP_ID is not None:
+if Config.PM_LOGGR_BOT_API_ID is not None:
 
     @bot.on(admin_cmd(pattern="approve ?(.*)"))
     async def approve_p_m(event):
