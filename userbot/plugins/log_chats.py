@@ -6,8 +6,8 @@ from telethon import events
 import userbot.plugins.sql_helper.no_log_pms_sql as no_log_pms_sql
 
 from userbot.utils import admin_cmd
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, LOGS, mentionuser
-
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, LOGS
+from userbot.plugins import  mentionuser
 RECENT_USER = None
 NEWPM = None
 COUNT = 0
