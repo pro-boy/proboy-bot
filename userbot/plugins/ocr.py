@@ -45,8 +45,8 @@ async def ocr_space_file(
 @borg.on(admin_cmd(pattern="ocr(?: |$)(.*)", outgoing=True))
 async def ocr(event):
     catevent = await event.edit("`Reading...`")
-    if not os.path.isdir(Config.TEMP_DIR):
-        os.makedirs(Config.TEMP_DIR)
+    if not os.path.isdir(Config.TMP_DIR):
+        os.makedirs(Config.TMP_DIR)
     lang_code = event.pattern_match.group(1)
     downloaded_file_name = await bot.download_media(
         await event.get_reply_message(), Config.TEMP_DIR
