@@ -518,7 +518,7 @@ async def anime(message):
 
 
 
-@borg.on(admin_cmd(pattern="whatanime (.*)"))
+@borg.on(admin_cmd(pattern=r"whatanime(?: |$)(\d*)", outgoing=True))
 async def whatanime(e):
     media = e.media
     if not media:
