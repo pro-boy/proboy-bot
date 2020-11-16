@@ -52,7 +52,7 @@ if ENV:
     ANTI_FLOOD_WARN_MODE = ChatBannedRights(
         until_date=None, view_messages=None, send_messages=True
     )
-    CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
+    
     # specify LOAD and NO_LOAD
     NO_LOAD = [x for x in os.environ.get("NO_LOAD", "").split()]
     # chat ids or usernames, it is recommended to use chat ids,
