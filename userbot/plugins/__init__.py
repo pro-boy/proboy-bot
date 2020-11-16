@@ -7,9 +7,9 @@ import heroku3
 import requests
 import spamwatch as spam_watch
 from validators.url import url
-from userbot import bot, ALIVE_NAME
-from userbot.helpers import *
-from userbot import uniborgConfig as Config
+
+from .. import *
+from ..uniborgConfig import Config
 
 # =================== CONSTANT ===================
 USERID = bot.uid
