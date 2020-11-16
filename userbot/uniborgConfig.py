@@ -61,7 +61,7 @@ if ENV:
         SLAP_USERNAME = os.environ.get("SLAP_USERNAME", None)
         GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
         GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
-        NO_P_M_SPAM = bool(os.environ.get("NO_P_M_SPAM", True))
+        NO_LOG_P_M_S = bool(os.environ.get("NO_LOG_P_M_S", True))
         # define "spam" in PMs
         NO_SONGS = bool(os.environ.get("NO_SONGS", False))
         MAX_FLOOD_IN_P_M_s = int(os.environ.get("MAX_FLOOD_IN_P_M_s", 3))
@@ -80,6 +80,10 @@ if ENV:
         PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
         if PM_LOGGR_BOT_API_ID:
             PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
+       # in pm permit pic
+        PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
+        CUSTOM_PMPERMIT_TEXT = os.environ.get("CUSTOM_PMPERMIT_TEXT", None)
+   
         # For Databases
         # can be None in which case plugins requiring
         # DataBase would not work
