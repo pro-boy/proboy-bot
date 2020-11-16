@@ -7,8 +7,8 @@ import heroku3
 import requests
 import spamwatch as spam_watch
 from validators.url import url
-
-from ..helpers import *
+from userbot import bot, ALIVE_NAME
+from userbot.helpers import *
 from userbot.uniborgConfig import Config
 
 # =================== CONSTANT ===================
