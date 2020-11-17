@@ -6,8 +6,8 @@ from os import environ, execle, path, remove
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from ..utils import admin_cmd
-from . import CMD_HELP, runcmd
+from userbot.utils import admin_cmd, runcmd
+from userbot import CMD_HELP 
 
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 HEROKU_API_KEY = Var.HEROKU_API_KEY
