@@ -322,7 +322,7 @@ async def text_to_speech(query):
         os.remove("tts.mp3")
         return
 
-@register(outgoing=True, pattern=r"^!trt(?: |$)([\s\S]*)")
+@register(outgoing=True, pattern=r"^\!trt(?: |$)([\s\S]*)")
 async def translateme(trans):   
     sender = await trans.get_sender() ; me = await trans.client.get_me()
     if not sender.id == me.id:
@@ -576,7 +576,7 @@ async def _(event):
 
 
 
-@register(outgoing=True, pattern="^!time(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
+@register(outgoing=True, pattern=r"^\!time(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
 async def time_func(tdata):
     sender = await tdata.get_sender() ; me = await tdata.client.get_me()
     if not sender.id == me.id:
@@ -804,7 +804,7 @@ async def download_video(v_url):
         await rkp.delete()
 
 
-@register(outgoing=True, pattern=r"!vsong (.*)")
+@register(outgoing=True, pattern=r"^\!vsong (.*)")
 async def download_video(v_url):  
     lazy = v_url ; sender = await lazy.get_sender() ; me = await lazy.client.get_me()
     if not sender.id == me.id:
