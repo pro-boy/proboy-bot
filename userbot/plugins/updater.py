@@ -8,12 +8,13 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from userbot import CMD_HELP, bot 
 from userbot.events import admin_cmd
+from userbot.uniborgConfig import Config
 
 requirements_path = path.join(
     path.dirname(path.dirname(path.dirname(__file__))), 'requirements.txt')
 
-HEROKU_API_KEY = Var.HEROKU_API_KEY
-HEROKU_APP_NAME = Var.HEROKU_APP_NAME
+HEROKU_API_KEY = config.HEROKU_API_KEY
+HEROKU_APP_NAME = config.HEROKU_APP_NAME
 GIT_REPO_NAME = "DanishBot"
 UPSTREAM_REPO_URL = "https://github.com/1Danish-00/DanishBot"
 
@@ -124,17 +125,17 @@ async def upstream(ups):
     else:
         await ups.edit('`Updating your` **ßoott** `please wait for 5 mins then type .alive/.ping/.help/.test to see if I am On...`')
     # We're in a Heroku Dyno, handle it's memez.
-    if Var.HEROKU_API_KEY is not None:
+    if config.HEROKU_API_KEY is not None:
         import heroku3
-        heroku = heroku3.from_key(Var.HEROKU_API_KEY)
+        heroku = heroku3.from_key(config.HEROKU_API_KEY)
         heroku_app = None
         heroku_applications = heroku.apps()
-        if not Var.HEROKU_APP_NAME:
-            await ups.edit('`Please set up the HEROKU_APP_NAME variable to be able to update Hêllẞø†.`')
+        if not config.HEROKU_APP_NAME:
+            await ups.edit('`Please set up the HEROKU_APP_NAME configiable to be able to update Hêllẞø†.`')
             repo.__del__()
             return
         for app in heroku_applications:
-            if app.name == Var.HEROKU_APP_NAME:
+            if app.name == config.HEROKU_APP_NAME:
                 heroku_app = app
                 break
         if heroku_app is None:
@@ -148,7 +149,7 @@ async def upstream(ups):
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
         heroku_git_url = heroku_app.git_url.replace(
-            "https://", "https://api:" + Var.HEROKU_API_KEY + "@")
+            "https://", "https://api:" + config.HEROKU_API_KEY + "@")
         if "heroku" in repo.remotes:
             remote = repo.remote("heroku")
             remote.set_url(heroku_git_url)
