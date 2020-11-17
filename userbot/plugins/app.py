@@ -41,8 +41,9 @@ async def apk(event):
         await event.edit("No result found in search. Please enter **Valid app name**")
     except Exception as err:
         await event.edit("Exception Occured:- "+str(err))
-        
-      @borg.on(admin_cmd(pattern="appx ?(.*)"))
+
+
+@borg.on(admin_cmd(pattern="appx (.*)"))
         async def mod(event):
            if event.fwd_from:
              return
