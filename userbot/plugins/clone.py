@@ -27,7 +27,7 @@ from telethon.tl.types import InputPhoto, MessageMediaPhoto, User, Chat, Channel
 from userbot import bot, CMD_HELP , AUTONAME , DEFAULT_BIO , ALIVE_NAME
 
 DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
-DANISH = ""
+DANISH = " "
 DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else "My sensei @danish_00 🙏🙏"
 BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 BOTLOG = True
@@ -95,7 +95,7 @@ async def _(event):
     await borg(functions.photos.DeletePhotosRequest(await event.client.get_profile_photos("me", limit= n)))    
     await borg(functions.account.UpdateProfileRequest(about=f"{bio}"))
     await borg(functions.account.UpdateProfileRequest(first_name=f"{fname}"))
-   await borg(functions.account.UpdateProfileRequest(last_name=f"{lname}"))
+    await borg(functions.account.UpdateProfileRequest(last_name=f"{lname}"))
     await event.edit("succesfully reverted to your account back")
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, f"#REVERT\nSuccesfully reverted back to your profile")
