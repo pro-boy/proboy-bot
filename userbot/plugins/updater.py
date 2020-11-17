@@ -8,7 +8,7 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from userbot import CMD_HELP, bot 
 from userbot.events import admin_cmd
-from userbot.uniborgConfig import Config
+from userbot.uniborgConfig import Config as config
 
 requirements_path = path.join(
     path.dirname(path.dirname(path.dirname(__file__))), 'requirements.txt')
