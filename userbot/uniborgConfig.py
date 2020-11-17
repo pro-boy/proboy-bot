@@ -45,6 +45,8 @@ if ENV:
         UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
         #taglog
         TAG_LOG = os.environ.get("TAG_LOG", None)
+        if TAG_LOG:
+            TOG_LOG = int(TAG_LOG)
         # maximum number of messages for antiflood
         MAX_ANTI_FLOOD_MESSAGES = 10
         # warn mode for anti flood
