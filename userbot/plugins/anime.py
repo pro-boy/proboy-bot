@@ -606,9 +606,9 @@ def is_gif(file):
 
 CMD_HELP.update(
     {
-        "anime": [
-            'Anime',
-    ".anime <anime>\
+        "anime":"
+            'Anime'\
+    \n.anime <anime>\
     \nUsage: Returns with Anime information.\
     \n\n.manga <manga name>\
     \nUsage: Returns with the Manga information.\
@@ -621,4 +621,4 @@ CMD_HELP.update(
     \n\n.smanga <manga>\
     \nUsage: Search manga.\
     \n\n.whatanime Reply with media.\
-    \nUsage: Find anime from media file."]})
+    \nUsage: Find anime from media file."})
