@@ -73,7 +73,7 @@ async def _(event):
             event.chat_id, response.message, reply_to=reply_message
         )
 
-@borg.on(admin_cmd(pattern="checkspam ?(.*)"))
+@borg.on(admin_cmd(pattern="limits ?(.*)"))
 async def _(event):
     bot = "@SpamBot"
     if event.fwd_from:
@@ -93,41 +93,14 @@ async def _(event):
                 await event.edit("**Error:** `unblock` @spambot `and retry!")
 
 
-@borg.on(admin_cmd(pattern="gitdl ?(.*)"))
-async def _(event):
-    if event.fwd_from:
-        return
-    if not event.reply_to_msg_id:
-        await event.edit("**Reply to a github repo url.**")
-        return
-    reply_message = await event.get_reply_message()
-    chat = "@gitdownloadbot"
-    reply_message.sender
-    await event.edit("**Downloading the repository...**")
-    async with event.client.conversation(chat) as conv:
-        try:
-            response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=1282593576)
-            )
-            await event.client.forward_messages(chat, reply_message)
-            response = await response
-        except YouBlockedUserError:
-            await event.edit("```Please unblock me (@gitdownloadbot) u Nigga```")
-            return
-        await event.delete()
-        x = await event.client.send_message(
-            event.chat_id, response.message, reply_to=reply_message
-        )
-        await x.edit(
-            "Downloaded sar 😎😎"
-        )
+
 
 CMD_HELP.update(
     {
         "bots": ".purl <reply to file>\nUse - Get a direct download link of that file/doc/pic/vid\
         \n\n.instadl <reply to instagram url>\\nUse - Download that instagram post.\
         \n\n.wspr <message> <target username/id>\nUse - Send a whisper message to that person.\
-        \n\n.checkspam\nUse - Check if you are limited.\
+        \n\n.limits\nUse - Check if you are limited by telegram.\
         \n\n.gitdl <reply to github link>\nUse - Download the main branch of that git repo."
     }
 )
