@@ -43,8 +43,8 @@ async def apk(event):
         await event.edit("Exception Occured:- "+str(err))
 
 
-@borg.on(admin_cmd(pattern="appx (.*)"))
-        async def mod(event):
+@borg.on(admin_cmd(pattern=r"appx (.*)"))
+        async def appx(event):
            if event.fwd_from:
              return
         modr = event.pattern_match.group(1)
