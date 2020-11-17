@@ -24,10 +24,10 @@ from telethon.tl.functions.photos import (DeletePhotosRequest,
                                           GetUserPhotosRequest,
                                           UploadProfilePhotoRequest)
 from telethon.tl.types import InputPhoto, MessageMediaPhoto, User, Chat, Channel
-from userbot import bot, CMD_HELP , AUTONAME , DEFAULT_BIO , ALIVE_NAME
+from userbot import bot, CMD_HELP , AUTONAME , DEFAULT_BIO , ALIVE_NAME , FIRST_NAME , LAST_NAME
 
-DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
-DANISH = " "
+DEFAULTUSER = str(FIRSTNAME) if FIRSTNAME else str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
+DANISH = str(LASTNAME) if LASTNAME else " "
 DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else "My sensei @danish_00 🙏🙏"
 BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
 BOTLOG = True
