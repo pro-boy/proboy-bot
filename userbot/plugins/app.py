@@ -1,7 +1,6 @@
 """Fetch App Details from Playstore.
 .app <app_name> to fetch app details.
-.appr <app_name>  to fetch app details with Xpl0iter request link.
-  © [cHAuHaN](http://t.me/amnd33p)"""
+.appx <app_name> to fetch crack app """
 
 import re
 import bs4
@@ -43,10 +42,23 @@ async def apk(event):
     except Exception as err:
         await event.edit("Exception Occured:- "+str(err))
         
+      @borg.on(admin_cmd(pattern="appx ?(.*)"))
+        async def mod(event):
+           if event.fwd_from:
+             return
+        modr = event.pattern_match.group(1)
+        botusername = "@PremiumAppBot"
+        if event.reply_to_msg_id:
+            await event.get_reply_message()
+        tap = await bot.inline_query(botusername, modr)
+        await tap[0].click(event.chat_id)
+        await event.delete()
 
 CMD_HELP.update({
     "app":"__**PLUGIN NAME :** App__\
 \n\n📌** CMD ➥** `.app` [app name]\
 \nUSAGE   ➥  **Searches the app in the playstore and provides the link to the app in playstore and fetchs app details \
+n\n📌** CMD ➥** `.appx` [app name]\
+\nUSAGE   ➥  **Searches the hacked version of app nd send u \
 "
 })
