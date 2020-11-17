@@ -133,7 +133,11 @@ if bool(ENV):
     UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
     "https://github.com/1Danish-00/DanishBot.git")
-
+    
+    # Clone
+    FIRSTNAME = os.environ.get("FIRSTNAME", None)
+    LASTNAME =  os.environ.get("LASTNAME", None)
+    
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
     DEFAULT_BIO = os.environ.get("DEFAULT_BIO", None)
