@@ -7,7 +7,7 @@ from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from userbot.utils import admin_cmd
-from userbot import CMD_HELP, runcmd
+from userbot import CMD_HELP
 
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 HEROKU_API_KEY = Var.HEROKU_API_KEY
