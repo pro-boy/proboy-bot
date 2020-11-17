@@ -8,8 +8,13 @@ import requests
 from platform import uname
 from telethon import events
 from bs4 import BeautifulSoup
+from telegraph import Telegraph
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+
+from userbot.uniborgConfig import Var
+
 from .. import CMD_HELP ,ALIVE_NAME
-from ..utils import admin_cmd, sudo_cmd, edit_or_reply
+from ..utils import admin_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
@@ -44,17 +49,17 @@ async def apk(event):
 
 
 
-@borg.on(admin_cmd(pattern="appx(?: |$)(.*)"))
-        async def nope(event):
-           if event.fwd_from:
-             return
-        modr = event.pattern_match.group(1)
-        botusername = "@PremiumAppBot"
-        if event.reply_to_msg_id:
-            await event.get_reply_message()
-        tap = await bot.inline_query(botusername, modr)
-        await tap[0].click(event.chat_id)
-        await event.delete()
+@bot.on(admin_cmd(pattern="crack ?(.*)"))
+async def mod(event):
+    if event.fwd_from:
+        return
+    modr = event.pattern_match.group(1)
+    botusername = "@PremiumAppBot"
+    if event.reply_to_msg_id:
+        await event.get_reply_message()
+    tap = await bot.inline_query(botusername, modr)
+    await tap[0].click(event.chat_id)
+    await event.delete()
 
 CMD_HELP.update({
     "app":"__**PLUGIN NAME :** App__\
