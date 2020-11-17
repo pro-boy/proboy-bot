@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from telegraph import Telegraph
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot.uniborgConfig import Var
+from userbot import Var
 
 from .. import CMD_HELP ,ALIVE_NAME
 from ..utils import admin_cmd
