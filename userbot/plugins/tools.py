@@ -11,12 +11,12 @@ from hachoir.parser import createParser
 from base64 import b64decode
 from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo, DocumentAttributeAudio
-from userbot.utils import progress, humanbytes, time_formatter, admin_cmd
+from userbot.utils import progress, humanbytes, time_formatter
 from userbot import  TEMP_DOWNLOAD_DIRECTORY, CMD_HELP, COUNTRY, TZ_NUMBER
 thumb_image_path = TEMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 from userbot.events import register
 from userbot.uniborgConfig import Config
-
+from userbot.utils import admin_cmd
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.types import Channel, Chat, User
