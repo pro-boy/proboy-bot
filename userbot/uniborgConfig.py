@@ -43,6 +43,8 @@ if ENV:
         MAX_MESSAGE_SIZE_LIMIT = 4095
         # set blacklist_chats where you do not want userbot's features
         UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
+        #taglog
+        TAG_LOG = os.environ.get("TAG_LOG", None)
         # maximum number of messages for antiflood
         MAX_ANTI_FLOOD_MESSAGES = 10
         # warn mode for anti flood
