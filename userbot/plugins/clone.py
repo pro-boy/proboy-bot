@@ -1,9 +1,9 @@
 """Get Telegram Profile Picture and other information
 and set as own profile.
 Syntax: .clone @username"""
-#Copy That Plugin by @ViperAdnan
-#modified by @No_OnE_Kn0wS_Me 
-#Give credit if you are going to kang it.
+
+#bhul gaya kisse liye 😂😂
+#lekin haan wo last name problem m hi modify kr k fix kiya hu
 
 import html
 import os
@@ -87,12 +87,14 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    name = f"{DEFAULTUSER}"
+    fname = f"{DEFAULTUSER}"
+    lname = f"{}"
     bio = f"{DEFAULTUSERBIO}"
     n = 1
     await borg(functions.photos.DeletePhotosRequest(await event.client.get_profile_photos("me", limit= n)))    
     await borg(functions.account.UpdateProfileRequest(about=f"{bio}"))
-    await borg(functions.account.UpdateProfileRequest(first_name=f"{name}"))
+    await borg(functions.account.UpdateProfileRequest(first_name=f"{fname}"))
+   await borg(functions.account.UpdateProfileRequest(last_name=f"{lname}"))
     await event.edit("succesfully reverted to your account back")
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, f"#REVERT\nSuccesfully reverted back to your profile")
