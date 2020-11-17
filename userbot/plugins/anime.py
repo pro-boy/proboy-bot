@@ -606,19 +606,21 @@ def is_gif(file):
 
 CMD_HELP.update(
     {
-        "anime":"
-            'Anime'\
-    \n.anime <anime>\
-    \nUsage: Returns with Anime information.\
-    \n\n.manga <manga name>\
-    \nUsage: Returns with the Manga information.\
-    \n\n.character <character name>\
-    \nUsage: Return with character information.\
-    \n\n.upcoming\
-    \nUsage: Returns with Upcoming Anime information.\
-    \n\n.scanime <anime> or .sanime <anime>\
-    \nUsage: Search anime.\
-    \n\n.smanga <manga>\
-    \nUsage: Search manga.\
-    \n\n.whatanime Reply with media.\
-    \nUsage: Find anime from media file."})
+        "anime": "**Plugin : **`anime`\
+    \n\n**Syntax : **`.anime <anime name >`\
+    \n**Usage : **Shows you the details of the anime.\
+    \n\n**Syntax : **`.sanime <anime name >`\
+    \n**Usage : **Shows you the details of the anime in cool format.\
+    \n\n**Syntax : **`.scanime <anime name >`\
+    \n**Usage : **Shows you details of anime in cool format.\
+    \n\n**Syntax : **`.character <character name >`\
+    \n**Usage : **Shows you the details of that character in anime with pic.\
+    \n\n**Syntax : **`.smanga <manga name >`\
+    \n**Usage : **Shows you the details of the manga.\
+    \n\n**Syntax : **`.whatanime`\
+    \n**Usage : **reply to a media to get details of anime.\
+    \n\n**Syntax : **`.upcoming`\
+    \n**Usage : **Shows you upcoming anime.\
+    "
+    }
+)
