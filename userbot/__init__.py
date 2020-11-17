@@ -132,7 +132,7 @@ if bool(ENV):
     # Upstream Repo
     UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/1Danish-00/DanishBot.git")
+    "https://github.com/1Danish-00/DanishBot")
     
     # Clone
     FIRSTNAME = os.environ.get("FIRSTNAME", None)
