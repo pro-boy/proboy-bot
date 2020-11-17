@@ -49,7 +49,7 @@ async def apk(event):
 
 
 
-@bot.on(admin_cmd(pattern="crack ?(.*)"))
+@bot.on(admin_cmd(pattern="appx ?(.*)"))
 async def mod(event):
     if event.fwd_from:
         return
