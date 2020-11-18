@@ -84,8 +84,7 @@ async def kakashi(bsdk):
 
 @bot.on(admin_cmd(pattern=r"ohyaah$"))
 async def kakashi(baby):
-    await 
-        baby.edit(
+    await baby.edit(
         "**💪💪Ohhh Yeeah Baby**...\n\n"
         "／ イ  ..........(((ヽ   \n"
         "(  ﾉ       ￣—--＼    \n"
@@ -108,8 +107,7 @@ async def kakashi(baby):
 
 @bot.on(admin_cmd(pattern=r"foff$"))
 async def bluedevilfooku(fooku):
-    await 
-        fooku.edit(
+    await fooku.edit(
         ".                       /¯ )\n"
         "                      /¯  /\n"
         "                    /    /\n"
