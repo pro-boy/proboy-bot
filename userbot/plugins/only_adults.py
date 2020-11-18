@@ -7,8 +7,8 @@ import sys
 from userbot import bot
 from userbot.utils import admin_cmd
 
- @bot.on(admin_cmd(pattern=r"chod"))
-   async def _(event):
+ @bot.on(admin_cmd(pattern=r"mchod"))
+   async def fuck(event):
     if event.fwd_from:
         return
     animation_interval = 2
