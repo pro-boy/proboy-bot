@@ -4,6 +4,40 @@ import asyncio
 import os
 import sys
 from userbot.utils import admin_cmd
+import random
+from userbot.helpers import catmemes
+
+
+@bot.on(admin_cmd(pattern=f"gn$", outgoing=True))
+async def night(night):
+    txt = random.choice(catmemes.GDNIGHT)
+    await night.edit(txt)
+
+
+@bot.on(admin_cmd(pattern=f"gm$", outgoing=True))
+async def morning(morning):
+    txt = random.choice(catmemes.GDMORNING)
+    await morning.edit(txt)
+
+
+@bot.on(admin_cmd(pattern=f"gnoon$", outgoing=True))
+async def noon(noon):
+    txt = random.choice(catmemes.GDNOON)
+    await noon.edit(txt)
+
+
+@bot.on(admin_cmd(pattern="gnt$"))
+async def gn(event):
+    await event.edit(
+        "｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･\n╱╱╱╱╱╱╱╭╮╱╱╱╭╮╱╭╮╭╮\n╭━┳━┳━┳╯┃╭━┳╋╋━┫╰┫╰╮\n┃╋┃╋┃╋┃╋┃┃┃┃┃┃╋┃┃┃╭┫\n┣╮┣━┻━┻━╯╰┻━┻╋╮┣┻┻━╯\n╰━╯╱╱╱╱╱╱╱╱╱╱╰━╯\n｡♥｡･ﾟ♡ﾟ･｡♥° ♥｡･ﾟ♡ﾟ･",
+    )
+
+
+@bot.on(admin_cmd(pattern="gmg$"))
+async def gm(event):
+    await event.edit(
+        "｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･｡♥｡･ﾟ♡ﾟ･\n╱╱╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╭╮\n╭━┳━┳━┳╯┃╭━━┳━┳┳┳━┳╋╋━┳┳━╮\n┃╋┃╋┃╋┃╋┃┃┃┃┃╋┃╭┫┃┃┃┃┃┃┃╋┃\n┣╮┣━┻━┻━╯╰┻┻┻━┻╯╰┻━┻┻┻━╋╮┃\n╰━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━╯\n｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･｡♥｡･ﾟ♡ﾟ･",
+    )
 
 @borg.on(admin_cmd(pattern=r"lmoon"))
 async def test(event):
