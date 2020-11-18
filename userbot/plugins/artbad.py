@@ -1,7 +1,13 @@
 import asyncio
-
+import request
+import re
+from userbot.uniborgConfig import Config
+from userbot import bot, ALIVE_NAME
 from userbot.utils import admin_cmd
 
+
+USERID = bot.uid
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "HeHe"
 
 mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
 
