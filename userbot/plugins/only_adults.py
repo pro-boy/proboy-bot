@@ -11,7 +11,7 @@ from userbot.utils import admin_cmd
 
 
 
- @borg.on(admin_cmd("chod"))
+ @borg.on(admin_cmd(pattern=r"chod"))
    async def _(event):
     if event.fwd_from:
         return
@@ -39,7 +39,7 @@ from userbot.utils import admin_cmd
 
             await event.edit(animation_chars[i % 11])
 
- @borg.on(admin_cmd("quickheal"))
+ @borg.on(admin_cmd(pattern=r"quickheal"))
    async def _(event):
     if event.fwd_from:
         return
@@ -68,7 +68,7 @@ from userbot.utils import admin_cmd
             await event.edit(animation_chars[i % 11])
 
 
- @borg.on(admin_cmd("vquickheal"))
+ @borg.on(admin_cmd(pattern=r"vquickheal"))
    async def _(event):
     if event.fwd_from:
         return
