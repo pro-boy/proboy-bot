@@ -7,7 +7,7 @@ import sys
 from userbot import bot
 from userbot.utils import admin_cmd
 
- @bot.on(admin_cmd(pattern=r"mchod"))
+ @borg.on(admin_cmd(pattern=r"mchod$"))
    async def fuck(event):
     if event.fwd_from:
         return
@@ -35,7 +35,7 @@ from userbot.utils import admin_cmd
 
             await event.edit(animation_chars[i % 11])
 
- @bot.on(admin_cmd(pattern=r"quickheal"))
+ @borg.on(admin_cmd(pattern=r"quickheal$"))
    async def _(event):
     if event.fwd_from:
         return
@@ -64,7 +64,7 @@ from userbot.utils import admin_cmd
             await event.edit(animation_chars[i % 11])
 
 
- @bot.on(admin_cmd(pattern=r"vquickheal"))
+ @borg.on(admin_cmd(pattern=r"vquickheal$"))
    async def _(event):
     if event.fwd_from:
         return
