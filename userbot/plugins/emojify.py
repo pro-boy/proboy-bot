@@ -136,8 +136,7 @@ async def itachi(event):
         get = await event.get_reply_message()
         args = get.text
     if not args:
-        await 
-            event.edit("`What am I Supposed to do with this nibba/nibbi, Give me a text. `"
+        await event.edit("`What am I Supposed to do with this nibba/nibbi, Give me a text. `"
         )
         return
     string = "  ".join(args).lower()
@@ -155,8 +154,7 @@ async def itachi(event):
         get = await event.get_reply_message()
         args = get.text
     if not args:
-        await 
-            event.edit("`What am I Supposed to do with this nibba/nibbi, Give me a text. `"
+        await event.edit("`What am I Supposed to do with this nibba/nibbi, Give me a text. `"
         )
         return
     emoji, args = args.split(" ", 1)
