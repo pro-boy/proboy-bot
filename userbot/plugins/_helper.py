@@ -13,55 +13,52 @@ HELPTYPE = Config.HELP_INLINETYPE or True
 
 @borg.on(admin_cmd(outgoing=True, pattern="help ?(.*)"))
 async def cmd_list(event):
-    global HELPTYPE
-    reply_to_id = None
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    input_str = event.pattern_match.group(1)
-    if input_str == "text":
-        string = (
-            "Total {count} commands found in {plugincount} plugins of catuserbot\n\n"
-        )
-        catcount = 0
-        plugincount = 0
-        for i in sorted(CMD_LIST):
-            plugincount += 1
-            string += f"{plugincount}) Commands found in Plugin " + i + " are \n"
-            for iter_list in CMD_LIST[i]:
-                string += "    " + str(iter_list)
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
+        input_str = event.pattern_match.group(1)
+        if tgbotusername is None or input_str == "text":
+            string = ""
+            for i in CMD_LIST:
+                string += "ℹ️ " + i + "\n"
+                for iter_list in CMD_LIST[i]:
+                    string += "    `" + str(iter_list) + "`"
+                    string += "\n"
                 string += "\n"
-                catcount += 1
-            string += "\n"
-        if len(string) > 4095:
-            data = string.format(count=catcount, plugincount=plugincount)
-            key = (
-                requests.post(
-                    "https://nekobin.com/api/documents", json={"content": data}
-                )
-                .json()
-                .get("result")
-                .get("key")
-            )
-            url = f"https://nekobin.com/{key}"
-            reply_text = f"**All commands of the catuserbot can be seen [here]({url})**"
-            await event.edit(reply_text)
-            return
-        await event.edit(string.format(count=catcount, plugincount=plugincount))
-        return
-    if input_str:
-        if input_str in CMD_LIST:
-            string = "<b>{count} Commands found in plugin {input_str}:</b>\n\n"
-            catcount = 0
-            for i in CMD_LIST[input_str]:
-                string += f"  •  <code>{i}</code>"
-                string += "\n"
-                catcount += 1
-            await event.edit(
-                string.format(count=catcount, input_str=input_str), parse_mode="HTML"
-            )
+            if len(string) > 4095:
+                with io.BytesIO(str.encode(string)) as out_file:
+                    out_file.name = "cmd.txt"
+                    await bot.send_file(
+                        event.chat_id,
+                        out_file,
+                        force_document=True,
+                        allow_cache=False,
+                        caption="**COMMANDS**",
+                        reply_to=reply_to_id
+                    )
+                    await event.delete()
+            else:
+                await event.edit(string)
+        elif input_str:
+            if input_str in CMD_LIST:
+                string = "Commands found in {}:".format(input_str)
+                for i in CMD_LIST[input_str]:
+                    string += "    " + i
+                    string += "\n"
+                await event.edit(string)
+            else:
+                await event.edit(input_str + " is not a valid plugin!")
         else:
-            await event.edit(input_str + " is not a valid plugin!")
-            await asyncio.sleep(3)
+            help_string = """Userbot Helper.. \nProvided by @TechnoAyanBoT\n
+`Userbot Helper to reveal all the commands`"""
+            results = await bot.inline_query(  # pylint:disable=E0602
+                tgbotusername,
+                help_string
+            )
+            await results[0].click(
+                event.chat_id,
+                reply_to=event.reply_to_msg_id,
+                hide_via=True
+            )
             await event.delete()
     else:
         if HELPTYPE is True:
