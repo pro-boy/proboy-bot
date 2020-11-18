@@ -23,7 +23,6 @@ async def _(event):
         return
     start = datetime.now()
     BASE_URL = "http://images.google.com"
-    OUTPUT_STR = "Reply to an image to do Google Reverse Search"
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
