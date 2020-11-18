@@ -1,8 +1,9 @@
 import asyncio
 
 from userbot.utils import admin_cmd
-from userbot import mention
 
+
+mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
 
 
 # ==================================================================
