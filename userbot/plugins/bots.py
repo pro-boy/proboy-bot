@@ -141,7 +141,6 @@ CMD_HELP.update(
         \n\n.instadl <reply to instagram url>\\nUse - Download that instagram post.\
         \n\n.recognize <reply to any media>\\nUse - send details about it.\
         \n\n.wspr <message> <target username/id>\nUse - Send a whisper message to that person.\
-        \n\n.limits\nUse - Check if you are limited by telegram.\
-        \n\n.gitdl <reply to github link>\nUse - Download the main branch of that git repo."
+        \n\n.limits\nUse - Check if you are limited by telegram."
     }
 )
