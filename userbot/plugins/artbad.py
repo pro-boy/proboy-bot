@@ -139,7 +139,7 @@ async def kakashi(mf):
 
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"^\.(?:penis|dick)\s?(.)?"))
+@bot.on(admin_cmd(pattern=r"dick (.*)"))
 async def emoji_penis(e):
     emoji = e.pattern_match.group(1)
     titid = GAMBAR_TITIT
