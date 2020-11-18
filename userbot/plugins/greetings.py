@@ -139,7 +139,7 @@ async def gn(event):
 
 @bot.on(admin_cmd(pattern=r"gmg3$"))
 async def bluedevilgoodm(goodm):
-    await goodw.edit(W)
+    await goodm.edit(W)
 
 
 @bot.on(admin_cmd(pattern=r"gnt3$"))
