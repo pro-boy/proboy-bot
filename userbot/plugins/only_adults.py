@@ -3,28 +3,28 @@
 from telethon import events
 
 import asyncio
+from userbot.utils import admin_cmd
 
 
 
 
-
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
+#@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"chod")
 async def _(event):
 
     if event.fwd_from:
 
         return
 
-    animation_interval = 5
+    animation_interval = 2
 
     animation_ttl = range(0, 11)
 
-    input_str = event.pattern_match.group(1)
+  #  input_str = event.pattern_match.group(1)
 
-    if input_str == "chod":
+   # if input_str == "chod":
 
-        await event.edit(input_str)
+      await event.edit(`RUK Abhi Tera Maa Chodta hu 😂😂`)
 
         animation_chars = [
         
@@ -47,23 +47,23 @@ async def _(event):
 
             await event.edit(animation_chars[i % 11])
 
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
+#@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"quickheal"))
 async def _(event):
 
     if event.fwd_from:
 
         return
 
-    animation_interval = 0.1
+    animation_interval = 2
 
     animation_ttl = range(0, 11)
 
-    input_str = event.pattern_match.group(1)
+  #  input_str = event.pattern_match.group(1)
 
-    if input_str == "sqh":
+  #  if input_str == "sqh":
 
-        await event.edit(input_str)
+        await event.edit(`Searching.. 🤭Dangerous ⚙️Virus here`)
 
         animation_chars = [
         
@@ -87,23 +87,23 @@ async def _(event):
             await event.edit(animation_chars[i % 11])
 
 
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
+#@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"vquickheal"))
 async def _(event):
 
     if event.fwd_from:
 
         return
 
-    animation_interval = 5
+    animation_interval = 2
 
     animation_ttl = range(0, 11)
 
-    input_str = event.pattern_match.group(1)
+ #   input_str = event.pattern_match.group(1)
 
-    if input_str == "vquickheal":
+  #  if input_str == "vquickheal":
 
-        await event.edit(input_str)
+        await event.edit(`Searching.. 🤭Dangerous ⚙️Virus here`)
 
         animation_chars = [
         
