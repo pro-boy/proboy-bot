@@ -91,7 +91,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             return repo.__del__()
         await event.edit(
-            "`[HEROKU]`" "\n`Userbot dyno build in progress, please wait...`"
+            "`[HEROKU]`" "\n`Userbot dyno build in progress⚙️, please wait😅✨😁...`"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -111,11 +111,11 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         build = app.builds(order_by="created_at", sort="desc")[0]
         if build.status == "failed":
             await event.edit(
-                "`Build failed!\n" "Cancelled or there were some errors...`"
+                "`Build failed!\n" "Cancelled or there were some errors👀👀...`"
             )
             await asyncio.sleep(5)
             return await event.delete()
-        await event.edit("`Successfully deployed!\n" "Restarting, please wait...`")
+        await event.edit("`Successfully deployed sar 😎😎!\n" "Restarting ⚙️, please wait📠...`")
     else:
         await event.edit(
             "`[HEROKU]`\n" "`Please set up`  **HEROKU_API_KEY**  `variable...`"
@@ -159,8 +159,8 @@ async def upstream(event):
         if conf is None:
             return await event.edit(
                 f"`Unfortunately, the directory {error} "
-                "does not seem to be a git repository.\n"
-                "But we can fix that by force updating the userbot using "
+                "does not seem to be a git repository.😅😂\n"
+                "But we can fix⚙️ that by force updating the userbot 😎 using "
                 ".update now.`"
             )
         repo = Repo.init()
@@ -189,12 +189,12 @@ async def upstream(event):
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     # Special case for deploy
     if conf == "deploy":
-        await event.edit("`Deploying userbot, please wait....`")
+        await event.edit("`Deploying ur userbot sar ✌️, please wait....😁😁`")
         await deploy(event, repo, ups_rem, ac_br, txt)
         return
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`USERBOT is`  **up-to-date**  `with`  "
+            "\n`HeHe!! Ur Piro USERBOT is`  **up-to-date**  `with`  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         return repo.__del__()
@@ -207,10 +207,10 @@ async def upstream(event):
 
     if force_update:
         await event.edit(
-            "`Force-Syncing to latest stable userbot code, please wait...`"
+            "`Force-Syncing 😅😎 to ✨latest✨stable userbot🤖 code, please wait😁😁...`"
         )
     if conf == "now":
-        await event.edit("`Updating userbot, please wait....`")
+        await event.edit("`Updating ur Piro userbot Sar 😎😎, please wait....😁😁`")
         await update(event, repo, ups_rem, ac_br)
     return
 
