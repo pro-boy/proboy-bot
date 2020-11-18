@@ -1,5 +1,4 @@
 import asyncio
-import request
 import re
 from userbot.uniborgConfig import Config
 from userbot import bot, ALIVE_NAME
