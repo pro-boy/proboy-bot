@@ -1,17 +1,13 @@
 
 
 from telethon import events
-from telethon import events
 import asyncio
 import os
 import sys
-
+from userbot import bot
 from userbot.utils import admin_cmd
 
-
-
-
- @borg.on(admin_cmd(pattern=r"chod"))
+ @bot.on(admin_cmd(pattern=r"chod"))
    async def _(event):
     if event.fwd_from:
         return
@@ -39,7 +35,7 @@ from userbot.utils import admin_cmd
 
             await event.edit(animation_chars[i % 11])
 
- @borg.on(admin_cmd(pattern=r"quickheal"))
+ @bot.on(admin_cmd(pattern=r"quickheal"))
    async def _(event):
     if event.fwd_from:
         return
@@ -68,7 +64,7 @@ from userbot.utils import admin_cmd
             await event.edit(animation_chars[i % 11])
 
 
- @borg.on(admin_cmd(pattern=r"vquickheal"))
+ @bot.on(admin_cmd(pattern=r"vquickheal"))
    async def _(event):
     if event.fwd_from:
         return
