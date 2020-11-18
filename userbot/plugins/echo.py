@@ -26,9 +26,9 @@ import requests
 from telethon import events
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply
-from .sql_helper.echo_sql import addecho, get_all_echos, is_echo, remove_echo
+from userbot import CMD_HELP
+from userbot.utils import admin_cmd
+from userbot.plugins.sql_helper.echo_sql import addecho, get_all_echos, is_echo, remove_echo
 
 
 @borg.on(admin_cmd(pattern="enableecho$"))
@@ -46,12 +46,12 @@ async def echo(cat):
         except BaseException:
             pass
         if is_echo(user_id, chat_id):
-            await edit_or_reply(cat, "The user is already enabled with echo ")
+            await cat.edit("The user is already enabled with echo ")
             return
         addecho(user_id, chat_id)
-        await edit_or_reply(cat, "Hi")
+        await cat.edit("Hi")
     else:
-        await edit_or_reply(cat, "Reply To A User's Message to echo his messages")
+        await cat.edit("Reply To A User's Message to echo his messages")
 
 
 @borg.on(admin_cmd(pattern="disableecho$"))
@@ -70,11 +70,11 @@ async def echo(cat):
             pass
         if is_echo(user_id, chat_id):
             remove_echo(user_id, chat_id)
-            await edit_or_reply(cat, "Echo has been stopped for the user")
+            await cat.edit("Echo has been stopped for the user")
         else:
-            await edit_or_reply(cat, "The user is not activated with echo")
+            await cat.edit("The user is not activated with echo")
     else:
-        await edit_or_reply(cat, "Reply To A User's Message to echo his messages")
+        await cat.edit("Reply To A User's Message to echo his messages")
 
 
 @borg.on(admin_cmd(pattern="listecho$"))
@@ -101,9 +101,9 @@ async def echo(cat):
         )
         url = f"https://nekobin.com/{key}"
         reply_text = f"echo enabled users: [here]({url})"
-        await edit_or_reply(cat, reply_text)
+        await cat.edit(reply_text)
     else:
-        await edit_or_reply(cat, output_str)
+        await cat.edit(output_str)
 
 
 @borg.on(events.NewMessage(incoming=True))
