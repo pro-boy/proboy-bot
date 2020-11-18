@@ -10,7 +10,7 @@ from userbot.helpers import emojify
 
 
 
-@bot.on(admin_cmd(pattern="emoji(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern="remoji(?: |$)(.*)"))
 async def itachi(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -28,7 +28,7 @@ async def itachi(event):
     await event.edit(string)
 
 
-@bot.on(admin_cmd(pattern="cmoji(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern="cemoji(?: |$)(.*)"))
 async def itachi(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -52,12 +52,12 @@ async def itachi(event):
 CMD_HELP.update(
     {
         "emojify": "__**PLUGIN NAME :** Emojify__\
-      \n\n📌** CMD ➥** `.emoji` <text>\
+      \n\n📌** CMD ➥** `.remoji` <text>\
       \n**USAGE   ➥  **Converts your text to big emoji text, with default emoji. \
-      \n\n📌** CMD ➥** `.cmoji` <emoji> <text>\
+      \n\n📌** CMD ➥** `.cemoji` <emoji> <text>\
       \n**USAGE   ➥  **Converts your text to big emoji text, with your custom emoji.\
       \n\n**☞ NOTE :** For giving sapce between two words use **@** symbol.\
-      \n**EXAMPLE :**  `.emoji fuck@u`\
-      \n                    `.cmoji 😋 suck@mine`"
+      \n**EXAMPLE :**  `.remoji fuck@u`\
+      \n                    `.cemoji 😋 suck@mine`"
     }
 )
