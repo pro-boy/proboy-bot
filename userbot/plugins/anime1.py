@@ -5,7 +5,7 @@ import requests
 
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
-from userbot.helpers import time_formatter as t
+from userbot.utils import time_formatter as t
 
 
 def shorten(description, info="anilist.co"):
