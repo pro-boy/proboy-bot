@@ -1,5 +1,9 @@
-# unban pornsites lol jee lo apni zindagi
-# hehe created by @danish_00
+# unban pornsites here 
+#
+# lol jee lo apni zindagi
+#
+# HeHe created by @danish_00
+#
 #😂😂😂
 
 from telethon import events
@@ -10,7 +14,7 @@ from userbot.utils import admin_cmd
 
 
 
-@borg.on(admin_cmd(pattern="phub"))
+@borg.on(admin_cmd(pattern="porn"))
 
 async def _(event):
 
