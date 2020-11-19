@@ -393,7 +393,7 @@ async def bluedevilwelcome(welcome):
     await welcome.edit(K)
 
 
-@bot.on(admin_cmd(pattern=r"snk$"))
+@bot.on(admin_cmd(pattern=r"snake$"))
 async def bluedevilsnake(snake):
     await snake.edit(L)
 
@@ -418,7 +418,7 @@ async def kakashi(lool):
     await lool.edit(T)
 
 
-@bot.on(admin_cmd(pattern=r"lol$"))
+@bot.on(admin_cmd(pattern=r"loool$"))
 async def kakashi(lol):
     await lol.edit(S)
 
@@ -426,7 +426,7 @@ async def kakashi(lol):
 CMD_HELP.update(
     {
         "art": "__**PLUGIN NAME :** Art__\
-\n\n📌** CMD ➥** `.gay` | `.bot` | `.hai` | `.nou` |`.elove` | `.monster` | `.pig` | `.gun` | `.dog` | `.hello` | `.hmf` | `.couple` | `.sup` | `.india` | `.wc` | `.snk` | `.bye` | `.shitos` | `.dislike` | `.lol` | `.loal`\
+\n\n📌** CMD ➥** `.gay` | `.bot` | `.hai` | `.nou` |`.elove` | `.monster` | `.pig` | `.gun` | `.dog` | `.hello` | `.hmf` | `.couple` | `.sup` | `.india` | `.wc` | `.snake` | `.bye` | `.shitos` | `.dislike` | `.loool` | `.lool`\
 \n\n**USAGE   ➥  **These are arts,use & see"
     }
 )
