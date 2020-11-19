@@ -72,15 +72,18 @@ async def _(event):
         except YouBlockedUserError:
             await event.edit("```Please unblock me (@allsaverbot) u Nigga```")
             return
-        await event.delete()
+         if response.text.startswith("Hi!"):
+              await event.edit("```Can you kindly disable your forward privacy settings```")
+        else: 
+         await event.delete()
         await event.client.send_message(
             event.chat_id, response.message, reply_to=reply_message)
         
 
-@borg.on(admin_cmd(pattern="wspr ?(.*)"))
-async def wspr(event):
-    if event.fwd_from:
-        return
+  @borg.on(admin_cmd(pattern="wspr ?(.*)"))
+       async def wspr(event):
+         if event.fwd_from:
+            return
     wwwspr = event.pattern_match.group(1)
     botusername = "@whisperBot"
     if event.reply_to_msg_id:
