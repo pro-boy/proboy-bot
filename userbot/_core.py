@@ -28,19 +28,19 @@ async def install(event):
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
                 await event.edit(
-                    "Plugin successfully installed\n 🙏🙏🙏 `{}`".format(
+                    "`Plugin successfully installed`\n ⚙️🤖⚙️ `{}`".format(
                         os.path.basename(downloaded_file_name)
                     )
                 )
             else:
                 os.remove(downloaded_file_name)
                 await event.edit(
-                    "**Error!**\nPlugin cannot be installed!\n Or may have been pre-installed."
+                    "`**Error!**\nPlugin cannot be installed!\n Or may have been pre-installed.`"
                 )
         except Exception as e:  # pylint:disable=C0103,W0703
             await event.edit(str(e))
             os.remove(downloaded_file_name)
-    await asyncio.sleep(DELETE_TIMEOUT)
+    await asyncio.sleep(5)
     await event.delete()
 
 @bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
@@ -80,7 +80,7 @@ async def unload(event):
         await event.edit(f"Successfully unloaded {shortname}")
     except Exception as e:
         await event.edit(
-            "Successfully unloaded {shortname}\n{}".format(
+            "`Successfully unloaded {shortname}`\n{}".format(
                 shortname, str(e)
             )
         )
@@ -97,7 +97,7 @@ async def load(event):
         except BaseException:
             pass
         load_module(shortname)
-        await event.edit(f"Successfully loaded {shortname}")
+        await event.edit(f"`Successfully loaded {shortname}`")
     except Exception as e:
         await event.edit(
             f"Sorry, could not load {shortname} because of the following error.\n{str(e)}"
