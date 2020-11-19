@@ -52,33 +52,34 @@ async def _(event):
 @borg.on(admin_cmd(pattern="instadl ?(.*)"))
 async def _(event):
     if event.fwd_from:
-        return
+        return 
     if not event.reply_to_msg_id:
-        await event.edit("**just Reply to a instagram url only.**")
-        return
-    reply_message = await event.get_reply_message()
-    chat = "@allsaverbot"
+       await event.edit("```Reply to any user message.```")
+       return
+    reply_message = await event.get_reply_message() 
+    chat = "allsaverbot"
     sender = reply_message.sender
-    await event.edit("**Downloading the post...**")
+    if reply_message.sender.bot:
+       await event.edit("```Reply to actual users message.```")
+       return
+    await event.edit("```Opening 😅😅```")
     async with event.client.conversation(chat) as conv:
-        try:
-            response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=804576054))
-           response2 = conv.wait_event(events.NewMessage(incoming=True, from_users=804576054))
-                 
-            await event.client.forward_messages(chat, reply_message)
-            
-            response = await response2
-        except YouBlockedUserError:
-            await event.edit("```Please unblock me (@allsaverbot) u Nigga```")
-            return
-         if response.text.startswith("Hi!"):
-              await event.edit("```Can you kindly disable your forward privacy settings```")
-        else: 
-         await event.delete()
-        await event.client.send_message(
-            event.chat_id, response.message, reply_to=reply_message)
-        
+          try:     
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=804576054))
+              response2 = conv.wait_event(events.NewMessage(incoming=True,from_users=804576054))
+              
+              await event.client.forward_messages(chat, reply_message)
+              
+              response = await response2 
+              
+          except YouBlockedUserError: 
+              await event.reply("```Please unblock (allsaverbot) ```")
+              return
+          if response.text.startswith("Hi!"):
+             await event.edit("```Can you kindly disable your forward privacy settings```")
+          else: 
+             await event.delete()
+             await event.client.send_message(event.chat_id, response.message)
 
 
 @borg.on(admin_cmd(pattern="purl ?(.*)"))
