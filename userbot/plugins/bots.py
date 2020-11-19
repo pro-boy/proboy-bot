@@ -63,10 +63,12 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=804576054)
-            )
+                events.NewMessage(incoming=True, from_users=804576054))
+           response2 = conv.wait_event(
+                 events.NewMessage(incoming=True, from_users=804576054))
             await event.client.forward_messages(chat, reply_message)
-            response = await response
+           
+            response = await response2
         except YouBlockedUserError:
             await event.edit("```Please unblock me (@allsaverbot) u Nigga```")
             return
@@ -124,10 +126,9 @@ async def _(event):
             try:
                 await conv.send_message("/start")
                 await conv.get_response()
-                await conv.send_message("/start")
-                audio = await conv.get_response()
+                danish = await conv.get_response()
                 final = ("HeHe", "")
-                await borg.send_message(event.chat_id, audio.text)
+                await borg.send_message(event.chat_id, danish.text)
                 await event.delete()
             except YouBlockedUserError:
                 await event.edit("**Error:** `unblock` @spambot `and retry!")
