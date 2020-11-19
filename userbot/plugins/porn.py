@@ -10,7 +10,7 @@ from userbot.utils import admin_cmd
 
 
 
-@borg.on(admin_cmd(pattern="pornhub.com"))
+@borg.on(admin_cmd(pattern="phub"))
 
 async def _(event):
 
@@ -18,7 +18,7 @@ async def _(event):
 
         return
 
-    animation_interval = 0.3
+    animation_interval = 0.2
 
     animation_ttl = range(0, 8)
 
@@ -40,7 +40,7 @@ async def _(event):
             
            "PORNHUB_", 
            
-           "[PORNHUB](www.porn93.cc)"
+           "[PORNHUB](www.porn93.cc)👄👅💦💦"
 
         ]
 
@@ -59,7 +59,7 @@ async def _(event):
 
         return
 
-    animation_interval = 0.3
+    animation_interval = 0.2
 
     animation_ttl = range(0, 7)
 
@@ -79,7 +79,7 @@ async def _(event):
             
             "XVIDEO_",
             
-            "[XVIDEOS](www.xvideos4.com)"
+            "[XVIDEOS](www.xvideos4.com)🖕👄💦💦"
 
         ]
 
@@ -108,7 +108,7 @@ async def _(event):
 
         return
 
-    animation_interval = 0.3
+    animation_interval = 0.2
 
     animation_ttl = range(0, 5)
 
@@ -124,7 +124,7 @@ async def _(event):
 
             "XNXX_",
             
-            "[XNXX](www.xnxx.wapca.cc)👄_"
+            "[XNXX](www.xnxx.wapca.cc)👉🏻👌💦👄💦"
             
             
             
