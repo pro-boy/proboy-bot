@@ -344,67 +344,56 @@ T = (
 
 
 @bot.on(admin_cmd(pattern=r"monster$"))
-@bot.on(sudo_cmd(pattern="monster$", allow_sudo=True))
 async def bluedevilmonster(monster):
-    await edit_or_reply(monster, A)
+    await monster.edit(A)
 
 
 @bot.on(admin_cmd(pattern=r"pig$"))
-@bot.on(sudo_cmd(pattern="pig$", allow_sudo=True))
 async def bluedevilpig(pig):
-    await edit_or_reply(pig, B)
+    await pig.edit(B)
 
 
 @bot.on(admin_cmd(pattern=r"gun$"))
-@bot.on(sudo_cmd(pattern="gun$", allow_sudo=True))
 async def bluedevilgun(gun):
-    await edit_or_reply(gun, D)
+    await gun.edit(D)
 
 
 @bot.on(admin_cmd(pattern=r"dog$"))
-@bot.on(sudo_cmd(pattern="dog$", allow_sudo=True))
 async def bluedevildog(dog):
-    await edit_or_reply(dog, E)
+    await dog.edit(E)
 
 
 @bot.on(admin_cmd(pattern=r"hello$"))
-@bot.on(sudo_cmd(pattern="hello$", allow_sudo=True))
 async def bluedevilhello(hello):
-    await edit_or_reply(hello, F)
+    await hello.edit(F)
 
 
 @bot.on(admin_cmd(pattern=r"hmf$"))
-@bot.on(sudo_cmd(pattern="hmf$", allow_sudo=True))
 async def bluedevilhmf(hmf):
-    await edit_or_reply(hmf, G)
+    await hmf.edit(G)
 
 
 @bot.on(admin_cmd(pattern=r"couple$"))
-@bot.on(sudo_cmd(pattern="couple$", allow_sudo=True))
 async def bluedevilcouple(couple):
-    await edit_or_reply(couple, H)
+    await couple.edit(H)
 
 
 @bot.on(admin_cmd(pattern=r"sup$"))
-@bot.on(sudo_cmd(pattern="sup$", allow_sudo=True))
 async def bluedevilsupreme(supreme):
-    await edit_or_reply(supreme, I)
+    await supreme.edit(I)
 
 
 @bot.on(admin_cmd(pattern=r"india$"))
-@bot.on(sudo_cmd(pattern="india$", allow_sudo=True))
 async def bluedevilindia(india):
-    await edit_or_reply(india, J)
+    await india.edit(J)
 
 
 @bot.on(admin_cmd(pattern=r"wc$"))
-@bot.on(sudo_cmd(pattern="wc$", allow_sudo=True))
 async def bluedevilwelcome(welcome):
-    await edit_or_reply(welcome, K)
+    await welcome.edit(K)
 
 
 @bot.on(admin_cmd(pattern=r"snk$"))
-@bot.on(sudo_cmd(pattern="snk$", allow_sudo=True))
 async def bluedevilsnake(snake):
     await snake.edit(L)
 
