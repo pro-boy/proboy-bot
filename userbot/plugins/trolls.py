@@ -185,8 +185,8 @@ async def catbot(catmemes):
         username, text = input_str.split("|")
     else:
         await catmemes.edit(
-            "**Syntax :** reply to image or sticker with `.phub (username)|(text in comment)`",
-        )
+            "**Syntax :** reply to image or sticker with `.phub (username)|(text in comment)`"
+               )
         return
     replied = await catmemes.get_reply_message()
     if not os.path.isdir("./temp/"):
@@ -195,7 +195,7 @@ async def catbot(catmemes):
         await catmemes.edit("reply to a supported media file")
         return
     if replied.media:
-        catmemmes = catmemes.edit("passing to telegraph...")
+        catmemmes = await catmemes.edit("passing to telegraph...")
     else:
         await catmemes.edit("reply to a supported media file")
         return
