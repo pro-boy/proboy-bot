@@ -54,21 +54,21 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("**Reply to a instagram url.**")
+        await event.edit("**just Reply to a instagram url only.**")
         return
     reply_message = await event.get_reply_message()
-    chat = "@instadownloadingbot"
+    chat = "@allsaverbot"
     reply_message.sender
     await event.edit("**Downloading the post...**")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=1310260390)
+                events.NewMessage(incoming=True, from_users=804576054)
             )
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.edit("```Please unblock me (@instadownloadingbot) u Nigga```")
+            await event.edit("```Please unblock me (@allsaverbot) u Nigga```")
             return
         await event.delete()
         await event.client.send_message(
