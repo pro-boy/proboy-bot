@@ -7,7 +7,7 @@ from uniborg.util import admin_cmd
 
 
 
-@borg.on(admin_cmd(pattern="phub"))
+@borg.on(admin_cmd(pattern="pornhub"))
 
 async def _(event):
 
@@ -15,11 +15,11 @@ async def _(event):
 
         return
 
-    animation_interval = 0.5
+    animation_interval = 0.3
 
-    animation_ttl = range(0, 101)
+    animation_ttl = range(0, 8)
 
-    await event.edit("phub")
+    await event.edit("`Connecting...`")
 
     animation_chars = [
 
@@ -37,7 +37,7 @@ async def _(event):
             
            "PORNHUB_", 
            
-           "PORNHUB",
+           "[PORNHUB](www.porn93.cc)"
 
         ]
 
@@ -45,10 +45,10 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
 
-        await event.edit(animation_chars[i % 10])
+        await event.edit(animation_chars[i % 8])
 
 
-@borg.on(admin_cmd(pattern=r"amore"))
+@borg.on(admin_cmd(pattern=r"xvideos"))
 
 async def _(event):
 
@@ -56,27 +56,27 @@ async def _(event):
 
         return
 
-    animation_interval = 0.5
+    animation_interval = 0.3
 
-    animation_ttl = range(0, 101)
+    animation_ttl = range(0, 7)
 
-    await event.edit("amore")
+    await event.edit("`Connecting...`")
 
     animation_chars = [
 
-            "A_",
+            "X_",
 
-            "AM_",
+            "XV_",
 
-            "AMO_",
+            "XVI_",
 
-            "AMOR_",
+            "XVID_",
             
-            "AMORE_",
+            "XVIDE_",
             
-            "AMORE❤_",
+            "XVIDEO_",
             
-            ".-.",
+            "[XVIDEOS](www.xvideos4.com)"
 
         ]
 
@@ -84,7 +84,7 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
 
-        await event.edit(animation_chars[i % 10])
+        await event.edit(animation_chars[i % 7])
 
 
 
@@ -97,7 +97,7 @@ import asyncio
 
 
 
-@borg.on(admin_cmd(pattern=r"sexy"))
+@borg.on(admin_cmd(pattern=r"xnxx"))
 
 async def _(event):
 
@@ -105,25 +105,25 @@ async def _(event):
 
         return
 
-    animation_interval = 0.5
+    animation_interval = 0.3
 
-    animation_ttl = range(0, 101)
+    animation_ttl = range(0, 5)
 
-    await event.edit("Sexy")
+    await event.edit("`Connecting...`")
 
     animation_chars = [
 
-            "S_",
+            "X_",
 
-            "SE_",
+            "XN_",
 
-            "SEX_",
+            "XNX_",
 
-            "SEXY_",
+            "XNXX_",
             
-            "SEXY👄_",
+            "[XNXX](www.xnxx.wapca.cc)👄_"
             
-            "SEXY👄",
+            
             
         ]
 
@@ -131,4 +131,4 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
 
-        await event.edit(animation_chars[i % 10])
+        await event.edit(animation_chars[i % 5])
