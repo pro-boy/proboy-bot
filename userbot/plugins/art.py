@@ -33,7 +33,7 @@ async def kakashi(jisan):
     )
 
 
-@bot.on(admin_cmd(pattern=r"hai$"))
+@bot.on(admin_cmd(pattern=r"hey$"))
 async def kakashi(nikal):
     await nikal.edit(
         
@@ -336,12 +336,6 @@ S = (
     "`╱┗━━━┛╰━━━╯┗━━━┛╱ `\n"
 )
 
-T = (
-    "`\n╭╭━━━╮╮┈┈┈┈┈┈┈┈┈┈\n┈┃╭━━╯┈┈┈┈▕╲▂▂╱▏┈\n┈┃┃╱▔▔▔▔▔▔▔▏╱▋▋╮┈`"
-    "`\n┈┃╰▏┃╱╭╮┃╱╱▏╱╱▆┃┈\n┈╰━▏┗━╰╯┗━╱╱╱╰┻┫┈\n┈┈┈▏┏┳━━━━▏┏┳━━╯┈`"
-    "`\n┈┈┈▏┃┃┈┈┈┈▏┃┃┈┈┈┈ `"
-)
-
 
 @bot.on(admin_cmd(pattern=r"monster$"))
 async def bluedevilmonster(monster):
@@ -414,11 +408,6 @@ async def bluedevildislike(dislike):
 
 
 @bot.on(admin_cmd(pattern=r"lool$"))
-async def kakashi(lool):
-    await lool.edit(T)
-
-
-@bot.on(admin_cmd(pattern=r"loool$"))
 async def kakashi(lol):
     await lol.edit(S)
 
@@ -426,7 +415,7 @@ async def kakashi(lol):
 CMD_HELP.update(
     {
         "art": "__**PLUGIN NAME :** Art__\
-\n\n📌** CMD ➥** `.gay` | `.bot` | `.hai` | `.nou` |`.elove` | `.monster` | `.pig` | `.gun` | `.dog` | `.hello` | `.hmf` | `.couple` | `.sup` | `.india` | `.wc` | `.snake` | `.bye` | `.shitos` | `.dislike` | `.loool` | `.lool`\
+\n\n📌** CMD ➥** `.gay` | `.bot` | `.hey` | `.nou` |`.elove` | `.monster` | `.pig` | `.gun` | `.dog` | `.hello` | `.hmf` | `.couple` | `.sup` | `.india` | `.wc` | `.snake` | `.bye` | `.shitos` | `.dislike` | `.lool`\
 \n\n**USAGE   ➥  **These are arts,use & see"
     }
 )
