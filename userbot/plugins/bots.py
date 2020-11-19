@@ -64,8 +64,8 @@ async def _(event):
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=804576054))
-           response2 = conv.wait_event(
-                 events.NewMessage(incoming=True, from_users=804576054))
+           response2 = conv.wait_event(events.NewMessage(incoming=True, from_users=804576054))
+                 
             await event.client.forward_messages(chat, reply_message)
            
             response = await response2
@@ -74,8 +74,8 @@ async def _(event):
             return
         await event.delete()
         await event.client.send_message(
-            event.chat_id, response.message, reply_to=reply_message
-        )
+            event.chat_id, response.message, reply_to=reply_message)
+        
 
 @borg.on(admin_cmd(pattern="wspr ?(.*)"))
 async def wspr(event):
