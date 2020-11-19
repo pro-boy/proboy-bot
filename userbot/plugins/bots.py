@@ -58,7 +58,7 @@ async def _(event):
         return
     reply_message = await event.get_reply_message()
     chat = "@allsaverbot"
-    reply_message.sender
+    sender = reply_message.sender
     await event.edit("**Downloading the post...**")
     async with event.client.conversation(chat) as conv:
         try:
@@ -67,7 +67,7 @@ async def _(event):
            response2 = conv.wait_event(events.NewMessage(incoming=True, from_users=804576054))
                  
             await event.client.forward_messages(chat, reply_message)
-            response = await response
+            
             response = await response2
         except YouBlockedUserError:
             await event.edit("```Please unblock me (@allsaverbot) u Nigga```")
