@@ -1,24 +1,22 @@
 # Edit credit @Sur_vivor & @jisan7509
 # Elove by @turquoise-giggle
 
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import admin_cmd
 from userbot import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern=r"elove$"))
-@bot.on(sudo_cmd(pattern="elove$", allow_sudo=True))
 async def kakashi(event):
-    await edit_or_reply(
-        event,
+    await event.edit(
+        
         "░░▄███▄███▄\n░░█████████\n░░▒▀█████▀░\n░░▒░░▀█▀\n░░▒░░█░\n░░▒░█\n░░░█\n░░█░░░░███████\n░██░░░██▓▓███▓██▒\n██░░░█▓▓▓▓▓▓▓█▓████\n██░░██▓▓▓(◐)▓█▓█▓█\n███▓▓▓█▓▓▓▓▓█▓█▓▓▓▓█\n▀██▓▓█░██▓▓▓▓██▓▓▓▓▓█\n░▀██▀░░█▓▓▓▓▓▓▓▓▓▓▓▓▓█\n░░░░▒░░░█▓▓▓▓▓█▓▓▓▓▓▓█\n░░░░▒░░░█▓▓▓▓█▓█▓▓▓▓▓█\n░▒░░▒░░░█▓▓▓█▓▓▓█▓▓▓▓█\n░▒░░▒░░░█▓▓▓█░░░█▓▓▓█\n░▒░░▒░░██▓██░░░██▓▓██\n██████████████████████\n█─████─▄▄─██─█─██─▄▄─█\n█─██▀█─██─██─█─██─▄█▀█\n█▄▄▄▄▀▄▄▄▄▀▀▄▄▄▀▀▄▄▄▄▀",
     )
 
 
 @bot.on(admin_cmd(pattern=r"gay$"))
-@bot.on(sudo_cmd(pattern="gay$", allow_sudo=True))
-async def kakashi(jisan):
-    await edit_or_reply(
-        jisan,
+async def kakashi(chup):
+    await chup.edit(
+        
         "`\n┈┈┈╭━━━━━╮┈┈┈┈┈\n┈┈┈┃┊┊┊┊┊┃┈┈┈┈┈`"
         "`\n┈┈┈┃┊┊╭━╮┻╮┈┈┈┈\n┈┈┈╱╲┊┃▋┃▋┃┈┈┈┈\n┈┈╭┻┊┊╰━┻━╮┈┈┈┈`"
         "`\n┈┈╰┳┊╭━━━┳╯┈┈┈┈\n┈┈┈┃┊┃╰━━┫┈U GAY`"
@@ -27,20 +25,18 @@ async def kakashi(jisan):
 
 
 @bot.on(admin_cmd(pattern=r"bot$"))
-@bot.on(sudo_cmd(pattern="bot$", allow_sudo=True))
 async def kakashi(jisan):
-    await edit_or_reply(
-        jisan,
+    await jisan.edit(
+        
         "` \n   ╲╲╭━━━━╮ \n╭╮┃▆┈┈▆┃╭╮ \n┃╰┫▽▽▽┣╯┃ \n╰━┫△△△┣━╯`"
         "`\n╲╲┃┈┈┈┈┃  \n╲╲┃┈┏┓┈┃ `",
     )
 
 
 @bot.on(admin_cmd(pattern=r"hai$"))
-@bot.on(sudo_cmd(pattern="hai$", allow_sudo=True))
-async def kakashi(jisan):
-    await edit_or_reply(
-        jisan,
+async def kakashi(nikal):
+    await nikal.edit(
+        
         "\n┈┈┈╱▔▔▔▔╲┈╭━━━━━\n┈┈▕▂▂▂▂▂▂▏┃HELLO!┊😀`"
         "`\n┈┈▕▔▇▔▔┳▔▏╰┳╮HELLO!┊\n┈┈▕╭━╰╯━╮▏━╯╰━━━\n╱▔▔▏▅▅▅▅▕▔▔╲┈┈┈┈`"
         "`\n▏┈┈╲▂▂▂▂╱┈┈┈▏┈┈┈`",
@@ -48,10 +44,8 @@ async def kakashi(jisan):
 
 
 @bot.on(admin_cmd(pattern=r"nou$"))
-@bot.on(sudo_cmd(pattern="nou$", allow_sudo=True))
-async def kakashi(jisan):
-    await edit_or_reply(
-        jisan,
+async def kakashi(laude):
+    await laude.edit(
         "`\n┈╭╮╭╮\n┈┃┃┃┃\n╭┻┗┻┗╮`"
         "`\n┃┈▋┈▋┃\n┃┈╭▋━╮━╮\n┃┈┈╭╰╯╰╯╮`"
         "`\n┫┈┈  NoU\n┃┈╰╰━━━━╯`"
@@ -412,37 +406,32 @@ async def bluedevilwelcome(welcome):
 @bot.on(admin_cmd(pattern=r"snk$"))
 @bot.on(sudo_cmd(pattern="snk$", allow_sudo=True))
 async def bluedevilsnake(snake):
-    await edit_or_reply(snake, L)
+    await snake.edit(L)
 
 
 @bot.on(admin_cmd(pattern=r"bye$"))
-@bot.on(sudo_cmd(pattern="bye$", allow_sudo=True))
 async def bluedevilbye(bye):
-    await edit_or_reply(bye, O)
+    await bye.edit(O)
 
 
 @bot.on(admin_cmd(pattern=r"shitos$"))
-@bot.on(sudo_cmd(pattern="shitos$", allow_sudo=True))
 async def bluedevilshitos(shitos):
-    await edit_or_reply(shitos, P)
+    await shitos.edit(P)
 
 
 @bot.on(admin_cmd(pattern=r"dislike$"))
-@bot.on(sudo_cmd(pattern="dislike$", allow_sudo=True))
 async def bluedevildislike(dislike):
-    await edit_or_reply(dislike, R)
+    await dislike.edit(R)
 
 
 @bot.on(admin_cmd(pattern=r"lool$"))
-@bot.on(sudo_cmd(pattern="lool$", allow_sudo=True))
 async def kakashi(lool):
-    await edit_or_reply(lool, T)
+    await lool.edit(T)
 
 
 @bot.on(admin_cmd(pattern=r"lol$"))
-@bot.on(sudo_cmd(pattern="lol$", allow_sudo=True))
 async def kakashi(lol):
-    await edit_or_reply(lol, S)
+    await lol.edit(S)
 
 
 CMD_HELP.update(
