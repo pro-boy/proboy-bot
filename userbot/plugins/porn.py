@@ -10,7 +10,7 @@ from userbot.utils import admin_cmd
 
 
 
-@borg.on(admin_cmd(pattern="pornhub"))
+@borg.on(admin_cmd(pattern="pornhub.com"))
 
 async def _(event):
 
