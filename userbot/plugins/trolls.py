@@ -18,7 +18,7 @@ import os
 import pybase64
 from telegraph import exceptions, upload_file
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-
+from userbot import bot
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
 from userbot.helpers import *
@@ -184,8 +184,7 @@ async def catbot(catmemes):
     if "|" in input_str:
         username, text = input_str.split("|")
     else:
-        await edit_or_reply(
-            catmemes,
+        await catmemes.edit(
             "**Syntax :** reply to image or sticker with `.phub (username)|(text in comment)`",
         )
         return
