@@ -1,9 +1,12 @@
+# unban pornsites lol jee lo apni zindagi
+# hehe created by @danish_00
+#😂😂😂
 
 from telethon import events
 
 import asyncio
 
-from uniborg.util import admin_cmd
+from userbot.utils import admin_cmd
 
 
 
