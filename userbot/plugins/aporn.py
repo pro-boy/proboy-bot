@@ -3,7 +3,7 @@
 # Created by @danish_00
 # 
 #
- Mi Iz pIrO 😂😂😂 
+# Mi Iz pIrO 😂😂😂 
 
 import datetime
 from telethon import events
