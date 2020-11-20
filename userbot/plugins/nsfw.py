@@ -39,7 +39,7 @@ async def butts(event):
 
 
 
-@borg.on(friday_on_cmd(pattern=r"nsfw"))
+@borg.on(admin_on_cmd(pattern=r"nsfw"))
 async def nsfw(event):
     url = "https://nsfw-categorize.it/api/upload"
     await event.edit("`Processing..`")
@@ -62,7 +62,7 @@ async def nsfw(event):
         else:
             await event.edit("Response UnsucessFull. Try Again.")
 
-@bot.on(admin_cmd(pattern="detect$", outgoing=True))
+@borg.on(admin_cmd(pattern="detect$", outgoing=True))
 async def detect(event):
     if Config.DEEP_AI is None:
         return await edit_delete(
