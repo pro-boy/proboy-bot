@@ -1,8 +1,11 @@
+# 🖕🖕🖕🖕🖕🖕🖕🖕🖕
+# 🤖⚙️🤖⚙️🤖⚙️🤖⚙️🤖
+# 💦💦💦💦💦💦💦💦💦
 # HeHeHe  adult plugin is here lol
-#  
+# 👄👅💦👄👅💦👄👅💦👄👅💦👄👅💦👄👅💦 
 # Created by @danish_00
-# 
-#
+# 😅👉🏻👌✨💦👉🏻👌✨💦👉🏻👌✨💦
+# Ab maza aayega na bidu 😂😂
 # Mi Iz pIrO 😂😂😂 
 
 import datetime
@@ -80,7 +83,49 @@ async def _(event):
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)
 
+@borg.on(admin_cmd(pattern="avideos ?(.*)"))
+async def _(event):
+    if event.fwd_from:
+        return 
+    
+    reply_message = await event.get_reply_message()
+    chat = "@Gufabot"
+    await event.edit("Checking...")
+    async with event.client.conversation(chat) as conv:
+          try:     
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=1304516644))
+              await event.client.send_message(chat, "🤩")
+              response = await response 
+          except YouBlockedUserError: 
+              await event.reply("Boss! Please Unblock @Gufabot ")
+              return
+          if response.text.startswith(" "):
+             await event.edit("Sorry sir, That @Gufabot is dead now")
+          else: 
+             await event.delete()
+             await event.client.send_message(event.chat_id, response.message)
 
+@borg.on(admin_cmd(pattern="afun ?(.*)"))
+async def _(event):
+    if event.fwd_from:
+        return 
+    
+    reply_message = await event.get_reply_message()
+    chat = "@Gufabot"
+    await event.edit("Checking...")
+    async with event.client.conversation(chat) as conv:
+          try:     
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=1304516644))
+              await event.client.send_message(chat, "🍆")
+              response = await response 
+          except YouBlockedUserError: 
+              await event.reply("Boss! Please Unblock @Gufabot ")
+              return
+          if response.text.startswith(" "):
+             await event.edit("Sorry sir, That @Gufabot is dead now")
+          else: 
+             await event.delete()
+             await event.client.send_message(event.chat_id, response.message)
 
 
 # This Cmd is Not working in that Epornerbot bot so untill then lets leave this for future use hehe😂
@@ -110,3 +155,4 @@ async def _(event):
              await event.client.send_message(event.chat_id, response.message)
 
 """
+#😚😚😚😚
