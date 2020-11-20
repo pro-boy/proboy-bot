@@ -13,9 +13,10 @@ import sys
 import html
 import json
 from PIL import Image, ImageEnhance, ImageOps
-from userbot import CMD_HELP
+from userbot import CMD_HELP, bot
 from userbot.events import register
 from userbot.helpers.functions import moditweet
+from userbot.utils import admin_cmd
 
 EMOJI_PATTERN = re.compile(
     "["
