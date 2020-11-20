@@ -11,8 +11,8 @@ from userbot.utils import admin_cmd
 telegraph = Telegraph()
 mee = telegraph.create_account(short_name="yohohehe")
 
-@borg.on(admin_cmd(pattern="wspr ?(.*)"))
-       async def wspr(event):
+ @borg.on(admin_cmd(pattern="wspr ?(.*)"))
+ async def _(event):
          if event.fwd_from:
             return
     wwwspr = event.pattern_match.group(1)
