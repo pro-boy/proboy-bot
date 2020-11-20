@@ -7,7 +7,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
-
+from var import Var
 telegraph = Telegraph()
 mee = telegraph.create_account(short_name="yohohehe")
 
@@ -81,14 +81,14 @@ async def _(event):
              await event.client.send_message(event.chat_id, response.message)
 
 @borg.on(admin_cmd(pattern="wspr ?(.*)"))
-async def _(event):
-         if event.fwd_from:
-            return
+async def wspr(event):
+    if event.fwd_from:
+        return
     wwwspr = event.pattern_match.group(1)
     botusername = "@whisperBot"
     if event.reply_to_msg_id:
-        await event.get_reply_message()
-    tap = await bot.inline_query(botusername, wwwspr)
+        reply_to_id = await event.get_reply_message()
+    tap = await bot.inline_query(botusername, wwwspr) 
     await tap[0].click(event.chat_id)
     await event.delete()
 
