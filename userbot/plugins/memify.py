@@ -20,10 +20,7 @@ async def memes(cat):
         else:
             top = catinput
             bottom = ""
-    else:
-        await edit_or_reply(
-            cat, "```what should i write on that u idiot give some text```"
-        )
+    
         return
 
     if not os.path.isdir("./temp/"):
