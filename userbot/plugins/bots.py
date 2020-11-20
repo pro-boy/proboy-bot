@@ -1,5 +1,7 @@
 
 
+import asyncio
+import random, re
 import datetime
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telegraph import Telegraph
@@ -79,6 +81,7 @@ async def _(event):
              await event.edit("```Can you kindly disable your forward privacy settings```")
           else: 
              await event.delete()
+             await asyncio.sleep(3)
              await event.client.send_message(event.chat_id, response.message)
 
 @borg.on(admin_cmd(pattern="wspr ?(.*)"))
