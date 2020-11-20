@@ -39,7 +39,7 @@ async def butts(event):
 
 
 
-@borg.on(admin_on_cmd(pattern=r"nsfw"))
+@borg.on(admin_cmd(pattern=r"nsfw"))
 async def nsfw(event):
     url = "https://nsfw-categorize.it/api/upload"
     await event.edit("`Processing..`")
