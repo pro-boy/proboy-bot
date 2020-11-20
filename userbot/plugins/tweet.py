@@ -285,14 +285,36 @@ async def tweet(event):
     await purge()
 
 
+@bot.on(admin_cmd(pattern="tweetme(?: |$)(.*)"))
+
+async def teletweet(telebot):
+    # """Creates random anime sticker!"""
+    what = telebot.pattern_match.group(1)
+    if not what:
+        if telebot.is_reply:
+            what = (await telebot.get_reply_message()).message
+        else:
+            await telebot.edit( "Tweets must contain some text, pero!")
+            return
+    sticcers = await bot.inline_query("TwitterStatusBot", f"{(deEmojify(what))}")
+    await sticcers[0].click(
+        telebot.chat_id,
+        reply_to=telebot.reply_to_msg_id,
+        silent=True if telebot.is_reply else False,
+        hide_via=True,
+    )
+    await telebot.delete()
+
 CMD_HELP.update(
     {
-        "nekobot": ".tweet <username>.<tweet>"
+        "tweet": ".tweet <username>.<tweet>"
         "\nUsage: Create tweet with custom username.\n\n"
         ".trump <tweet>"
         "\nUsage: Create tweet for Donald Trump.\n\n"
         ".modi <tweet>"
         "\nUsage: Create tweet for `Narendra Modi`.\n\n"
+        ".tweetme <tweet>"
+        "\nUsage: Create tweet from u in dark theme.\n\n"
         ".cmm <text>"
         "\nUsage: Create banner for Change My Mind.\n\n"
         ".waifu <text>"
