@@ -66,11 +66,12 @@ async def _(event):
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=804576054))
               response2 = conv.wait_event(events.NewMessage(incoming=True,from_users=804576054))
+              response3 = conv.wait_event(events.NewMessage(incoming=True,from_users=804576054))
               
               await event.client.forward_messages(chat, reply_message)
               response = await response
               response = await response2 
-              
+              response = await response3
           except YouBlockedUserError: 
               await event.reply("```Please unblock (allsaverbot) ```")
               return
