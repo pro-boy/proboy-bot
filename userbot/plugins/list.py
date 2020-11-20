@@ -3,7 +3,7 @@
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 #
-
+"""
 import io
 import os
 import os.path
@@ -123,3 +123,4 @@ async def lst(event):
 
 
 CMD_HELP.update({"file": ".ls <directory>" "\nUsage: File Manager plugin for TeleBot."})
+"""
