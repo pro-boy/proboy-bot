@@ -141,6 +141,9 @@ if ENV:
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         HELP_INLINETYPE = os.environ.get("HELP_INLINETYPE", None)
+        # Deepai value can get from https://deepai.org/
+        DEEP_AI = os.environ.get("DEEP_AI", None)
+
 else:
     class Config(object):
         DB_URI = None
