@@ -59,7 +59,7 @@ async def set_not_afk(event):
                 reply_to=event.message.id,
                 silent=True,
             )
-        await asyncio.sleep(5)
+        await asyncio.sleep(3)
         await shite.delete()
         USER_AFK = {}  # pylint:disable=E0602
         afk_time = None  # pylint:disable=E0602
@@ -118,7 +118,7 @@ async def on_afk(event):
         #           afk_since = f"`{int(seconds)}s` **ago**"
         msg = None
         message_to_reply = (
-            f"**[AFK]** `Hi, I'm not available.`\n\n**Reason - ** __{total_afk_time}__\n\n**Last seen** - __{afk_since}__"
+            f"**[AFK]** `Hi, I'm not available.`\n\n**Reason - ** __{reason}__\n\n**Last seen** - __{total_afk_time}__"
             if reason
             else f"**[AFK]** `I am unavailable. Please leave your message, I will look into it soon!`\n\n**Last seen** - __{afk_since}__ "
         )
