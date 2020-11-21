@@ -54,7 +54,7 @@ async def corona(event):
             await  catevent.edit(
                 "`Corona Virus Info of {} is not avaiable or unable to fetch`".format(
                     country))
-                await catevent.delete(3)
+                
                 
             
 
