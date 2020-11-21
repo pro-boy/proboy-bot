@@ -101,7 +101,7 @@ async def memes(cat):
         if files and os.path.exists(files):
             os.remove(files)
 
-@borg.on(admin_cmd(outgoing=True, pattern="gray$"))
+@borg.on(admin_cmd(outgoing=True, pattern="grey$"))
 async def memes(cat):
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
@@ -219,7 +219,7 @@ async def memes(cat):
         jisanidea = True
     elif catsticker.endswith(".webp"):
         await cat.edit(
-            "```Transfiguration Time! Mwahaha inverting colors of this sticker! (」ﾟﾛﾟ)｣```"
+            "``` Inverting colors of this🔸🔸🔸```"
         )
         catfile = os.path.join("./temp/", "memes.jpg")
         os.rename(catsticker, catfile)
@@ -269,5 +269,9 @@ CMD_HELP.update({
     \n**Usage : **Creates a image meme with give text at specific locations and sends\
     \n\n**Syntax : **`.mmf toptext ; bottomtext`\
     \n**Usage : **Creates a sticker meme with give text at specific locations and sends\
+    \n\n**Syntax : **`.invert (reply to any media)`\
+    \n**Usage : **invert color of that media then if u use again then return again the old media\
+    \n\n**Syntax : **`.grey (reply to any media)`\
+    \n**Usage : **Create that media Black-and-white\
     "
 })
