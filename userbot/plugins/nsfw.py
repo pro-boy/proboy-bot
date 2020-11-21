@@ -65,19 +65,19 @@ async def nsfw(event):
 @borg.on(admin_cmd(pattern="detect$", outgoing=True))
 async def detect(event):
     if Config.DEEP_AI is None:
-        return await edit_delete(
-            event, "Add VAR `DEEP_AI` get Api Key from https://deepai.org/", 5
-        )
+        return await event.edit(
+             "Add VAR `DEEP_AI` get Api Key from https://deepai.org/")
+               
     reply = await event.get_reply_message()
     if not reply:
-        return await event.edit_delete(
-           "`Reply to any image or non animated sticker !`", 5
+        return await event.edit(
+           "`Reply to any image or non animated sticker !`"
         )
     catevent = await event.edit("`Downloading the file to check...`")
     media = await event.client.download_media(reply)
     if not media.endswith(("png", "jpg", "webp")):
-        return await edit_delete(
-            event, "`Reply to any image or non animated sticker !`", 5
+        return await event.edit
+             "`Reply to any image or non animated sticker !`"
         )
     catevent = await event.edit("`Detecting NSFW limit...`")
     r = requests.post(
