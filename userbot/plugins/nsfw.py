@@ -89,7 +89,7 @@ async def detect(event):
     )
     os.remove(media)
     if "status" in r.json():
-        return await catevent.edit_delete( r.json()["status"])
+        return await catevent.edit( r.json()["status"])
     r_json = r.json()["output"]
     pic_id = r.json()["id"]
     percentage = r_json["nsfw_score"] * 100
