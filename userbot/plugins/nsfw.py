@@ -76,7 +76,7 @@ async def detect(event):
     catevent = await event.edit("`Downloading the file to check...`")
     media = await event.client.download_media(reply)
     if not media.endswith(("png", "jpg", "webp")):
-        return await event.edit
+        return await event.edit(
              "`Reply to any image or non animated sticker !`"
         )
     catevent = await event.edit("`Detecting NSFW limit...`")
