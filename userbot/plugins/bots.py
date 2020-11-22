@@ -140,6 +140,7 @@ async def _(event):
             try:
                 await conv.send_message("/start")
                 await conv.get_response()
+                await conv.send_message("/start")
                 danish = await conv.get_response()
                 final = ("HeHe", "")
                 await borg.send_message(event.chat_id, danish.text)
