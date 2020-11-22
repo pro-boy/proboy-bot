@@ -95,28 +95,3 @@ async def _(event):
         plugin_syntax = "Enter valid **Plugin** name.\nDo `.plinfo` or `.help` to get list of valid plugin names."
 
     await event.edit(plugin_syntax)
-
-
-@borg.on(admin_cmd(outgoing=True, pattern="check ?(.*)"))
-
-async def info(event):
-    """ For .info command,"""
-    args = event.pattern_match.group(1).lower()
-    if args:
-        if args in CMD_HELP:
-            await event.edit(str(CMD_HELP[args]))
-        else:
-            event = await event.edit("Please specify a valid plugin name.")
-            await asyncio.sleep(2)
-            await event.delete()
-    else:
-        string = "<b>Please specify which plugin do you want help for !!\
-            \nNumber of plugins : </b><code>{count}</code>\
-            \n<b>Usage : </b><code>.info</code> <plugin name>\n\n"
-        count = 0
-        for i in sorted(CMD_HELP):
-            string += "• " + f"<code>{str(i)}</code>"
-            string += "   "
-            count += 1
-
-            await event.edit(string.format(count=catcount), parse_mode="HTML")
