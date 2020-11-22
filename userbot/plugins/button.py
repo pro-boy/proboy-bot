@@ -67,8 +67,10 @@ async def _(event):
 # Helpers
 
 
-@borg.on(admin_cmd(pattern=r"ibutton( (.*)|$)", outgoing=True))
+@bot.on(admin_cmd(pattern=r"ibutton( (.*)|$)", outgoing=True))
 async def _(event):
+    if event.fwd_from:
+        return
     reply_to_id = None
     catinput = "".join(event.text.split(maxsplit=1)[1:])
     if event.reply_to_msg_id:
@@ -81,9 +83,9 @@ async def _(event):
         await event.edit("`Give me something to write in bot inline`")
         return
     catinput = "Inline buttons " + catinput
-    tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
+    tgbotusername = Config.TG_BOT_USER_NAME_BF_HER
     results = await bot.inline_query(tgbotusername, catinput)
-    await results[0].click(event.chat_id, reply_to=reply_to_id)
+    await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
 
 
@@ -95,6 +97,8 @@ def build_keyboard(buttons):
         else:
             keyb.append([Button.url(btn[0], btn[1])])
     return keyb
+
+
 
 
 CMD_HELP.update(
