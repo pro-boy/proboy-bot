@@ -1,6 +1,6 @@
 {
-  "name": "DanishBot",
-  "description": "Testing nd just for me userbot made by @danish_00 and modified by DARK COBRA userbot's owner(@hellboy_atul) and @TechnoAyanBot",
+  "name": "ProBoy-Bot",
+  "description": "Testing nd just for me userbot made by @peroboy and modified by DANISH BRO userbot's owner(@peroboy) and @proboybot",
   "logo": "https://telegra.ph/file/c40c645eb602e192ec442.jpg",
     "keywords": [
     "telegram",
@@ -9,9 +9,9 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/1Danish-00/DanishBot/",
-  "website": "https://github.com/1Danish-00/DanishBot/",
-  "success_url": "https://t.me/danish_00",
+  "repository": "https://github.com/pro-boy/proboy-bot/",
+  "website": "https://github.com/pro-boy/proboy-bot/",
+  "success_url": "https://t.me/peroboy",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
